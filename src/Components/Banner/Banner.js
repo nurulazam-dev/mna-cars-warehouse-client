@@ -15,9 +15,6 @@ const Banner = () => {
                         src={banner1}
                         alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>MNA Cars Warehouse</h3>
-                    </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={500}>
                     <img
@@ -27,9 +24,6 @@ const Banner = () => {
                         src={banner2}
                         alt="Second slide"
                     />
-                    <Carousel.Caption>
-                    <h3>MNA Cars Warehouse</h3>
-                    </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
@@ -39,9 +33,6 @@ const Banner = () => {
                         src={banner3}
                         alt="Third slide"
                     />
-                    <Carousel.Caption>
-                    <h3>MNA Cars Warehouse</h3>
-                    </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
         </div>
