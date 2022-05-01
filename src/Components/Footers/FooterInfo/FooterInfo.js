@@ -44,13 +44,9 @@ const FooterInfo = () => {
                     <h4 className='text-center'>Pay With:</h4>
                     <div className='mt-4 w-75 text-center mx-auto'>
                         <img className='w-50' src={methods} alt="" />
-
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     );
 };

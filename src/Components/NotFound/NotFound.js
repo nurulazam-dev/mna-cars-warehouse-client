@@ -4,8 +4,8 @@ import notFound from '../../Images/NotFound/404.png'
 
 const NotFound = () => {
     return (
-        <div>
-            <div>
+        <div className='w-100 mx-auto text-center'>
+            <div >
             <img className=' w-75' src={notFound} alt="" />
             </div>
             <Link to='/'>
