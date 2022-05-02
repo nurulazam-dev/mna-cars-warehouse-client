@@ -11,7 +11,7 @@ const FooterInfo = () => {
         <div className='bg-dark text-white mt-3'>
             <div className='d-flex p-4 w-100'>
                 <div className='mx-4 w-50'>
-                    <h4 className='text-center'>CONTACT INFO:</h4>
+                    <h4 className='text-center text-info'>CONTACT INFO :</h4>
                     <div className='mt-4'>
                         <p><FontAwesomeIcon className='mx-2' icon={faLocationDot}></FontAwesomeIcon>Raozan, Chittagong, Bangladesh.</p>
                         <p><FontAwesomeIcon className='mx-2' icon={faEnvelope}></FontAwesomeIcon>info@mnacarswarehouse.com</p>
@@ -20,14 +20,14 @@ const FooterInfo = () => {
                     </div>
                 </div>
                 <div className='mx-4 w-50'>
-                    <h4 className='text-center'>OPEN HOURS:</h4>
+                    <h4 className='text-center text-info'>OPEN HOURS :</h4>
                     <div className='mt-4'>
                         <p><FontAwesomeIcon className='mx-2' icon={faDoorOpen}></FontAwesomeIcon>Mon-Sat : 8:00am - 5:00pm</p>
                         <p><FontAwesomeIcon className='mx-2' icon={faShopSlash}></FontAwesomeIcon>Sunday is closed</p>
                     </div>
                 </div>
                 <div className='mx-4 w-50'>
-                    <h4 className='text-center'>FOLLOW US:</h4>
+                    <h4 className='text-center text-info'>FOLLOW US :</h4>
                     <div className='mt-4 w-75 text-center mx-auto'>
                         <a href="https://www.facebook.com/mnaofficialbd">
                             <img className='mx-3' style={{ height: '40px', width: '40px' }} src={facebook} alt="" />
@@ -41,7 +41,7 @@ const FooterInfo = () => {
                     </div>
                 </div>
                 <div className='mx-4 w-50'>
-                    <h4 className='text-center'>Pay With:</h4>
+                    <h4 className='text-center text-info'>PAY WITH :</h4>
                     <div className='mt-4 w-75 text-center mx-auto'>
                         <img className='w-50' src={methods} alt="" />
                     </div>
