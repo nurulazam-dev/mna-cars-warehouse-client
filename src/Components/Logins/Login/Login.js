@@ -30,6 +30,9 @@ const Login = () => {
     const navigateToRegister = (event) => {
         navigate('/register')
     }
+    if(user){
+        navigate('/')
+    }
 
     return (
         <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark'>
@@ -38,17 +41,17 @@ const Login = () => {
             <Form onClick={handleLogin} className='text-white w-75 mx-auto my-4'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
+                    <Form.Control className='fs-5' ref={emailRef} type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
+                    <Form.Control className='fs-5' ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
                
                 {/* <p>{error?.message}</p> */}
-                <Button className='w-100' variant="primary" type="submit">
+                <Button className='w-100 mt-2 fs-5' variant="primary" type="submit">
                     Login
                 </Button>
             </Form>
