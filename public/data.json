@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "2019 Dodge Challenger",
+        "engine": "V6 3.6 Liter PentaStar",
+        "trim": "SXT Coupe",
+        "transmission": "TorqueFlite® 8 Speed Automatic Mode Select with Manual Mode (845RE)",
+        "type": "Automatic",
+        "price": "28095",
+        "quantity": "132",
+        "supplier": "Alex Khan",
+        "img": "https://i.ibb.co/"
+    },
+    {
+        "id": 2,
+        "name": "2019 Hyundai Veloster",
+        "engine": "4-Cyl 2.0 Liter Atkinson",
+        "trim": "2.0 (Auto) Hatchback",
+        "transmission": "SHIFTRONIC® 6 Speed Automatic with Manual Mode (D6GF1)",
+        "type": "Automatic",
+        "price": "19500",
+        "quantity": "87",
+        "supplier": "Rock Int",
+        "img": "https://i.ibb.co/"
+    },
+    {
+        "id": 3,
+        "name": "2019 MINI Hardtop",
+        "engine": "3-Cyl Turbo 1.5 Liter",
+        "trim": "Classic 2-Door Hatchback",
+        "transmission": "6 Speed Manual (ZMT)",
+        "type": "Manual",
+        "price": "21900",
+        "quantity": "102",
+        "supplier": "Chw Auto",
+        "img": "https://i.ibb.co/"
+    },
+    {
+        "id": 4,
+        "name": "2022 Honda CR-V Hybrid",
+        "engine": "4-Cyl 2.0 Liter Earth Dreams Technology™",
+        "trim": "EX AWD",
+        "transmission": "Continuously Variable Automatic Mode Select",
+        "type": "Automatic",
+        "price": "30960",
+        "quantity": "317",
+        "supplier": "Roman VRM",
+        "img": "https://i.ibb.co/"
+    },
+    {
+        "id": 5,
+        "name": "2019 Ford Mustang",
+        "engine": "4-Cyl Turbo 2.3 Liter EcoBoost®",
+        "trim": "EcoBoost Coupe",
+        "transmission": "6 Speed Manual (MT82)",
+        "type": "Manual",
+        "price": "26395",
+        "quantity": "181",
+        "supplier": "Rafi Chw",
+        "img": "https://i.ibb.co/"
+    },
+    {
+        "id": 6,
+        "name": "2022 GMC Terrain",
+        "engine": "4-Cyl Turbo 1.5 Liter",
+        "trim": "SLE FWD",
+        "transmission": "9 Speed Automatic Mode Select with Manual Mode (9T45)",
+        "type": "Automatic",
+        "price": "27900",
+        "quantity": "82",
+        "supplier": "Kamal Khan",
+        "img": "https://i.ibb.co/"
+    }
+]
