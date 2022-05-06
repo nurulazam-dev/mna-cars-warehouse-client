@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Item from '../Item/Item';
+import { Link, useNavigate } from 'react-router-dom';
+// import Item from '../Item/Item';
 import Items from '../Items/Items';
 
 const InventoryItems = () => {
+    const navigate=useNavigate();
+    const navigateToManage =()=>{
+        navigate('manage')
+    }
     
     return (
         <div className='my-4'>
@@ -11,7 +15,7 @@ const InventoryItems = () => {
             {/* <Item/> */}
             <Items />
             <div className='text-center'>
-            <button as={Link} to="" className='btn btn-success text-white fs-5'>Manage Inventories</button>
+            <button onClick={()=>navigate('/manage')} className='btn btn-success text-white fs-5'>Manage Inventories</button>
             </div>
         </div>
     );

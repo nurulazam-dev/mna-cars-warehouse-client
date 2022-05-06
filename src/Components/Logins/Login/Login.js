@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     return (
-        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark'>
+        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark shadow'>
             <h2 className='text-warning text-center'>Please Login</h2>
 
             <Form onClick={handleLogin} className='text-white w-75 mx-auto my-4'>

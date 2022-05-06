@@ -40,7 +40,7 @@ const Register = () => {
     
 
     return (
-        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark'>
+        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark shadow'>
             <h2 className='text-warning text-center'>Create your account</h2>
 
             <Form onSubmit={handleRegister} className='text-white w-75 mx-auto my-4'>

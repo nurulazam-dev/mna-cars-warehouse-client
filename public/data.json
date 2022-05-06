@@ -2,73 +2,91 @@
     {
         "id": 1,
         "name": "2019 Dodge Challenger",
-        "engine": "V6 3.6 Liter PentaStar",
-        "trim": "SXT Coupe",
-        "transmission": "TorqueFlite® 8 Speed Automatic Mode Select with Manual Mode (845RE)",
-        "type": "Automatic",
+        "description":"Engine: V6 3.6 Liter PentaStar. Trim: SXT Coupe. Transmission: TorqueFlite® 8 Speed Automatic Mode Select with Manual Mode (845RE). Transmission Type: Automatic",
         "price": "28095",
         "quantity": "132",
         "supplier": "Alex Khan",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/PcQB4J6/1.webp"
     },
     {
         "id": 2,
         "name": "2019 Hyundai Veloster",
-        "engine": "4-Cyl 2.0 Liter Atkinson",
-        "trim": "2.0 (Auto) Hatchback",
-        "transmission": "SHIFTRONIC® 6 Speed Automatic with Manual Mode (D6GF1)",
-        "type": "Automatic",
+        "description":"Engine: 4-Cyl 2.0 Liter Atkinson. Trim: 2.0 (Auto) Hatchback. Transmission: SHIFTRONIC® 6 Speed Automatic with Manual Mode (D6GF1). Transmission Type: Automatic",
         "price": "19500",
         "quantity": "87",
         "supplier": "Rock Int",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/R37prFs/2.webp"
     },
     {
         "id": 3,
         "name": "2019 MINI Hardtop",
-        "engine": "3-Cyl Turbo 1.5 Liter",
-        "trim": "Classic 2-Door Hatchback",
-        "transmission": "6 Speed Manual (ZMT)",
-        "type": "Manual",
+        "description":"Engine: 3-Cyl Turbo 1.5 Liter. Trim: Classic 2-Door Hatchback. Transmission: Classic 2-Door Hatchback. Transmission Type: Manual",
         "price": "21900",
         "quantity": "102",
         "supplier": "Chw Auto",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/Qb7wzsc/3.webp"
     },
     {
         "id": 4,
         "name": "2022 Honda CR-V Hybrid",
-        "engine": "4-Cyl 2.0 Liter Earth Dreams Technology™",
-        "trim": "EX AWD",
-        "transmission": "Continuously Variable Automatic Mode Select",
-        "type": "Automatic",
+        "description":"Engine: 4-Cyl 2.0 Liter Earth Dreams Technology™. Trim: EX AWD. Transmission: Continuously Variable Automatic Mode Select. Transmission Type: Automatic",
         "price": "30960",
         "quantity": "317",
         "supplier": "Roman VRM",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/W2pm7zQ/4.jpg"
     },
     {
         "id": 5,
         "name": "2019 Ford Mustang",
-        "engine": "4-Cyl Turbo 2.3 Liter EcoBoost®",
-        "trim": "EcoBoost Coupe",
-        "transmission": "6 Speed Manual (MT82)",
-        "type": "Manual",
+        "description":"Engine: 4-Cyl Turbo 2.3 Liter EcoBoost®. Trim: EcoBoost Coupe. Transmission: 6 Speed Manual (MT82). Transmission Type: Manual",
         "price": "26395",
         "quantity": "181",
         "supplier": "Rafi Chw",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/3zRr6BF/5.webp"
     },
     {
         "id": 6,
         "name": "2022 GMC Terrain",
-        "engine": "4-Cyl Turbo 1.5 Liter",
-        "trim": "SLE FWD",
-        "transmission": "9 Speed Automatic Mode Select with Manual Mode (9T45)",
-        "type": "Automatic",
+        "description":"Engine: 4-Cyl Turbo 1.5 Liter. Trim: SLE FWD. Transmission: 9 Speed Automatic Mode Select with Manual Mode (9T45). Transmission Type: Automatic",
         "price": "27900",
         "quantity": "82",
         "supplier": "Kamal Khan",
-        "img": "https://i.ibb.co/"
+        "img": "https://i.ibb.co/hB2mGVv/6.webp"
+    },
+    {
+        "id": 7,
+        "name": "2022 Subaru Crosstrek",
+        "description":"Engine: 4-Cyl 2.0 Liter BOXER. Trim: Base (Manual) Wagon. Transmission: 6 Speed Manual. Transmission Type: Manual",
+        "price": "22445",
+        "quantity": "300",
+        "supplier": "Anthon k",
+        "img": "https://i.ibb.co/BNkcXZz/7.webp"
+    },
+    {
+        "id": 8,
+        "name": "2022 Toyota RAV4 Hybrid",
+        "description":"Engine: 4-Cyl 2.5 Liter. Trim: LE AWD. Transmission: ECVT Continuously Variable Automatic Mode Select with Manual Mode. Transmission Type: Automatic",
+        "price": "29075",
+        "quantity": "153",
+        "supplier": "Mr. Rock",
+        "img": "https://i.ibb.co/TT2T9DG/8.webp"
+    },
+    {
+        "id": 9,
+        "name": "2022 Ford Transit Connect",
+        "description":"Engine: 4-Cyl 2.0 Liter. Trim: XL SWB w/Liftgate Cargo Van. Transmission: SelectShift® 8 Speed Automatic Mode Select with Manual Mode. Transmission Type: Automatic",
+        "price": "25175",
+        "quantity": "417",
+        "supplier": "Ahad Islam",
+        "img": "https://i.ibb.co/mqZsPLM/9.webp"
+    },
+    {
+        "id": 10,
+        "name": "2022 Honda Ridgeline",
+        "description":"Engine: V6 3.5 Liter. Trim: Sport AWD. Transmission: 9 Speed Automatic. Transmission Type: Automatic",
+        "price": "36890",
+        "quantity": "242",
+        "supplier": "Tamim Khan",
+        "img": "https://i.ibb.co/d4dK0dv/10.webp"
     }
 ]
