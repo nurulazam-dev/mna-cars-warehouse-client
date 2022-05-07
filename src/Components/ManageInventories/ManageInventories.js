@@ -12,10 +12,9 @@ const ManageInventories = () => {
 
 
     const handleDelete = id => {
-        const remove = window.confirm('Are you Confirm to Delete?')
+        const remove = window.confirm(`Are you Confirm to Delete this item?`)
         if (remove) {
             const url = `http://localhost:5000/item/${id}`;
-
             fetch(url, {
                 method: "DELETE"
             })
@@ -36,6 +35,7 @@ const ManageInventories = () => {
                 <table className='table table-bordered table-striped'>
                     <thead>
                         <tr>
+                            <th scope="col">Item ID</th>
                             <th scope="col">Car's Name / Model</th>
                             <th scope="col">Image</th>
                             <th scope="col">Price</th>
@@ -47,15 +47,16 @@ const ManageInventories = () => {
                     <tbody>
                         {
                             items.map(item => <tr
-                                key={item.id}
+                                key={item._id}
                                 item={item}>
+                                <td>{item._id}</td>
                                 <td>{item.name}</td>
                                 <td><img style={{height:'35px',width:'70px'}} src={item.img} alt="" /></td>
                                 <td>$ {item.price}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.supplier}</td>
                                 <td>
-                                    <button onClick={() => handleDelete(item)} className='btn btn-danger'>Delete
+                                    <button onClick={() => handleDelete(item._id)} className='btn btn-danger'>Delete
                                         <FontAwesomeIcon className='mx-2' icon={faTrashAlt}></FontAwesomeIcon>
                                     </button>
                                 </td>

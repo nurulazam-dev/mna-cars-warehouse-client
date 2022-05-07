@@ -45,9 +45,9 @@ function App() {
         <Route path='/about' element={<AboutUs />}></Route>
         <Route path='/developer' element={<AboutDeveloper />}></Route>
 
-
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
+        
     </div>
   );
 }
