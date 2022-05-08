@@ -2,9 +2,7 @@ import { faDoorOpen, faEnvelope, faGlobe, faLocationDot, faPhone, faShopSlash } 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import methods from '../../../Images/PaymentMethod/paymentmethod.png';
-import facebook from '../../../Images/SocialIcon/facebook.png';
-import twitter from '../../../Images/SocialIcon/twitter.png';
-import instagram from '../../../Images/SocialIcon/instagram.png';
+
 
 const FooterInfo = () => {
     return (
@@ -30,13 +28,13 @@ const FooterInfo = () => {
                     <h4 className='text-center text-info'>FOLLOW US :</h4>
                     <div className='mt-4 w-75 text-center mx-auto'>
                         <a href="https://www.facebook.com/mnaofficialbd">
-                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src={facebook} alt="" />
+                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src='https://i.ibb.co/SBMtMC1/facebook.png' alt="" />
                         </a>
                         <a href="https://www.twitter.com/mnaofficialbd">
-                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src={twitter} alt="" />
+                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src='https://i.ibb.co/j4T8qbd/twitter.png' alt="" />
                         </a>
                         <a href="https://www.instagram.com/mnaofficialbd">
-                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src={instagram} alt="" />
+                            <img className='mx-3' style={{ height: '40px', width: '40px' }} src='https://i.ibb.co/DkFxTMF/instagram.png' alt="" />
                         </a>
                     </div>
                 </div>
