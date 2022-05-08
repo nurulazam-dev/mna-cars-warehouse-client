@@ -18,7 +18,7 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Navbar.Brand className='' as={Link} to='/'>
-                            <img style={{ height: "70px", width: '50px' }} src="icon.png" alt="" />
+                            <img style={{ height: "50px", width: '70px' }} src="icon.png" alt="" />
                             <span className='mx-2 brand-title'>MNA Cars Warehouse</span>
                         </Navbar.Brand>
                     </Nav>

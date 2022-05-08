@@ -2,9 +2,14 @@ import React from 'react';
 import useItems from '../../hooks/useItems';
 import ManageInventories from '../ManageInventories/ManageInventories';
 import Item from '../Item/Item';
+import { Link, useParams } from 'react-router-dom';
+import useItem from '../../hooks/useItem';
 
 const Items = () => {
     const [items] = useItems();
+    const { itemId } = useParams()
+    const [item]=useItem(itemId)
+
 
     return (
         <div>
@@ -23,8 +28,8 @@ const Items = () => {
             </div> */}
 
             {
-                items.slice(0,6).map(item => <div
-                    key={item.id}
+                items.slice(0, 6).map(item => <div
+                    key={item._id}
                     item={item}>
 
                     <div className="row row-cols-1 row-cols-md-3 g-4 m-3">
@@ -39,7 +44,9 @@ const Items = () => {
 
                                 </div>
                                 <div className="card-footer p-0">
-                                    <button className='btn w-100 btn-primary'>Update</button>
+                                    <Link to={`/update/${itemId}`}>
+                                        <button className='btn w-100 btn-primary'>Update</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

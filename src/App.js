@@ -12,6 +12,7 @@ import AboutDeveloper from './Components/About/AboutDeveloper/AboutDeveloper';
 import AboutUs from './Components/About/AboutUs/AboutUs';
 import MyItems from './Components/MyItems/MyItems';
 import RequireAuth from './Components/Logins/RequireAuth/RequireAuth';
+import UpdateItem from './Components/UpdateItem/UpdateItem';
 
 function App() {
   return (
@@ -44,6 +45,11 @@ function App() {
 
         <Route path='/about' element={<AboutUs />}></Route>
         <Route path='/developer' element={<AboutDeveloper />}></Route>
+        <Route path='/update/:itemId' element={
+          <RequireAuth>
+            <UpdateItem />
+          </RequireAuth>
+        }></Route>
 
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
