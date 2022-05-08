@@ -4,7 +4,7 @@ const useItem = (itemId) => {
     const [item, setItem] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${itemId}`)
+        fetch(`https://salty-spire-70121.herokuapp.com/item/${itemId}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [itemId])

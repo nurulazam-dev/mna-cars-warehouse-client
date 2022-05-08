@@ -5,16 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import useItems from '../../hooks/useItems';
 
 const ManageInventories = () => {
-    /* const ManageInventories = ({item}) => {
-        const {name}=item; */
     const [items, setItems] = useItems();
     const navigate = useNavigate();
-
 
     const handleDelete = id => {
         const remove = window.confirm(`Are you Confirm to Delete this item?`)
         if (remove) {
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://salty-spire-70121.herokuapp.com/item/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
@@ -30,9 +27,8 @@ const ManageInventories = () => {
     return (
         <div className='my-4'>
             <h2 className='text-center text-primary'>Manage Inventories</h2>
-
             <div className="text-center container">
-                <table className='table table-bordered table-striped'>
+                <table className='table table-bordered table-striped shadow'>
                     <thead>
                         <tr>
                             <th scope="col">Item ID</th>
@@ -51,7 +47,7 @@ const ManageInventories = () => {
                                 item={item}>
                                 <td>{item._id}</td>
                                 <td>{item.name}</td>
-                                <td><img style={{height:'35px',width:'70px'}} src={item.img} alt="" /></td>
+                                <td><img style={{ height: '35px', width: '70px' }} src={item.img} alt="" /></td>
                                 <td>$ {item.price}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.supplier}</td>

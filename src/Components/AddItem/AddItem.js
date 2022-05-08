@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
     const handleOnSubmit = (data,event) => {
-        const url = `http://localhost:5000/item`;
+        const url = `https://salty-spire-70121.herokuapp.com/item`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -19,11 +19,10 @@ const AddItem = () => {
                 event.target.reset();
                 toast('Add item success')
             })
-
     }
 
     return (
-        <div className='w-25 mx-auto border my-5 p-2 rounded bg-white pb-3 shadow'>
+        <div className='w-25 mx-auto border my-5 p-2 rounded bg-light pb-3 shadow'>
             <ToastContainer/>
             <h2 className='text-primary text-center my-3'>Add new item</h2>
             <form className='d-flex flex-column w-75 mx-auto' onSubmit={handleSubmit(handleOnSubmit)}>

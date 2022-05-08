@@ -4,7 +4,7 @@ import { Card, CardGroup } from 'react-bootstrap';
 const AboutDeveloper = () => {
     return (
         <div>
-            <h2 className='text-center text-danger mt-3'>About Developer</h2>
+            <h2 className='text-center text-primary mt-3'>About Developer</h2>
 
             <CardGroup className='w-50 mx-auto mb-5'>
                 <Card className='mt-3'>
@@ -29,7 +29,7 @@ const AboutDeveloper = () => {
                 </Card>
                 <Card className='mt-3'>
                     <Card.Body>
-                        <Card.Title className='text-center'>About Me</Card.Title>
+                        <h4 className='text-center text-danger'>About Me:</h4>
                         <div className='fs-5'>
                             <p>
                                 I am Mohammad Nurul Azam. I'm a student of BBS and Programming Hero.

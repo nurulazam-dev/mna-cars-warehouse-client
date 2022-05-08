@@ -6,7 +6,7 @@ const Blogs = () => {
         <div className='m-2 p-2'>
             <h2 className='text-center'>Blogs (Q & A)</h2>
             <div className=' mt-4 w-75 mx-auto'>
-                <Card border="primary" className='w-75 mx-auto mb-4' >
+                <Card border="primary" className='w-75 mx-auto mb-4 shadow' >
                     <Card.Header className='fs-5'> What is difference between javascript and node.js ?</Card.Header>
                     <Card.Body>
                         <Card.Title className='text-center'>Answer:</Card.Title>
@@ -22,7 +22,7 @@ const Blogs = () => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <Card border="primary" className='w-75 mx-auto mb-4'>
+                <Card border="primary" className='w-75 mx-auto mb-4 shadow'>
                     <Card.Header className='fs-5'>What is the purpose of jwt and how does it work ?</Card.Header>
                     <Card.Body>
                     <Card.Title className='text-center'>Answer:</Card.Title>
@@ -31,7 +31,7 @@ const Blogs = () => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <Card border="primary" className='w-75 mx-auto mb-4'>
+                <Card border="primary" className='w-75 mx-auto mb-4 shadow'>
                     <Card.Header className='fs-5'>What is differences between SQL and NoSQL databases ?</Card.Header>
                     <Card.Body>
                     <Card.Title className='text-center'>Answer:</Card.Title>

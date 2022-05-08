@@ -23,11 +23,11 @@ const location = useLocation();
     
 
     return (
-        <div className='text-warning text-center mt-0 w-75 mx-auto'>
-            <div className='d-flex align-items-center'>
-                <div style={{ height: '2px' }} className='bg-warning w-50'></div>
+        <div className='text-black text-center mt-0 w-75 mx-auto'>
+            <div className='d-flex w-50 mx-auto align-items-center'>
+                <div style={{ height: '2px' }} className='bg-success w-100'></div>
                 <p className='m-2'>or</p>
-                <div style={{ height: '2px' }} className='bg-warning w-50'></div>
+                <div style={{ height: '2px' }} className='bg-success w-100'></div>
             </div>
                 <button onClick={()=>signInWithGoogle()}
                 className='rounded d-flex align-items-center mx-auto mb-2 p-1'>

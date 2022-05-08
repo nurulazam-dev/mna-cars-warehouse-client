@@ -1,7 +1,7 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../Firebase/firebase.init';
@@ -12,10 +12,10 @@ const Login = () => {
     const passwordRef = useRef('');
     let loadingMessage;
     let errorMessage;
+     const [user]=useAuthState(auth)
 
     const [
         signInWithEmailAndPassword,
-        user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
@@ -28,7 +28,7 @@ const Login = () => {
         errorMessage = <p className='text-danger'>{error?.message}</p>
     };
 
-
+    console.log(user);
     const handleLogin = event => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -57,12 +57,12 @@ const Login = () => {
     }
 
     return (
-        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark shadow'>
+        <div className='w-50 mx-auto border my-5 p-2 rounded bg-light shadow'>
             {loadingMessage}
             <ToastContainer />
-            <h2 className='text-warning text-center'>Please Login</h2>
+            <h2 className='text-primary text-center'>Please Login</h2>
 
-            <Form onClick={handleLogin} className='text-white w-75 mx-auto my-4'>
+            <Form onClick={handleLogin} className='text-black w-75 mx-auto my-4'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control className='fs-5' ref={emailRef} type="email" placeholder="Enter email" required />
@@ -78,8 +78,8 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
-            <p className='text-center text-white m-0'>If you forget password. <button onClick={resetPassword} className='text-warning pe-auto text-decoration-none btn btn-link'>Reset</button></p>
-            <p className='text-center text-white m-0'>If you new ? <Link to='/register' onClick={navigateToRegister} className='text-warning pe-auto text-decoration-none'>Please Register</Link></p>
+            <p className='text-center text-black m-0'>If you forget password. <button onClick={resetPassword} className='text-primary pe-auto text-decoration-none btn btn-link'>Reset</button></p>
+            <p className='text-center text-black m-0'>If you new ? <Link to='/register' onClick={navigateToRegister} className='text-primary pe-auto text-decoration-none'>Please Register</Link></p>
             <SocialLogin />
         </div>
     );

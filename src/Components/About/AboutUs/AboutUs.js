@@ -6,7 +6,7 @@ const AboutUs = () => {
     return (
         <div>
             <h2 className='text-center text-primary mt-3'>About Us</h2>
-            <div className='w-75 mx-auto bg-light p-4 rounded mb-3'>
+            <div className='w-75 mx-auto bg-light p-4 rounded mb-3 shadow'>
                 <h3 className='text-center text-danger mb-3'>MNA CARS WAREHOUSE - Used cars in Middlesbrough, Cleveland</h3>
                 <div className='fs-5'>
                 <p>

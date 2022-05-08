@@ -1,7 +1,5 @@
 import React from 'react';
 import useItems from '../../hooks/useItems';
-import ManageInventories from '../ManageInventories/ManageInventories';
-import Item from '../Item/Item';
 import { Link, useParams } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 
@@ -13,6 +11,7 @@ const Items = () => {
 
     return (
         <div>
+            {item._id}
             {/* <div>
                 {items.map(item => <Item
                     key={item.id}

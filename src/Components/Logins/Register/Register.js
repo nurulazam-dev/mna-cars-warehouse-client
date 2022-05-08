@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -10,10 +10,10 @@ const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     let errorMessage;
+    const [user]=useAuthState(auth)
 
     const [
         createUserWithEmailAndPassword,
-        user,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const navigate = useNavigate();
@@ -40,10 +40,10 @@ const Register = () => {
     
 
     return (
-        <div className='w-25 mx-auto border my-5 p-2 rounded bg-dark shadow'>
-            <h2 className='text-warning text-center'>Create your account</h2>
+        <div className='w-50 mx-auto border my-5 p-2 rounded bg-light shadow'>
+            <h2 className='text-primary text-center'>Create your account</h2>
 
-            <Form onSubmit={handleRegister} className='text-white w-75 mx-auto my-4'>
+            <Form onSubmit={handleRegister} className='text-black w-75 mx-auto my-4'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your Full Name</Form.Label>
                     <Form.Control className='fs-5' ref={nameRef} type="text" placeholder="Enter Your Name" required />
@@ -64,7 +64,7 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
-            <p className='text-center text-white m-0'>Already have an account ? <Link to='/login' onClick={navigateToLogin} className='text-warning pe-auto text-decoration-none'>Please Login</Link></p>
+            <p className='text-center text-black m-0'>Already have an account ? <Link to='/login' onClick={navigateToLogin} className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
 
             <SocialLogin />
         </div>
