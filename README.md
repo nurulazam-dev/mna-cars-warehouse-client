@@ -10,11 +10,11 @@
 - Manage Items, Add Item and My Items are Private route.
 - Blogs route use for question answer. Manage item route use for display all items. Add Items route use for add new items.
 - In this project, We use some frameworks and libraries: 
-1. React App.
-2. React Router.
-3. React Bootstrap.
-4. React firebase hooks.
-5. Firebase.
-6. React fontawesome.
-7. React hook form.
-8. React Recharts.
+1. `React App`.
+2. `React Router`.
+3. `React Bootstrap`.
+4. `React firebase hooks`.
+5. `Firebase`.
+6. `React fontawesome`.
+7. `React hook form`.
+8. `React Recharts`.
