@@ -1,18 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AboutDeveloper from "./Components/About/AboutDeveloper/AboutDeveloper";
-import AboutUs from "./Components/About/AboutUs/AboutUs";
-import AddItem from "./Components/AddItem/AddItem";
-import Blogs from "./Components/Blogs/Blogs";
-import Header from "./Components/Header/Header";
-import Home from "./Components/Home/Home";
-import Login from "./Components/Logins/Login/Login";
-import Register from "./Components/Logins/Register/Register";
-import RequireAuth from "./Components/Logins/RequireAuth/RequireAuth";
-import ManageInventories from "./Components/ManageInventories/ManageInventories";
-import MyItems from "./Components/MyItems/MyItems";
-import NotFound from "./Components/NotFound/NotFound";
-import UpdateItem from "./Components/UpdateItem/UpdateItem";
+import Header from "./Components/Shared/Header/Header";
+import Home from "./Pages/Home";
+import Blogs from "./Pages/Blogs";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import RequireAuth from "./Components/Login/RequireAuth";
+import ManageInventories from "./Components/Dashboard/ManageInventories";
+import AddItem from "./Components/Dashboard/AddItem";
+import MyItems from "./Components/Dashboard/MyItems";
+import AboutUs from "./Components/About/AboutUs";
+import AboutDeveloper from "./Components/About/AboutDeveloper";
+import NotFound from "./Pages/NotFound";
+import Dashboard from "./Pages/Dashboard";
+import UpdateItem from "./Components/Dashboard/UpdateItem";
 
 function App() {
   return (
@@ -23,45 +24,73 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/login" element={<Login />}></Route>
-
         <Route
-          path="/manage"
+          path="dashboard"
           element={
             <RequireAuth>
-              <ManageInventories />
+              <Dashboard />
             </RequireAuth>
           }
-        ></Route>
+        >
+          {/* <Route path="myItems" element={<MyItems />} /> */}
+          {/* <Route path="add" element={<AddItem />} /> */}
+          {/* <Route path="payment/:payForId" element={<Payment />}></Route> */}
+          {/*  <Route
+            path="ManageInventories"
+            element={
+              <RequireAdmin>
+                <ManageInventories />
+              </RequireAdmin>
+            }
+          /> */}
+          <Route
+            path="ManageInventories"
+            element={
+              <RequireAuth>
+                <ManageInventories />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="add"
+            element={
+              <RequireAuth>
+                <AddItem />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="update"
+            element={
+              <RequireAuth>
+                <UpdateItem />
+              </RequireAuth>
+            }
+          ></Route>
 
-        <Route
-          path="/add"
-          element={
-            <RequireAuth>
-              <AddItem />
-            </RequireAuth>
-          }
-        ></Route>
-
-        <Route
-          path="/myItems"
-          element={
-            <RequireAuth>
-              <MyItems />
-            </RequireAuth>
-          }
-        ></Route>
+          <Route
+            path="myItems"
+            element={
+              <RequireAuth>
+                <MyItems />
+              </RequireAuth>
+            }
+          ></Route>
+        </Route>
+        {/* ============= */}
 
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/developer" element={<AboutDeveloper />}></Route>
-        <Route
+        {/* <Route
           path="/update/:itemId"
           element={
             <RequireAuth>
               <UpdateItem />
             </RequireAuth>
           }
-        ></Route>
+        ></Route> */}
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
