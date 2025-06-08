@@ -17,10 +17,18 @@ const Sidebar = () => {
         boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
       }}
     >
-      <h3 className="text-center mb-4" style={{ color: "#0d6efd" }}>
+      <h3 className="text-center mt-5 mb-3" style={{ color: "#0d6efd" }}>
         Dashboard
       </h3>
       <Nav className="flex-column" variant="pills">
+        <Nav.Link
+          as={Link}
+          to="/dashboard"
+          className="text-white mb-2"
+          activeClassName="active"
+        >
+          <i className="bi bi-speedometer2 me-2"></i> Overview
+        </Nav.Link>
         <Nav.Link
           as={Link}
           to="/dashboard/update"

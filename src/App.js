@@ -14,6 +14,7 @@ import AboutDeveloper from "./Components/About/AboutDeveloper";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
 import UpdateItem from "./Components/Dashboard/UpdateItem";
+import Overview from "./Components/Dashboard/Overview";
 
 function App() {
   return (
@@ -34,9 +35,8 @@ function App() {
             </RequireAuth>
           }
         >
-          {/* <Route path="myItems" element={<MyItems />} /> */}
-          {/* <Route path="add" element={<AddItem />} /> */}
-          {/* <Route path="payment/:payForId" element={<Payment />}></Route> */}
+          <Route index element={<Overview />} />
+
           {/*  <Route
             path="ManageInventories"
             element={
@@ -83,14 +83,6 @@ function App() {
 
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/developer" element={<AboutDeveloper />}></Route>
-        {/* <Route
-          path="/update/:itemId"
-          element={
-            <RequireAuth>
-              <UpdateItem />
-            </RequireAuth>
-          }
-        ></Route> */}
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
