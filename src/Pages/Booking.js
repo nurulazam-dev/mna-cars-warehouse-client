@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { cars } from "../assets/data/carsData";
 
 const Booking = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
   const carId = params.get("carId");
   const car = cars.find((c) => c._id === carId);
@@ -13,12 +14,11 @@ const Booking = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3500);
   };
 
   return (
     <section
-      className="py-5"
+      className="py-4"
       style={{
         background: "linear-gradient(120deg, #e9f5ff 60%, #f8fafc 100%)",
         minHeight: "100vh",
@@ -26,7 +26,7 @@ const Booking = () => {
       }}
     >
       <div className="container">
-        <div className="mb-4">
+        <div className="mb-2">
           <Link
             to={car ? `/cars/${car._id}` : "/"}
             className="btn btn-outline-primary rounded-pill px-4"
@@ -34,148 +34,216 @@ const Booking = () => {
             <i className="bi bi-arrow-left me-2"></i>Back to Car Details
           </Link>
         </div>
-        <div className="row justify-content-center align-items-center">
-          <div className="col-lg-7">
+        <div className="row justify-content-center align-items-stretch g-4">
+          {/* ===================
+                 Info Side
+          =================== */}
+          <div className="col-lg-5 d-flex align-items-stretch">
             <div
-              className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__fadeInUp"
+              className="bg-white rounded-4 shadow-lg p-4 w-100 animate__animated animate__fadeInLeft"
               style={{
+                minHeight: 520,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
                 position: "relative",
                 overflow: "hidden",
-                minHeight: 520,
               }}
             >
-              {/* Animated floating car image */}
               {car && (
-                <div
-                  className="position-absolute top-0 end-0 me-4 mt-4 d-none d-lg-block animate__animated animate__fadeInRight"
-                  style={{
-                    zIndex: 1,
-                    opacity: 0.08,
-                    pointerEvents: "none",
-                  }}
-                >
-                  <img
-                    src={car.img}
-                    alt={car.name}
-                    style={{
-                      width: 320,
-                      maxWidth: "40vw",
-                      filter: "blur(1px)",
-                      transform: "rotate(-8deg) scaleX(-1)",
-                    }}
-                  />
-                </div>
-              )}
-              <div style={{ position: "relative", zIndex: 2 }}>
-                <h2 className="fw-bold mb-3 animate__animated animate__fadeInDown">
-                  <i className="bi bi-calendar2-check text-primary me-2"></i>
-                  Book Test Drive
-                </h2>
-                {car && (
-                  <div className="mb-4 d-flex align-items-center gap-3 animate__animated animate__fadeInLeft">
+                <>
+                  <div className="text-center mb-4">
                     <img
                       src={car.img}
                       alt={car.name}
+                      className="img-fluid rounded-4 shadow"
                       style={{
-                        width: 100,
-                        height: 70,
+                        maxHeight: 220,
                         objectFit: "cover",
-                        borderRadius: 12,
-                        boxShadow: "0 4px 16px #e9f5ff",
-                        border: "2px solid #e9f5ff",
+                        border: "3px solid #e9f5ff",
+                        background: "#f8fafc",
+                        animation:
+                          "floatCar 2.5s ease-in-out infinite alternate",
                       }}
                     />
-                    <div>
-                      <div className="fw-semibold fs-5">{car.name}</div>
-                      <div className="text-secondary small">
-                        {car.brand} • {car.year} • {car.color}
-                      </div>
-                    </div>
                   </div>
-                )}
+                  <h3 className="fw-bold mb-2 text-center">{car.name}</h3>
+                  <div className="text-center mb-3">
+                    <span className="badge bg-primary me-2">{car.brand}</span>
+                    <span className="badge bg-light text-dark me-2">
+                      {car.year}
+                    </span>
+                    <span className="badge bg-light text-dark me-2">
+                      {car.color}
+                    </span>
+                    <span className="badge bg-light text-dark">
+                      {car.transmission}
+                    </span>
+                  </div>
+                  <h4 className="text-primary text-center mb-3">
+                    ${car.price.toLocaleString()}
+                  </h4>
+                  <ul className="list-unstyled mb-3 text-center">
+                    {car.specs.map((spec, i) => (
+                      <li key={i} className="mb-1">
+                        <i className="bi bi-check-circle-fill text-success me-2"></i>
+                        {spec}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="text-secondary text-center small mb-2">
+                    <i className="bi bi-geo-alt-fill text-primary me-1"></i>
+                    {car.location}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          {/* ===================
+                 Form Side
+          =================== */}
+          <div className="col-lg-7 d-flex align-items-stretch">
+            <div
+              className="bg-white rounded-4 shadow-lg py-4 w-100 animate__animated animate__fadeInRight"
+              style={{
+                minHeight: 520,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <div style={{ position: "relative", zIndex: 2 }}>
+                <h2 className="fw-bold mb-3 text-center animate__animated animate__fadeInDown">
+                  <i className="bi bi-calendar2-check text-primary me-2"></i>
+                  Book Test Drive
+                </h2>
                 {!submitted ? (
                   <form
                     onSubmit={handleSubmit}
                     className="animate__animated animate__fadeIn"
+                    style={{ maxWidth: 550, margin: "0 auto" }}
                   >
                     <div className="row g-3">
+                      {/* Full Name & Email */}
                       <div className="col-md-6">
-                        <label className="form-label">Full Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Your Name"
-                          required
-                        />
+                        <label className="form-label fw-semibold">
+                          Full Name
+                        </label>
+                        <div className="input-group">
+                          <span className="input-group-text bg-light">
+                            <i className="bi bi-person"></i>
+                          </span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Your Name"
+                            required
+                          />
+                        </div>
                       </div>
                       <div className="col-md-6">
-                        <label className="form-label">Email Address</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="you@email.com"
-                          required
-                        />
+                        <label className="form-label fw-semibold">
+                          Email Address
+                        </label>
+                        <div className="input-group">
+                          <span className="input-group-text bg-light">
+                            <i className="bi bi-envelope"></i>
+                          </span>
+                          <input
+                            type="email"
+                            className="form-control"
+                            placeholder="you@email.com"
+                            required
+                          />
+                        </div>
+                      </div>
+                      {/* Phone & Preferred Date */}
+                      <div className="col-md-6">
+                        <label className="form-label fw-semibold">
+                          Phone Number
+                        </label>
+                        <div className="input-group">
+                          <span className="input-group-text bg-light">
+                            <i className="bi bi-telephone"></i>
+                          </span>
+                          <input
+                            type="tel"
+                            className="form-control"
+                            placeholder="Phone Number"
+                            required
+                          />
+                        </div>
                       </div>
                       <div className="col-md-6">
-                        <label className="form-label">Phone Number</label>
-                        <input
-                          type="tel"
-                          className="form-control"
-                          placeholder="Phone Number"
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6">
-                        <label className="form-label">Preferred Date</label>
+                        <label className="form-label fw-semibold">
+                          Preferred Date
+                        </label>
                         <input type="date" className="form-control" required />
                       </div>
+                      {/* Preferred Time & Location */}
                       <div className="col-md-6">
-                        <label className="form-label">Preferred Time</label>
+                        <label className="form-label fw-semibold">
+                          Preferred Time
+                        </label>
                         <input type="time" className="form-control" required />
                       </div>
                       <div className="col-md-6">
-                        <label className="form-label">Location</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder={car?.location || "Your City"}
-                          defaultValue={car?.location}
-                          required
-                        />
+                        <label className="form-label fw-semibold">
+                          Location
+                        </label>
+                        <div className="input-group">
+                          <span className="input-group-text bg-light">
+                            <i className="bi bi-geo-alt"></i>
+                          </span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder={car?.location || "Your City"}
+                            defaultValue={car?.location}
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                     <button
                       type="submit"
                       className="btn btn-primary btn-lg rounded-pill px-4 w-100 mt-4 animate__animated animate__pulse animate__infinite"
-                      style={{ letterSpacing: 1 }}
+                      style={{ letterSpacing: 1, fontWeight: 600 }}
                     >
                       <i className="bi bi-send-check me-2"></i>
                       Confirm Booking
                     </button>
                   </form>
                 ) : (
-                  <div className="text-center py-5 animate__animated animate__tada">
+                  // Confirmation Popup
+                  <div
+                    className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-white bg-opacity-95 animate__animated animate__zoomIn"
+                    style={{
+                      zIndex: 10,
+                      borderRadius: "1.5rem",
+                      minHeight: 520,
+                    }}
+                  >
                     <i
-                      className="bi bi-patch-check-fill text-success mb-3"
-                      style={{ fontSize: 64 }}
+                      className="bi bi-patch-check-fill text-success mb-3 animate__animated animate__bounceIn"
+                      style={{ fontSize: 72 }}
                     ></i>
-                    <h3 className="fw-bold mb-2 text-success">
+                    <h3 className="fw-bold mb-2 text-success animate__animated animate__fadeInDown">
                       Booking Confirmed!
                     </h3>
-                    <p className="mb-4">
+                    <p className="mb-4 animate__animated animate__fadeInUp">
                       Thank you for booking a test drive
-                      {car ? ` for the ${car.name}` : ""}.
-                      <br />
+                      {car ? ` for the ${car.name}` : ""}.<br />
                       Our team will contact you soon.
                     </p>
-                    <Link
-                      to="/"
-                      className="btn btn-outline-primary rounded-pill px-4"
+                    <button
+                      className="btn btn-outline-primary rounded-pill px-4 animate__animated animate__pulse"
+                      onClick={() => navigate("/")}
                     >
                       <i className="bi bi-house-door me-2"></i>
                       Back to Home
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>
@@ -184,6 +252,14 @@ const Booking = () => {
         </div>
       </div>
       {/* Animate.css CDN */}
+      <style>
+        {`
+          @keyframes floatCar {
+            0% { transform: translateY(0) scaleX(1) rotate(-8deg);}
+            100% { transform: translateY(-18px) scaleX(1) rotate(-8deg);}
+          }
+        `}
+      </style>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
