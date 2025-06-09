@@ -29,9 +29,6 @@ const Home = () => {
         <h1 className="fs-5">
           4. Why Choose Us – Brief section about your unique selling points.
         </h1>
-        <h1 className="fs-5">
-          5. Partners/Brands – Logos of car brands or partners you work with.
-        </h1>
       </div>
       <Partners />
       <CallToAction />
