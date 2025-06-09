@@ -27,9 +27,6 @@ const Home = () => {
         <h1 className="fs-5">
           3. Testimonials – Show customer reviews and feedback.
         </h1>
-        <h1 className="fs-5">
-          4. Why Choose Us – Brief section about your unique selling points.
-        </h1>
       </div>
       <WhyChooseUs />
       <Partners />
