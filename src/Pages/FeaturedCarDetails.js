@@ -99,9 +99,12 @@ const FeaturedCarDetails = () => {
                 ))}
               </ul>
               <div className="d-flex gap-3 mt-4">
-                <button className="btn btn-primary btn-lg rounded-pill px-4 animate__animated animate__pulse animate__infinite">
+                <Link
+                  to={`/booking?carId=${car._id}`}
+                  className="btn btn-primary btn-lg rounded-pill px-4 animate__animated animate__pulse animate__infinite"
+                >
                   Book Test Drive
-                </button>
+                </Link>
                 <button className="btn btn-outline-success btn-lg rounded-pill px-4">
                   Contact Dealer
                 </button>
