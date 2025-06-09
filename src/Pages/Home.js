@@ -6,6 +6,7 @@ import ContactInfo from "../Components/Home/ContactInfo";
 import MapLocation from "../Components/Home/MapLocation";
 import Newsletter from "../Components/Home/Newsletter";
 import FrequentlyAskQues from "../Components/Home/FrequentlyAskQues";
+import Teams from "../Components/Home/Teams";
 
 const Home = () => {
   return (
@@ -35,10 +36,8 @@ const Home = () => {
         <h1 className="fs-5">
           7. Statistics – Quick stats (e.g., cars sold, happy customers).
         </h1>
-        <h1 className="fs-5">
-          8. Team Section – Introduce your team or key staff.
-        </h1>
       </div>
+      <Teams />
       <FrequentlyAskQues />
       <Newsletter />
       <MapLocation />
