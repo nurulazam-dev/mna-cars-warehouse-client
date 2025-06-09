@@ -3,6 +3,7 @@ import Banner from "../Components/Home/Banner";
 import InventoryItems from "../Components/InventoryItems/InventoryItems";
 import Chart from "../Components/Dashboard/Chart";
 import Footer from "../Components/Shared/Footer";
+import ContactInfo from "../Components/Home/ContactInfo";
 
 const Home = () => {
   return (
@@ -43,6 +44,7 @@ const Home = () => {
         <h1 className="fs-5">11. Map – Map location.</h1>
         <h1 className="fs-5">12. Contact Info – Quick contact details.</h1>
       </div>
+      <ContactInfo />
       <InventoryItems />
       <Chart />
       <Footer />
