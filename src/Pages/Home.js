@@ -7,6 +7,7 @@ import MapLocation from "../Components/Home/MapLocation";
 import Newsletter from "../Components/Home/Newsletter";
 import FrequentlyAskQues from "../Components/Home/FrequentlyAskQues";
 import Teams from "../Components/Home/Teams";
+import Statistics from "../Components/Home/Statistics";
 
 const Home = () => {
   return (
@@ -33,10 +34,8 @@ const Home = () => {
           6. Call to Action – Section encouraging users to contact, book a test
           drive, or register.
         </h1>
-        <h1 className="fs-5">
-          7. Statistics – Quick stats (e.g., cars sold, happy customers).
-        </h1>
       </div>
+      <Statistics />
       <Teams />
       <FrequentlyAskQues />
       <Newsletter />
