@@ -4,6 +4,7 @@ import InventoryItems from "../Components/InventoryItems/InventoryItems";
 import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
 import MapLocation from "../Components/Home/MapLocation";
+import Newsletter from "../Components/Home/Newsletter";
 
 const Home = () => {
   return (
@@ -37,11 +38,8 @@ const Home = () => {
           8. Team Section – Introduce your team or key staff.
         </h1>
         <h1 className="fs-5">9. FAQ – Frequently asked questions.</h1>
-        <h1 className="fs-5">
-          10. Newsletter Signup – Allow users to subscribe for updates or
-          offers.
-        </h1>
       </div>
+      <Newsletter />
       <MapLocation />
       <ContactInfo />
       {/* ---------- */}
