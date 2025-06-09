@@ -10,6 +10,7 @@ import Teams from "../Components/Home/Teams";
 import Statistics from "../Components/Home/Statistics";
 import CallToAction from "../Components/Home/CallToAction";
 import Partners from "../Components/Home/Partners";
+import WhyChooseUs from "../Components/Home/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -30,6 +31,7 @@ const Home = () => {
           4. Why Choose Us – Brief section about your unique selling points.
         </h1>
       </div>
+      <WhyChooseUs />
       <Partners />
       <CallToAction />
       <Statistics />
