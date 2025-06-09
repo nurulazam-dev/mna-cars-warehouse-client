@@ -9,6 +9,7 @@ import FrequentlyAskQues from "../Components/Home/FrequentlyAskQues";
 import Teams from "../Components/Home/Teams";
 import Statistics from "../Components/Home/Statistics";
 import CallToAction from "../Components/Home/CallToAction";
+import Partners from "../Components/Home/Partners";
 
 const Home = () => {
   return (
@@ -32,6 +33,7 @@ const Home = () => {
           5. Partners/Brands – Logos of car brands or partners you work with.
         </h1>
       </div>
+      <Partners />
       <CallToAction />
       <Statistics />
       <Teams />
