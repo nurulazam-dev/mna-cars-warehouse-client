@@ -105,9 +105,12 @@ const FeaturedCarDetails = () => {
                 >
                   Book Test Drive
                 </Link>
-                <button className="btn btn-outline-success btn-lg rounded-pill px-4">
+                <Link
+                  to={`/contact-dealer?carId=${car._id}`}
+                  className="btn btn-outline-success btn-lg rounded-pill px-4"
+                >
                   Contact Dealer
-                </button>
+                </Link>
               </div>
             </div>
           </div>

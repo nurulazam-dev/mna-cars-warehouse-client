@@ -17,6 +17,7 @@ import UpdateItem from "./Components/Dashboard/UpdateItem";
 import Overview from "./Components/Dashboard/Overview";
 import FeaturedCarDetails from "./Pages/FeaturedCarDetails";
 import Booking from "./Pages/Booking";
+import ContactDealer from "./Pages/ContactDealer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/cars/:id" element={<FeaturedCarDetails />}></Route>
         <Route path="/booking" element={<Booking />} />
+        <Route path="/contact-dealer" element={<ContactDealer />} />
         <Route path="/register" element={<Register />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/login" element={<Login />}></Route>

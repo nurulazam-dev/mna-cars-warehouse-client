@@ -35,9 +35,9 @@ const Booking = () => {
           </Link>
         </div>
         <div className="row justify-content-center align-items-stretch g-4">
-          {/* ===================
-                 Info Side
-          =================== */}
+          {/* ==============
+              Info Side
+          ============== */}
           <div className="col-lg-5 d-flex align-items-stretch">
             <div
               className="bg-white rounded-4 shadow-lg p-4 w-100 animate__animated animate__fadeInLeft"
@@ -99,9 +99,9 @@ const Booking = () => {
               )}
             </div>
           </div>
-          {/* ===================
-                 Form Side
-          =================== */}
+          {/* ==============
+              Form Side
+          ============== */}
           <div className="col-lg-7 d-flex align-items-stretch">
             <div
               className="bg-white rounded-4 shadow-lg py-4 w-100 animate__animated animate__fadeInRight"
@@ -125,7 +125,9 @@ const Booking = () => {
                     style={{ maxWidth: 550, margin: "0 auto" }}
                   >
                     <div className="row g-3">
-                      {/* Full Name & Email */}
+                      {/* ==================
+                        Full Name & Email
+                      ================== */}
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
                           Full Name
@@ -158,7 +160,9 @@ const Booking = () => {
                           />
                         </div>
                       </div>
-                      {/* Phone & Preferred Date */}
+                      {/* ==================
+                      Phone & Preferred Date
+                      ================== */}
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
                           Phone Number
@@ -181,7 +185,9 @@ const Booking = () => {
                         </label>
                         <input type="date" className="form-control" required />
                       </div>
-                      {/* Preferred Time & Location */}
+                      {/* =======================
+                      Preferred Time & Location
+                      ======================= */}
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
                           Preferred Time
@@ -215,43 +221,58 @@ const Booking = () => {
                       Confirm Booking
                     </button>
                   </form>
-                ) : (
-                  // Confirmation Popup
-                  <div
-                    className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-white bg-opacity-95 animate__animated animate__zoomIn"
-                    style={{
-                      zIndex: 10,
-                      borderRadius: "1.5rem",
-                      minHeight: 520,
-                    }}
-                  >
-                    <i
-                      className="bi bi-patch-check-fill text-success mb-3 animate__animated animate__bounceIn"
-                      style={{ fontSize: 72 }}
-                    ></i>
-                    <h3 className="fw-bold mb-2 text-success animate__animated animate__fadeInDown">
-                      Booking Confirmed!
-                    </h3>
-                    <p className="mb-4 animate__animated animate__fadeInUp">
-                      Thank you for booking a test drive
-                      {car ? ` for the ${car.name}` : ""}.<br />
-                      Our team will contact you soon.
-                    </p>
-                    <button
-                      className="btn btn-outline-primary rounded-pill px-4 animate__animated animate__pulse"
-                      onClick={() => navigate("/")}
-                    >
-                      <i className="bi bi-house-door me-2"></i>
-                      Back to Home
-                    </button>
-                  </div>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
         </div>
+        {/* =======================
+        Confirmation Popup Modal
+        ======================= */}
+        {submitted && (
+          <div
+            className="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+            style={{
+              background: "rgba(255,255,255,0.95)",
+              zIndex: 9999,
+              left: 0,
+              top: 0,
+            }}
+          >
+            <div
+              className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__zoomIn"
+              style={{
+                minWidth: 340,
+                maxWidth: 400,
+                textAlign: "center",
+              }}
+            >
+              <i
+                className="bi bi-patch-check-fill text-success mb-3 animate__animated animate__bounceIn"
+                style={{ fontSize: 72 }}
+              ></i>
+              <h3 className="fw-bold mb-2 text-success animate__animated animate__fadeInDown">
+                Booking Confirmed!
+              </h3>
+              <p className="mb-4 animate__animated animate__fadeInUp">
+                Thank you for booking a test drive
+                {car ? ` for the ${car.name}` : ""}.<br />
+                Our team will contact you soon.
+              </p>
+              <button
+                className="btn btn-outline-primary rounded-pill px-4 animate__animated animate__pulse"
+                onClick={() => navigate("/")}
+              >
+                <i className="bi bi-house-door me-2"></i>
+                Back to Home
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-      {/* Animate.css CDN */}
+      {/* =======================
+             Animate.css CDN
+      ======================= */}
       <style>
         {`
           @keyframes floatCar {
