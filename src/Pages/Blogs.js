@@ -7,7 +7,7 @@ const blogPosts = [
     date: "June 2025",
     tag: "Buying Tips",
     image:
-      "https://images.unsplash.com/photo-1511918984145-48de785d4c4e?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: (
       <>
         <p>
@@ -31,7 +31,7 @@ const blogPosts = [
     date: "June 2025",
     tag: "Warehouse Advantage",
     image:
-      "https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1746941758471-5b9f385e6f3d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FyJTIwd2FyZWhvdXNlfGVufDB8fDB8fHww",
     content: (
       <>
         <p>

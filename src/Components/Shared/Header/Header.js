@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../Firebase/firebase.init";
 import "./Header.css";
-import brandLogo from "../../../assets/images/icon/icon.png";
+import brandLogo from "../../../assets/images/icon/mna-car-warehouse.png";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -27,7 +27,7 @@ const Header = () => {
           <img
             src={brandLogo}
             alt="Logo"
-            style={{ height: "50px", width: "60px", marginRight: "10px" }}
+            style={{ width: "120px", marginRight: "10px" }}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
