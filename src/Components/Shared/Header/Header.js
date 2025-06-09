@@ -18,9 +18,11 @@ const Header = () => {
       className="shadow-sm"
       sticky="top"
       expand="lg"
-      bg="dark"
+      style={{
+        minHeight: "70px",
+        background: "linear-gradient(90deg, #2c5364 0%,  #0f2027 100%)",
+      }}
       variant="dark"
-      style={{ minHeight: "70px" }}
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
