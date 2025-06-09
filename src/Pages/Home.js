@@ -11,6 +11,7 @@ import Statistics from "../Components/Home/Statistics";
 import CallToAction from "../Components/Home/CallToAction";
 import Partners from "../Components/Home/Partners";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
+import Testimonials from "../Components/Home/Testimonials";
 
 const Home = () => {
   return (
@@ -24,10 +25,8 @@ const Home = () => {
           2. Search Bar / Filter – Allow users to search or filter cars by
           brand, price, etc.
         </h1>
-        <h1 className="fs-5">
-          3. Testimonials – Show customer reviews and feedback.
-        </h1>
       </div>
+      <Testimonials />
       <WhyChooseUs />
       <Partners />
       <CallToAction />
