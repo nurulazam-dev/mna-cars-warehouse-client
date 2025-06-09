@@ -12,6 +12,7 @@ import CallToAction from "../Components/Home/CallToAction";
 import Partners from "../Components/Home/Partners";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Testimonials from "../Components/Home/Testimonials";
+import FeaturedCars from "../Components/Home/FeaturedCars";
 
 const Home = () => {
   return (
@@ -19,13 +20,11 @@ const Home = () => {
       <Banner />
       <div className="m-5">
         <h1 className="fs-5">
-          1. Featured Cars – Highlight special or new arrivals.
-        </h1>
-        <h1 className="fs-5">
           2. Search Bar / Filter – Allow users to search or filter cars by
           brand, price, etc.
         </h1>
       </div>
+      <FeaturedCars />
       <Testimonials />
       <WhyChooseUs />
       <Partners />

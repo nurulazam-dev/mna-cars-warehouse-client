@@ -15,6 +15,7 @@ import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
 import UpdateItem from "./Components/Dashboard/UpdateItem";
 import Overview from "./Components/Dashboard/Overview";
+import FeaturedCarDetails from "./Pages/FeaturedCarDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
+        <Route path="//cars/:id" element={<FeaturedCarDetails />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/login" element={<Login />}></Route>
