@@ -5,6 +5,7 @@ import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
 import MapLocation from "../Components/Home/MapLocation";
 import Newsletter from "../Components/Home/Newsletter";
+import FrequentlyAskQues from "../Components/Home/FrequentlyAskQues";
 
 const Home = () => {
   return (
@@ -37,8 +38,8 @@ const Home = () => {
         <h1 className="fs-5">
           8. Team Section – Introduce your team or key staff.
         </h1>
-        <h1 className="fs-5">9. FAQ – Frequently asked questions.</h1>
       </div>
+      <FrequentlyAskQues />
       <Newsletter />
       <MapLocation />
       <ContactInfo />
