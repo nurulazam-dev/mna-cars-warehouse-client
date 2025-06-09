@@ -8,6 +8,7 @@ import Newsletter from "../Components/Home/Newsletter";
 import FrequentlyAskQues from "../Components/Home/FrequentlyAskQues";
 import Teams from "../Components/Home/Teams";
 import Statistics from "../Components/Home/Statistics";
+import CallToAction from "../Components/Home/CallToAction";
 
 const Home = () => {
   return (
@@ -30,11 +31,8 @@ const Home = () => {
         <h1 className="fs-5">
           5. Partners/Brands – Logos of car brands or partners you work with.
         </h1>
-        <h1 className="fs-5">
-          6. Call to Action – Section encouraging users to contact, book a test
-          drive, or register.
-        </h1>
       </div>
+      <CallToAction />
       <Statistics />
       <Teams />
       <FrequentlyAskQues />
