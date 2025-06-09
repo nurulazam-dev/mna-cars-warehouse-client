@@ -1,9 +1,9 @@
 import React from "react";
 import Banner from "../Components/Home/Banner";
 import InventoryItems from "../Components/InventoryItems/InventoryItems";
-import Chart from "../Components/Dashboard/Chart";
 import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
+import MapLocation from "../Components/Home/MapLocation";
 
 const Home = () => {
   return (
@@ -41,12 +41,11 @@ const Home = () => {
           10. Newsletter Signup – Allow users to subscribe for updates or
           offers.
         </h1>
-        <h1 className="fs-5">11. Map – Map location.</h1>
-        <h1 className="fs-5">12. Contact Info – Quick contact details.</h1>
       </div>
+      <MapLocation />
       <ContactInfo />
+      {/* ---------- */}
       <InventoryItems />
-      <Chart />
       <Footer />
     </>
   );
