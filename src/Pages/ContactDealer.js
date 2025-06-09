@@ -25,18 +25,25 @@ const ContactDealer = () => {
       }}
     >
       <div className="container">
-        <div className="mb-2">
-          <Link
-            to={car ? `/cars/${car._id}` : "/"}
-            className="btn btn-outline-primary rounded-pill px-4"
-          >
-            <i className="bi bi-arrow-left me-2"></i>Back to Car Details
-          </Link>
-        </div>
         <div className="row justify-content-center align-items-center">
           <div className="col-lg-7">
-            <div className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__fadeInUp">
-              <h2 className="fw-bold mb-3 text-center">
+            <div className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__fadeInUp position-relative">
+              <Link
+                to={car ? `/cars/${car._id}` : "/"}
+                className="btn btn-outline-primary rounded-pill px-3 py-1 position-absolute"
+                style={{
+                  top: 18,
+                  left: 18,
+                  zIndex: 2,
+                  fontWeight: 500,
+                  fontSize: 15,
+                  boxShadow: "0 2px 8px rgba(44,83,100,0.07)",
+                }}
+              >
+                <i className="bi bi-arrow-left me-2"></i>
+                Back to Car Details
+              </Link>
+              <h2 className="fw-bold mb-3 text-center mt-2">
                 <i className="bi bi-person-lines-fill text-success me-2"></i>
                 Contact Dealer
               </h2>
@@ -120,31 +127,52 @@ const ContactDealer = () => {
                     Send Message
                   </button>
                 </form>
-              ) : (
-                <div className="text-center py-5 animate__animated animate__tada">
-                  <i
-                    className="bi bi-patch-check-fill text-success mb-3"
-                    style={{ fontSize: 64 }}
-                  ></i>
-                  <h3 className="fw-bold mb-2 text-success">Message Sent!</h3>
-                  <p className="mb-4">
-                    Thank you for contacting the dealer
-                    {car ? ` about the ${car.name}` : ""}.<br />
-                    The dealer will reach out to you soon.
-                  </p>
-                  <button
-                    className="btn btn-outline-primary rounded-pill px-4"
-                    onClick={() => navigate("/")}
-                  >
-                    <i className="bi bi-house-door me-2"></i>
-                    Back to Home
-                  </button>
-                </div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
       </div>
+      {/* Confirmation Popup Modal */}
+      {submitted && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+          style={{
+            background: "rgba(255,255,255,0.95)",
+            zIndex: 9999,
+            left: 0,
+            top: 0,
+          }}
+        >
+          <div
+            className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__zoomIn"
+            style={{
+              minWidth: 340,
+              maxWidth: 400,
+              textAlign: "center",
+            }}
+          >
+            <i
+              className="bi bi-patch-check-fill text-success mb-3 animate__animated animate__bounceIn"
+              style={{ fontSize: 64 }}
+            ></i>
+            <h3 className="fw-bold mb-2 text-success animate__animated animate__fadeInDown">
+              Message Sent!
+            </h3>
+            <p className="mb-4 animate__animated animate__fadeInUp">
+              Thank you for contacting the dealer
+              {car ? ` about the ${car.name}` : ""}.<br />
+              The dealer will reach out to you soon.
+            </p>
+            <button
+              className="btn btn-outline-primary rounded-pill px-4 animate__animated animate__pulse"
+              onClick={() => navigate("/")}
+            >
+              <i className="bi bi-house-door me-2"></i>
+              Back to Home
+            </button>
+          </div>
+        </div>
+      )}
       {/* Animate.css CDN */}
       <link
         rel="stylesheet"
