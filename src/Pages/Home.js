@@ -13,17 +13,13 @@ import Partners from "../Components/Home/Partners";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Testimonials from "../Components/Home/Testimonials";
 import FeaturedCars from "../Components/Home/FeaturedCars";
+import Hero from "../Components/Home/Hero";
 
 const Home = () => {
   return (
     <>
       <Banner />
-      <div className="m-5">
-        <h1 className="fs-5">
-          2. Search Bar / Filter – Allow users to search or filter cars by
-          brand, price, etc.
-        </h1>
-      </div>
+      <Hero />
       <FeaturedCars />
       <Testimonials />
       <WhyChooseUs />
