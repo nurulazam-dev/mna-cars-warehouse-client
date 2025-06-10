@@ -1,47 +1,43 @@
+import banner1 from "../images/Banner/banner1.png";
+import banner2 from "../images/Banner/banner2.png";
+import banner3 from "../images/Banner/banner3.png";
+import banner4 from "../images/Banner/banner4.png";
+import banner5 from "../images/Banner/banner5.png";
+
 export const bannerData = [
   {
     _id: "mnaCarWarehouseBanner001",
     title: "Discover Your Dream Car",
     subtitle: "Explore our exclusive collection of luxury vehicles",
-    img: "https://cdn.pixabay.com/photo/2016/11/29/09/08/car-1869734_1280.jpg",
+    img: banner1,
     buttonText: "Browse Collection",
-    buttonLink: "/cars",
-    backgroundColor: "#f0f4f8",
   },
   {
     _id: "mnaCarWarehouseBanner002",
     title: "Unmatched Performance",
     subtitle: "Experience the thrill of driving with our high-performance cars",
-    img: "https://cdn.pixabay.com/photo/2015/05/15/14/57/car-777002_1280.jpg",
+    img: banner2,
     buttonText: "View Performance Cars",
-    buttonLink: "/performance-cars",
-    backgroundColor: "#e0e7ff",
   },
   {
     _id: "mnaCarWarehouseBanner003",
     title: "Luxury Redefined",
     subtitle: "Step into a world of elegance and comfort with our luxury range",
-    img: "https://cdn.pixabay.com/photo/2016/11/29/09/08/car-1869734_1280.jpg",
+    img: banner3,
     buttonText: "Explore Luxury Cars",
-    buttonLink: "/luxury-cars",
-    backgroundColor: "#f9fafb",
   },
   {
     _id: "mnaCarWarehouseBanner004",
     title: "Eco-Friendly Options",
     subtitle: "Go green with our selection of hybrid and electric vehicles",
-    img: "https://cdn.pixabay.com/photo/2017/01/06/19/15/auto-1957037_1280.png",
+    img: banner4,
     buttonText: "Discover Eco Cars",
-    buttonLink: "/eco-cars",
-    backgroundColor: "#dcfce7",
   },
   {
     _id: "mnaCarWarehouseBanner005",
     title: "Affordable Deals",
     subtitle: "Find the best deals on used cars without compromising quality",
-    img: "https://cdn.pixabay.com/photo/2016/11/29/09/08/car-1869734_1280.jpg",
+    img: banner5,
     buttonText: "Shop Used Cars",
-    buttonLink: "/used-cars",
-    backgroundColor: "#fef3c7",
   },
 ];
