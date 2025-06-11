@@ -21,6 +21,7 @@ import MyBookingItems from "./Components/Dashboard/User/MyBookingItems";
 import ManageBookings from "./Components/Dashboard/Admin/ManageBookings";
 import ManageUsers from "./Components/Dashboard/Admin/ManageUsers";
 import UpdateItem from "./Components/Dashboard/Admin/UpdateItem";
+import UpdateProfile from "./Components/Dashboard/UpdateProfile";
 
 function App() {
   return (
@@ -92,6 +93,14 @@ function App() {
             element={
               <RequireAuth>
                 <UpdateItem />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="update-profile"
+            element={
+              <RequireAuth>
+                <UpdateProfile />
               </RequireAuth>
             }
           ></Route>
