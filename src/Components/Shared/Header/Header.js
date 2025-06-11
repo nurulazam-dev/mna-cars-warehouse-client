@@ -52,11 +52,11 @@ const Header = () => {
               id="collasible-nav-dropdown"
               className="fs-5 mx-2"
             >
-              <NavDropdown.Item as={Link} to="/about">
+              <NavDropdown.Item as={Link} to="/about-us">
                 About Us
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/developer">
+              <NavDropdown.Item as={Link} to="/about-developer">
                 Developer
               </NavDropdown.Item>
             </NavDropdown>
