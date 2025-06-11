@@ -55,6 +55,14 @@ const Sidebar = () => {
         </Nav.Link>
         <Nav.Link
           as={Link}
+          to="/dashboard/manage-bookings"
+          className="text-white mb-2"
+          activeClassName="active"
+        >
+          <i className="bi bi-person me-2"></i> Manage Bookings
+        </Nav.Link>
+        <Nav.Link
+          as={Link}
           to="/dashboard/add-item"
           className="text-white mb-2"
           activeClassName="active"
