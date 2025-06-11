@@ -31,12 +31,13 @@ const Sidebar = () => {
         </Nav.Link>
         <Nav.Link
           as={Link}
-          to="/dashboard/update-profile"
+          to="/dashboard/add-item"
           className="text-white mb-2"
           activeClassName="active"
         >
-          <i className="bi bi-speedometer2 me-2"></i> Update Profile
+          <i className="bi bi-gear me-2"></i> Add Item
         </Nav.Link>
+
         <Nav.Link
           as={Link}
           to="/dashboard/manage-items"
@@ -44,14 +45,6 @@ const Sidebar = () => {
           activeClassName="active"
         >
           <i className="bi bi-person me-2"></i> Manage Items
-        </Nav.Link>
-        <Nav.Link
-          as={Link}
-          to="/dashboard/manage-users"
-          className="text-white mb-2"
-          activeClassName="active"
-        >
-          <i className="bi bi-person me-2"></i> Manage Users
         </Nav.Link>
         <Nav.Link
           as={Link}
@@ -63,12 +56,13 @@ const Sidebar = () => {
         </Nav.Link>
         <Nav.Link
           as={Link}
-          to="/dashboard/add-item"
+          to="/dashboard/manage-users"
           className="text-white mb-2"
           activeClassName="active"
         >
-          <i className="bi bi-gear me-2"></i> Add Item
+          <i className="bi bi-person me-2"></i> Manage Users
         </Nav.Link>
+
         <Nav.Link
           as={Link}
           to="/dashboard/my-booking-items"
@@ -76,6 +70,14 @@ const Sidebar = () => {
           activeClassName="active"
         >
           <i className="bi bi-bar-chart me-2"></i> My Bookings
+        </Nav.Link>
+        <Nav.Link
+          as={Link}
+          to="/dashboard/update-profile"
+          className="text-white mb-2"
+          activeClassName="active"
+        >
+          <i className="bi bi-speedometer2 me-2"></i> Update Profile
         </Nav.Link>
         <Nav.Link
           as={Link}
