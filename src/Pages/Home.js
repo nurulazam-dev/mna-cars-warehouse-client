@@ -1,5 +1,4 @@
 import React from "react";
-import Banner from "../Components/Home/Banner";
 import InventoryItems from "../Components/InventoryItems/InventoryItems";
 import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
@@ -14,11 +13,12 @@ import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Testimonials from "../Components/Home/Testimonials";
 import FeaturedCars from "../Components/Home/FeaturedCars";
 import Hero from "../Components/Home/Hero";
+import CarouselBanner from "../Components/Home/CarouselBanner";
 
 const Home = () => {
   return (
     <>
-      <Banner />
+      <CarouselBanner />
       <Hero />
       <FeaturedCars />
       <Testimonials />

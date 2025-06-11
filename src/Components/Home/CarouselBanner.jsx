@@ -1,12 +1,12 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import { bannerData } from "../../assets/data/bannerData";
+import { carouselData } from "../../assets/data/carouselData";
 
-const Banner = () => {
+const CarouselBanner = () => {
   return (
     <div>
       <Carousel>
-        {bannerData?.map((banner) => (
+        {carouselData?.map((banner) => (
           <Carousel.Item key={banner?._id} interval={2500}>
             <img
               style={{ height: "300px" }}
@@ -31,4 +31,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default CarouselBanner;
