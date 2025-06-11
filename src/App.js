@@ -17,7 +17,7 @@ import Booking from "./Pages/Items/Booking";
 import ContactDealer from "./Pages/Items/ContactDealer";
 import ManageItems from "./Components/Dashboard/Admin/ManageItems";
 import AddItem from "./Components/Dashboard/Admin/AddItem";
-import MyBookingItems from "./Components/Dashboard/MyBookingItems";
+import MyBookingItems from "./Components/Dashboard/User/MyBookingItems";
 import ManageBookings from "./Components/Dashboard/Admin/ManageBookings";
 import ManageUsers from "./Components/Dashboard/Admin/ManageUsers";
 import UpdateItem from "./Components/Dashboard/Admin/UpdateItem";
