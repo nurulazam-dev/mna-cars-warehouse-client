@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { cars } from "../assets/data/carsData";
+import { items } from "../../assets/data/itemsData";
 
 const Booking = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
-  const carId = params.get("carId");
-  const car = cars.find((c) => c._id === carId);
+  const itemId = params.get("itemId");
+  const item = items.find((i) => i._id === itemId);
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -28,10 +28,10 @@ const Booking = () => {
       <div className="container">
         <div className="mb-2">
           <Link
-            to={car ? `/cars/${car._id}` : "/"}
+            to={item ? `/items/${item._id}` : "/"}
             className="btn btn-outline-primary rounded-pill px-4"
           >
-            <i className="bi bi-arrow-left me-2"></i>Back to Car Details
+            <i className="bi bi-arrow-left me-2"></i>Back to Item Details
           </Link>
         </div>
         <div className="row justify-content-center align-items-stretch g-4">
@@ -50,12 +50,12 @@ const Booking = () => {
                 overflow: "hidden",
               }}
             >
-              {car && (
+              {item && (
                 <>
                   <div className="text-center mb-4">
                     <img
-                      src={car.img}
-                      alt={car.name}
+                      src={item.img}
+                      alt={item.name}
                       className="img-fluid rounded-4 shadow"
                       style={{
                         maxHeight: 220,
@@ -67,24 +67,24 @@ const Booking = () => {
                       }}
                     />
                   </div>
-                  <h3 className="fw-bold mb-2 text-center">{car.name}</h3>
+                  <h3 className="fw-bold mb-2 text-center">{item.name}</h3>
                   <div className="text-center mb-3">
-                    <span className="badge bg-primary me-2">{car.brand}</span>
+                    <span className="badge bg-primary me-2">{item.brand}</span>
                     <span className="badge bg-light text-dark me-2">
-                      {car.year}
+                      {item.year}
                     </span>
                     <span className="badge bg-light text-dark me-2">
-                      {car.color}
+                      {item.color}
                     </span>
                     <span className="badge bg-light text-dark">
-                      {car.transmission}
+                      {item.transmission}
                     </span>
                   </div>
                   <h4 className="text-primary text-center mb-3">
-                    ${car.price.toLocaleString()}
+                    ${item.price.toLocaleString()}
                   </h4>
                   <ul className="list-unstyled mb-3 text-center">
-                    {car.specs.map((spec, i) => (
+                    {item.specs.map((spec, i) => (
                       <li key={i} className="mb-1">
                         <i className="bi bi-check-circle-fill text-success me-2"></i>
                         {spec}
@@ -93,7 +93,7 @@ const Booking = () => {
                   </ul>
                   <div className="text-secondary text-center small mb-2">
                     <i className="bi bi-geo-alt-fill text-primary me-1"></i>
-                    {car.location}
+                    {item.location}
                   </div>
                 </>
               )}
@@ -205,8 +205,8 @@ const Booking = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder={car?.location || "Your City"}
-                            defaultValue={car?.location}
+                            placeholder={item?.location || "Your City"}
+                            defaultValue={item?.location}
                             required
                           />
                         </div>
@@ -256,7 +256,7 @@ const Booking = () => {
               </h3>
               <p className="mb-4 animate__animated animate__fadeInUp">
                 Thank you for booking a test drive
-                {car ? ` for the ${car.name}` : ""}.<br />
+                {item ? ` for the ${item.name}` : ""}.<br />
                 Our team will contact you soon.
               </p>
               <button

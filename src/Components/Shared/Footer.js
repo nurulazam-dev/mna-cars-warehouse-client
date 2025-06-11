@@ -135,13 +135,9 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="small text-secondary mb-2">
+            <div className="small text-secondary">
               <i className="bi bi-shield-check text-success"></i> All vehicles
               fully inspected & certified
-            </div>
-            <div className="small text-secondary">
-              <i className="bi bi-truck text-info"></i> Nationwide delivery
-              available
             </div>
           </div>
         </div>

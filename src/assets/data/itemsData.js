@@ -1,4 +1,4 @@
-export const cars = [
+export const items = [
   {
     _id: "665a1f1e1a1a1a1a1a1a1a01",
     name: "2023 BMW X5 M50i",

@@ -6,18 +6,21 @@ import Blogs from "./Pages/Blogs";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import RequireAuth from "./Components/Login/RequireAuth";
-import ManageInventories from "./Components/Dashboard/ManageInventories";
-import AddItem from "./Components/Dashboard/AddItem";
-import MyItems from "./Components/Dashboard/MyItems";
 import AboutUs from "./Components/About/AboutUs";
 import AboutDeveloper from "./Components/About/AboutDeveloper";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
-import UpdateItem from "./Components/Dashboard/UpdateItem";
 import Overview from "./Components/Dashboard/Overview";
-import FeaturedCarDetails from "./Pages/FeaturedCarDetails";
-import Booking from "./Pages/Booking";
-import ContactDealer from "./Pages/ContactDealer";
+import ItemDetails from "./Pages/Items/ItemDetails";
+import Items from "./Pages/Items/Items";
+import Booking from "./Pages/Items/Booking";
+import ContactDealer from "./Pages/Items/ContactDealer";
+import ManageItems from "./Components/Dashboard/Admin/ManageItems";
+import AddItem from "./Components/Dashboard/Admin/AddItem";
+import MyBookingItems from "./Components/Dashboard/MyBookingItems";
+import ManageBookings from "./Components/Dashboard/Admin/ManageBookings";
+import ManageUsers from "./Components/Dashboard/Admin/ManageUsers";
+import UpdateItem from "./Components/Dashboard/Admin/UpdateItem";
 
 function App() {
   return (
@@ -27,7 +30,8 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
-        <Route path="/cars/:id" element={<FeaturedCarDetails />}></Route>
+        <Route path="/items" element={<Items />}></Route>
+        <Route path="/items/:id" element={<ItemDetails />}></Route>
         <Route path="/booking" element={<Booking />} />
         <Route path="/contact-dealer" element={<ContactDealer />} />
         <Route path="/register" element={<Register />}></Route>
@@ -52,15 +56,31 @@ function App() {
             }
           /> */}
           <Route
-            path="ManageInventories"
+            path="Manage-items"
             element={
               <RequireAuth>
-                <ManageInventories />
+                <ManageItems />
               </RequireAuth>
             }
           />
           <Route
-            path="add"
+            path="Manage-bookings"
+            element={
+              <RequireAuth>
+                <ManageBookings />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="Manage-users"
+            element={
+              <RequireAuth>
+                <ManageUsers />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="add-item"
             element={
               <RequireAuth>
                 <AddItem />
@@ -68,7 +88,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="update"
+            path="update-item/:id"
             element={
               <RequireAuth>
                 <UpdateItem />
@@ -77,18 +97,18 @@ function App() {
           ></Route>
 
           <Route
-            path="myItems"
+            path="my-booking-items"
             element={
               <RequireAuth>
-                <MyItems />
+                <MyBookingItems />
               </RequireAuth>
             }
           ></Route>
         </Route>
         {/* ============= */}
 
-        <Route path="/about" element={<AboutUs />}></Route>
-        <Route path="/developer" element={<AboutDeveloper />}></Route>
+        <Route path="/about-us" element={<AboutUs />}></Route>
+        <Route path="/about-developer" element={<AboutDeveloper />}></Route>
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

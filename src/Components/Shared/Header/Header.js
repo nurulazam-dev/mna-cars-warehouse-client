@@ -41,6 +41,9 @@ const Header = () => {
             <Nav.Link as={Link} to="/blogs" className="fs-5 mx-2">
               Blogs
             </Nav.Link>
+            <Nav.Link as={Link} to="/items" className="fs-5 mx-2">
+              Items
+            </Nav.Link>
             <Nav.Link as={Link} to="/dashboard" className="fs-5 mx-2">
               Dashboard
             </Nav.Link>

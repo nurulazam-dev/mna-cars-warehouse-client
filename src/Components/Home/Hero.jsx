@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import brandLogo from "../../assets/images/icon/mna-car-warehouse.png";
 
 const Hero = () => {
   return (
@@ -31,7 +32,7 @@ const Hero = () => {
             </p>
             <div className="d-flex gap-3">
               <Link
-                to="/"
+                to="/items"
                 className="btn btn-primary btn-lg rounded-pill px-4 animate__animated animate__pulse animate__infinite"
                 style={{ fontWeight: 600, letterSpacing: 1 }}
               >
@@ -52,7 +53,7 @@ const Hero = () => {
           <div className="col-lg-6 text-center animate__animated animate__fadeInRight">
             <div className="position-relative">
               <img
-                src="https://cdn.pixabay.com/photo/2017/01/06/19/15/auto-1957037_1280.png"
+                src={brandLogo}
                 alt="Warehouse Car"
                 className="img-fluid"
                 style={{

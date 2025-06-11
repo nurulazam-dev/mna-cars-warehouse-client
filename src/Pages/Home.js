@@ -1,5 +1,3 @@
-import React from "react";
-import InventoryItems from "../Components/InventoryItems/InventoryItems";
 import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
 import MapLocation from "../Components/Home/MapLocation";
@@ -11,7 +9,6 @@ import CallToAction from "../Components/Home/CallToAction";
 import Partners from "../Components/Home/Partners";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Testimonials from "../Components/Home/Testimonials";
-import FeaturedCars from "../Components/Home/FeaturedCars";
 import Hero from "../Components/Home/Hero";
 import CarouselBanner from "../Components/Home/CarouselBanner";
 
@@ -20,7 +17,6 @@ const Home = () => {
     <>
       <CarouselBanner />
       <Hero />
-      <FeaturedCars />
       <Testimonials />
       <WhyChooseUs />
       <Partners />
@@ -31,8 +27,6 @@ const Home = () => {
       <Newsletter />
       <MapLocation />
       <ContactInfo />
-      {/* ---------- */}
-      <InventoryItems />
       <Footer />
     </>
   );

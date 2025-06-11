@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { cars } from "../assets/data/carsData";
+import { items } from "../../assets/data/itemsData";
 
 const ContactDealer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
-  const carId = params.get("carId");
-  const car = cars.find((c) => c._id === carId);
+  const itemId = params.get("itemId");
+  const item = items.find((i) => i._id === itemId);
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -29,7 +29,7 @@ const ContactDealer = () => {
           <div className="col-lg-7">
             <div className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__fadeInUp position-relative">
               <Link
-                to={car ? `/cars/${car._id}` : "/"}
+                to={item ? `/items/${item._id}` : "/"}
                 className="btn btn-outline-primary rounded-pill px-3 py-1 position-absolute"
                 style={{
                   top: 18,
@@ -41,17 +41,17 @@ const ContactDealer = () => {
                 }}
               >
                 <i className="bi bi-arrow-left me-2"></i>
-                Back to Car Details
+                Back to item Details
               </Link>
               <h2 className="fw-bold mb-3 text-center mt-2">
                 <i className="bi bi-person-lines-fill text-success me-2"></i>
                 Contact Dealer
               </h2>
-              {car && (
+              {item && (
                 <div className="mb-4 d-flex align-items-center gap-3 justify-content-center">
                   <img
-                    src={car.img}
-                    alt={car.name}
+                    src={item.img}
+                    alt={item.name}
                     style={{
                       width: 90,
                       height: 60,
@@ -62,9 +62,9 @@ const ContactDealer = () => {
                     }}
                   />
                   <div>
-                    <div className="fw-semibold">{car.name}</div>
+                    <div className="fw-semibold">{item.name}</div>
                     <div className="text-secondary small">
-                      {car.brand} • {car.year} • {car.color}
+                      {item.brand} • {item.year} • {item.color}
                     </div>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const ContactDealer = () => {
             </h3>
             <p className="mb-4 animate__animated animate__fadeInUp">
               Thank you for contacting the dealer
-              {car ? ` about the ${car.name}` : ""}.<br />
+              {item ? ` about the ${item.name}` : ""}.<br />
               The dealer will reach out to you soon.
             </p>
             <button

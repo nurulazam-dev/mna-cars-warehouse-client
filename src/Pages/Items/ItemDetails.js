@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { cars } from "../assets/data/carsData";
+import { items } from "../../assets/data/itemsData";
 
 const badgeColors = {
   "New Arrival": "primary",
@@ -9,14 +9,14 @@ const badgeColors = {
   Special: "warning",
 };
 
-const FeaturedCarDetails = () => {
+const ItemDetails = () => {
   const { id } = useParams();
-  const car = cars.find((c) => c._id === id);
+  const item = items.find((item) => item._id === id);
 
-  if (!car) {
+  if (!item) {
     return (
       <div className="container py-5 text-center text-danger">
-        Car not found.
+        Item not found.
       </div>
     );
   }
@@ -32,7 +32,7 @@ const FeaturedCarDetails = () => {
       <div className="container">
         <div className="mb-2">
           <Link to="/" className="btn btn-outline-primary rounded-pill px-4">
-            <i className="bi bi-arrow-left me-2"></i>Back to Cars
+            <i className="bi bi-arrow-left me-2"></i>Back to Items
           </Link>
         </div>
         <div className="row g-5 align-items-center">
@@ -46,8 +46,8 @@ const FeaturedCarDetails = () => {
               }}
             >
               <img
-                src={car.img}
-                alt={car.name}
+                src={item.img}
+                alt={item.name}
                 className="img-fluid rounded-4 w-100 animate__animated animate__zoomIn"
                 style={{
                   maxHeight: 380,
@@ -57,41 +57,41 @@ const FeaturedCarDetails = () => {
               />
               <span
                 className={`badge bg-${
-                  badgeColors[car.badge]
+                  badgeColors[item.badge]
                 } position-absolute top-0 start-0 m-3 px-3 py-2 fs-6 rounded-pill shadow`}
                 style={{ letterSpacing: "1px" }}
               >
-                {car.badge}
+                {item.badge}
               </span>
             </div>
           </div>
           <div className="col-lg-6 animate__animated animate__fadeInRight">
             <div className="bg-white rounded-4 shadow-lg p-5 h-100">
-              <h2 className="fw-bold mb-2">{car.name}</h2>
+              <h2 className="fw-bold mb-2">{item.name}</h2>
               <h4 className="text-primary mb-3">
-                ${car.price.toLocaleString()}
+                ${item.price.toLocaleString()}
               </h4>
               <div className="mb-3">
                 <span className="badge bg-light text-dark me-2">
-                  {car.year}
+                  {item.year}
                 </span>
                 <span className="badge bg-light text-dark me-2">
-                  {car.mileage}
+                  {item.mileage}
                 </span>
                 <span className="badge bg-light text-dark me-2">
-                  {car.color}
+                  {item.color}
                 </span>
                 <span className="badge bg-light text-dark me-2">
-                  {car.transmission}
+                  {item.transmission}
                 </span>
-                <span className="badge bg-light text-dark">{car.brand}</span>
+                <span className="badge bg-light text-dark">{item.brand}</span>
               </div>
               <div className="mb-3 text-secondary small">
                 <i className="bi bi-geo-alt-fill text-primary me-1"></i>
-                {car.location}
+                {item.location}
               </div>
               <ul className="list-unstyled mb-4">
-                {car.specs.map((spec, i) => (
+                {item.specs.map((spec, i) => (
                   <li key={i} className="mb-2 fs-6">
                     <i className="bi bi-check-circle-fill text-success me-2"></i>
                     {spec}
@@ -100,13 +100,13 @@ const FeaturedCarDetails = () => {
               </ul>
               <div className="d-flex gap-3 mt-4">
                 <Link
-                  to={`/booking?carId=${car._id}`}
+                  to={`/booking?itemId=${item._id}`}
                   className="btn btn-primary btn-lg rounded-pill px-4 animate__animated animate__pulse animate__infinite"
                 >
                   Book Test Drive
                 </Link>
                 <Link
-                  to={`/contact-dealer?carId=${car._id}`}
+                  to={`/contact-dealer?itemId=${item._id}`}
                   className="btn btn-outline-success btn-lg rounded-pill px-4"
                 >
                   Contact Dealer
@@ -125,4 +125,4 @@ const FeaturedCarDetails = () => {
   );
 };
 
-export default FeaturedCarDetails;
+export default ItemDetails;
