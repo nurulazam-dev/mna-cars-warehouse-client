@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const handleOnSubmit = (data, event) => {
-    // const url = `https://localhost:3000/item`;
     const url = `https://salty-spire-70121.herokuapp.com/item`;
     fetch(url, {
       method: "POST",
@@ -16,9 +15,16 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         event.target.reset();
-        toast("Add item success");
+        toast(" Item Added Successfully", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
@@ -31,40 +37,42 @@ const AddItem = () => {
         onSubmit={handleSubmit(handleOnSubmit)}
       >
         <input
-          className="mb-3 fs-5"
+          className="mb-3 border-0 rounded p-2"
           placeholder="Car Name/Model"
           {...register("name", { required: true })}
         />
         <input
-          className="mb-3 fs-5"
+          className="mb-3 border-0 rounded p-2"
           placeholder="Supplier"
           {...register("supplier")}
         />
-        <input
-          className="mb-3 fs-5"
-          placeholder="Price"
-          type="number"
-          {...register("price", { required: true })}
-        />
-        <input
-          className="mb-3 fs-5"
-          placeholder="Quantity"
-          type="number"
-          {...register("quantity")}
-        />
+        <div className="d-flex justify-content-between">
+          <input
+            className="mb-3 border-0 rounded p-2"
+            placeholder="Price"
+            type="number"
+            {...register("price", { required: true })}
+          />
+          <input
+            className="mb-3 border-0 rounded p-2"
+            placeholder="Quantity"
+            type="number"
+            {...register("quantity")}
+          />
+        </div>
         <textarea
-          className="mb-3"
+          className="mb-3 p-2 border-0 rounded p-2"
           placeholder="Description: Engine, Trim, Transmission Type, Transmission"
           {...register("description")}
         />
         <input
-          className="mb-3 fs-5"
+          className="mb-3 fs-6 border-0 rounded p-2"
           placeholder="Image URL"
           type="text"
           {...register("img")}
         />
         <input
-          className="bg-success text-white border-0 rounded py-1 fs-5 mb-4"
+          className="bg-success text-white border-0 rounded py-2 fs-5 mb-4"
           type="submit"
           value="Add Item"
         />
