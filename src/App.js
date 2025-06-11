@@ -22,6 +22,7 @@ import ManageBookings from "./Components/Dashboard/Admin/ManageBookings";
 import ManageUsers from "./Components/Dashboard/Admin/ManageUsers";
 import UpdateItem from "./Components/Dashboard/Admin/UpdateItem";
 import UpdateProfile from "./Components/Dashboard/UpdateProfile";
+import DeleteItem from "./Components/Dashboard/Admin/DeleteItem";
 
 function App() {
   return (
@@ -93,6 +94,14 @@ function App() {
             element={
               <RequireAuth>
                 <UpdateItem />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="delete-item/:id"
+            element={
+              <RequireAuth>
+                <DeleteItem />
               </RequireAuth>
             }
           ></Route>
