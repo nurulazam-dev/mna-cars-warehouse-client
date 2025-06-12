@@ -42,22 +42,22 @@ const ManageItems = () => {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item._id} item={item}>
-                <td>{item._id}</td>
-                <td>{item.name}</td>
+              <tr key={item?._id} item={item}>
+                <td>{item?._id}</td>
+                <td>{item?.name}</td>
                 <td>
                   <img
                     style={{ height: "35px", width: "70px" }}
-                    src={item.img}
+                    src={item?.img}
                     alt=""
                   />
                 </td>
-                <td>$ {item.price}</td>
-                <td>{item.quantity}</td>
-                <td>{item.supplier}</td>
+                <td>$ {item?.price}</td>
+                <td>{item?.quantity}</td>
+                <td>{item?.supplier}</td>
                 <td>
                   <button
-                    onClick={() => handleDelete(item._id)}
+                    onClick={() => handleDelete(item?._id)}
                     className="btn btn-danger"
                   >
                     Delete

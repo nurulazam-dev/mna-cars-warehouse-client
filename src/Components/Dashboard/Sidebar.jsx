@@ -48,11 +48,11 @@ const Sidebar = () => {
         </Nav.Link>
         <Nav.Link
           as={Link}
-          to="/dashboard/manage-bookings"
+          to="/dashboard/manage-orders"
           className="text-white mb-2"
           activeClassName="active"
         >
-          <i className="bi bi-person me-2"></i> Manage Bookings
+          <i className="bi bi-person me-2"></i> Manage Orders
         </Nav.Link>
         <Nav.Link
           as={Link}
@@ -65,11 +65,19 @@ const Sidebar = () => {
 
         <Nav.Link
           as={Link}
-          to="/dashboard/my-booking-items"
+          to="/dashboard/my-wishlists"
           className="text-white mb-2"
           activeClassName="active"
         >
-          <i className="bi bi-bar-chart me-2"></i> My Bookings
+          <i className="bi bi-bar-chart me-2"></i> My wishlists
+        </Nav.Link>
+        <Nav.Link
+          as={Link}
+          to="/dashboard/my-items"
+          className="text-white mb-2"
+          activeClassName="active"
+        >
+          <i className="bi bi-bar-chart me-2"></i> My Items
         </Nav.Link>
         <Nav.Link
           as={Link}

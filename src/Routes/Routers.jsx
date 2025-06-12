@@ -13,14 +13,15 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import Overview from "../Components/Dashboard/Overview";
 import ManageItems from "../Components/Dashboard/Admin/ManageItems";
-import ManageBookings from "../Components/Dashboard/Admin/ManageBookings";
 import ManageUsers from "../Components/Dashboard/Admin/ManageUsers";
 import AddItem from "../Components/Dashboard/Admin/AddItem";
 import UpdateItem from "../Components/Dashboard/Admin/UpdateItem";
-import MyBookingItems from "../Components/Dashboard/User/MyBookingItems";
 import AboutUs from "../Components/About/AboutUs";
 import AboutDeveloper from "../Components/About/AboutDeveloper";
 import NotFound from "../Pages/NotFound";
+import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
+import MyWishlist from "../Components/Dashboard/User/MyWishlist";
+import MyItems from "../Components/Dashboard/User/MyItems";
 
 const Routers = () => {
   return (
@@ -63,10 +64,10 @@ const Routers = () => {
           }
         />
         <Route
-          path="Manage-bookings"
+          path="Manage-orders"
           element={
             <RequireAuth>
-              <ManageBookings />
+              <ManageOrders />
             </RequireAuth>
           }
         />
@@ -112,10 +113,18 @@ const Routers = () => {
         ></Route>
 
         <Route
-          path="my-booking-items"
+          path="my-wishlists"
           element={
             <RequireAuth>
-              <MyBookingItems />
+              <MyWishlist />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="my-items"
+          element={
+            <RequireAuth>
+              <MyItems />
             </RequireAuth>
           }
         ></Route>

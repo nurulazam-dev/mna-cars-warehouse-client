@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
+import { LOCAL_BASE_URL } from "../../../config";
 
 const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const handleOnSubmit = (data, event) => {
-    const url = `https://salty-spire-70121.herokuapp.com/item`;
+    const url = `${LOCAL_BASE_URL}/items`;
     fetch(url, {
       method: "POST",
       headers: {
