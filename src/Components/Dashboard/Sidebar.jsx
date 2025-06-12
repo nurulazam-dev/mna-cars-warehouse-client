@@ -81,11 +81,11 @@ const Sidebar = () => {
         </Nav.Link>
         <Nav.Link
           as={Link}
-          to="/dashboard/update-profile"
+          to="/dashboard/settings"
           className="text-white mb-2"
           activeClassName="active"
         >
-          <i className="bi bi-speedometer2 me-2"></i> Update Profile
+          <i className="bi bi-speedometer2 me-2"></i> Settings
         </Nav.Link>
         <Nav.Link
           as={Link}

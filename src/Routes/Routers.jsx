@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./RequireAuth";
 import Home from "../Pages/Home";
-import UpdateProfile from "../Components/Dashboard/UpdateProfile";
 import DeleteItem from "../Components/Dashboard/Admin/DeleteItem";
 import Dashboard from "../Pages/Dashboard";
 import Blogs from "../Pages/Blogs";
@@ -22,6 +21,7 @@ import NotFound from "../Pages/NotFound";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
 import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import MyItems from "../Components/Dashboard/User/MyItems";
+import Settings from "../Components/Dashboard/Settings";
 
 const Routers = () => {
   return (
@@ -104,10 +104,10 @@ const Routers = () => {
           }
         ></Route>
         <Route
-          path="update-profile"
+          path="settings"
           element={
             <RequireAuth>
-              <UpdateProfile />
+              <Settings />
             </RequireAuth>
           }
         ></Route>
