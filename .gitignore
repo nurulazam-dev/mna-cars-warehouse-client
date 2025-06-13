@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 FullFrontendCode.js
-/src/utils
 /src/Components/Login
 /src/Components/Dashboard/User
