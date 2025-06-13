@@ -23,7 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 
 FullFrontendCode.js
-/src/hooks
 /src/utils
 /src/Components/Login
 /src/Components/Dashboard/User
+
+/src/hooks/useWishlist.js
+/src/hooks/useUsers.js
+/src/hooks/useMyOrders.js
+/src/hooks/useAllOrders.js
