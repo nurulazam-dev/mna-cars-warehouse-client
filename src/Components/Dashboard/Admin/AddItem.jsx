@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../../../config";
 
 const AddItem = () => {
-  const { register, handleSubmit } = useForm();
-  const handleOnSubmit = (data, event) => {
+  const { register, handleSubmit, reset } = useForm();
+
+  /*   const handleOnSubmit = (data, event) => {
     const url = `${LOCAL_BASE_URL}/items`;
     fetch(url, {
       method: "POST",
@@ -16,21 +17,34 @@ const AddItem = () => {
       .then((res) => res.json())
       .then((result) => {
         event.target.reset();
-        toast(" Item Added Successfully", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast(" Item Added Successfully");
       });
+  }; */
+  const handleOnSubmit = async (data) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${LOCAL_BASE_URL}/items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        toast.success("Item created successfully!");
+        reset();
+      } else {
+        toast.error("Failed to create item.");
+      }
+    } catch (err) {
+      toast.error("Error creating item.");
+    }
   };
 
   return (
     <div className="w-50 mx-auto border my-3 p-2 rounded bg-light pb-3 shadow">
-      <ToastContainer />
       <h2 className="text-primary text-center my-3">Add new item</h2>
       <form
         className="d-flex flex-column w-full px-5 mx-auto"
@@ -41,10 +55,16 @@ const AddItem = () => {
           placeholder="Car Name/Model"
           {...register("name", { required: true })}
         />
-        <input
+        {/* <input
           className="mb-3 border-0 rounded p-2"
           placeholder="Supplier"
           {...register("supplier")}
+        /> */}
+        <input
+          className="mb-3 border-0 rounded p-2"
+          placeholder="Seller Email"
+          type="email"
+          {...register("sellerEmail")}
         />
         <div className="d-flex justify-content-between">
           <input

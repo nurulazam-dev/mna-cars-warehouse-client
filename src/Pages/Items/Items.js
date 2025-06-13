@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { items } from "../../assets/data/itemsData";
+// import { useAuth } from "../../hooks/useAuth";
 
 const badgeColors = {
   "New Arrival": "primary",
@@ -32,6 +33,18 @@ const Items = () => {
       item.price <= price
     );
   });
+
+  /*  const { user, token } = useAuth();
+
+  const handleAddWishlist = () => {
+    const wishlistItem = {
+      email: user?.email,
+      title: product.title,
+      description: product.description,
+      productId: product._id,
+    };
+    addToWishlist(wishlistItem, token);
+  }; */
 
   return (
     <section
@@ -194,6 +207,12 @@ const Items = () => {
                     >
                       View Details <i className="bi bi-arrow-right ms-1"></i>
                     </Link>
+                    {/* <button
+                      className="btn btn-warning"
+                      onClick={handleAddWishlist}
+                    >
+                      Add to Wishlist
+                    </button> */}
                   </div>
                 </div>
               </div>

@@ -1,98 +1,42 @@
-import React, { useRef } from "react";
-import { Button, Form } from "react-bootstrap";
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import auth from "../Firebase/firebase.init";
-import SocialLogin from "../Components/Login/SocialLogin";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
-  const nameRef = useRef("");
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  let errorMessage;
-  const [user] = useAuthState(auth);
+  const { register, handleSubmit } = useForm();
+  const { register: registerUser } = useAuth();
 
-  const [createUserWithEmailAndPassword, error] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const navigate = useNavigate();
-  const navigateToLogin = (event) => {
-    navigate("/login");
-  };
-  if (error) {
-    <p className="text-danger">{error?.message}</p>;
-  }
-  if (user) {
-    navigate("/login");
-  }
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
-    createUserWithEmailAndPassword(email, password);
-    console.log(name, email, password);
+  const onSubmit = (data) => {
+    registerUser(data);
   };
 
   return (
-    <div className="w-50 mx-auto border my-5 p-2 rounded bg-light shadow">
-      <h2 className="text-primary text-center">Create your account</h2>
+    <div className="container mt-5">
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label>Name</label>
+          <input className="form-control" {...register("name")} required />
+        </div>
 
-      <Form onSubmit={handleRegister} className="text-black w-75 mx-auto my-4">
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Your Full Name</Form.Label>
-          <Form.Control
-            className="fs-5"
-            ref={nameRef}
-            type="text"
-            placeholder="Enter Your Name"
-            required
-          />
-        </Form.Group>
+        <div className="mb-3">
+          <label>Email</label>
+          <input className="form-control" {...register("email")} required />
+        </div>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            className="fs-5"
-            ref={emailRef}
-            type="email"
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            className="fs-5"
-            ref={passwordRef}
+        <div className="mb-3">
+          <label>Password</label>
+          <input
             type="password"
-            placeholder="Password"
+            className="form-control"
+            {...register("password")}
             required
           />
-        </Form.Group>
+        </div>
 
-        {errorMessage}
-        <Button className="w-100 mt-2 fs-5" variant="primary" type="submit">
+        <button className="btn btn-success" type="submit">
           Register
-        </Button>
-      </Form>
-      <p className="text-center text-black m-0">
-        Already have an account ?{" "}
-        <Link
-          to="/login"
-          onClick={navigateToLogin}
-          className="text-primary pe-auto text-decoration-none"
-        >
-          Please Login
-        </Link>
-      </p>
-
-      <SocialLogin />
+        </button>
+      </form>
     </div>
   );
 };

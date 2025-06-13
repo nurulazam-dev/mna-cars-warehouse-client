@@ -1,13 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { LOCAL_BASE_URL } from "../config";
 
-const useItems = () => {
+export const useItems = () => {
   const [items, setItems] = useState([]);
-  useEffect(() => {
-    fetch("https://mna-cars-warehouse-server.onrender.com/item")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
-  return [items, setItems];
-};
+  const [loading, setLoading] = useState(true);
 
-export default useItems;
+  const fetchItems = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${LOCAL_BASE_URL}/items`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+      setItems(data);
+    } catch (err) {
+      console.error("Error fetching items:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  return { items, loading, refetch: fetchItems };
+};

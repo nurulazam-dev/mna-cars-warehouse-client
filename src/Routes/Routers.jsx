@@ -20,8 +20,9 @@ import AboutDeveloper from "../Components/About/AboutDeveloper";
 import NotFound from "../Pages/NotFound";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
 import MyWishlist from "../Components/Dashboard/User/MyWishlist";
-import MyItems from "../Components/Dashboard/User/MyItems";
 import Settings from "../Components/Dashboard/Settings";
+import MyOrders from "../Components/Dashboard/User/MyOrders";
+import RequireAdmin from "./RequireAdmin";
 
 const Routers = () => {
   return (
@@ -58,9 +59,9 @@ const Routers = () => {
         <Route
           path="Manage-items"
           element={
-            <RequireAuth>
+            <RequireAdmin>
               <ManageItems />
-            </RequireAuth>
+            </RequireAdmin>
           }
         />
         <Route
@@ -74,17 +75,17 @@ const Routers = () => {
         <Route
           path="Manage-users"
           element={
-            <RequireAuth>
+            <RequireAdmin>
               <ManageUsers />
-            </RequireAuth>
+            </RequireAdmin>
           }
         />
         <Route
           path="add-item"
           element={
-            <RequireAuth>
+            <RequireAdmin>
               <AddItem />
-            </RequireAuth>
+            </RequireAdmin>
           }
         ></Route>
         <Route
@@ -121,10 +122,10 @@ const Routers = () => {
           }
         ></Route>
         <Route
-          path="my-items"
+          path="my-orders"
           element={
             <RequireAuth>
-              <MyItems />
+              <MyOrders />
             </RequireAuth>
           }
         ></Route>
