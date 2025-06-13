@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import RequireAuth from "./RequireAuth";
+import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
-import DeleteItem from "../Components/Dashboard/Admin/DeleteItem";
 import Dashboard from "../Pages/Dashboard";
 import Blogs from "../Pages/Blogs";
 import Items from "../Pages/Items/Items";
@@ -9,20 +8,21 @@ import ItemDetails from "../Pages/Items/ItemDetails";
 import Booking from "../Pages/Items/Booking";
 import ContactDealer from "../Pages/Items/ContactDealer";
 import Register from "../Pages/Register";
+import AboutUs from "../Components/About/AboutUs";
+import AboutDeveloper from "../Components/About/AboutDeveloper";
+import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
-import Overview from "../Components/Dashboard/Overview";
+// import Overview from "../Components/Dashboard/Overview";
+import DeleteItem from "../Components/Dashboard/Admin/DeleteItem";
 import ManageItems from "../Components/Dashboard/Admin/ManageItems";
 import ManageUsers from "../Components/Dashboard/Admin/ManageUsers";
 import AddItem from "../Components/Dashboard/Admin/AddItem";
 import UpdateItem from "../Components/Dashboard/Admin/UpdateItem";
-import AboutUs from "../Components/About/AboutUs";
-import AboutDeveloper from "../Components/About/AboutDeveloper";
-import NotFound from "../Pages/NotFound";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
 import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import Settings from "../Components/Dashboard/Settings";
 import MyOrders from "../Components/Dashboard/User/MyOrders";
-import RequireAdmin from "./RequireAdmin";
+import AdminRoute from "./AdminRoute";
 
 const Routers = () => {
   return (
@@ -37,99 +37,128 @@ const Routers = () => {
       <Route path="/register" element={<Register />}></Route>
       <Route path="/login" element={<Login />}></Route>
 
-      {/* <Route path="/dashboard" element={<Dashboard />}></Route> */}
+      {/* ==========================
+                Admin panel
+      ========================== */}
+
       <Route
+        path="/dashboard/admin"
+        element={
+          <AdminRoute>
+            <Dashboard />
+          </AdminRoute>
+        }
+      >
+        <Route path="Manage-items" element={<ManageItems />} />
+        <Route path="Manage-orders" element={<ManageOrders />} />
+        <Route path="Manage-users" element={<ManageUsers />} />
+        <Route path="add-item" element={<AddItem />} />
+        <Route path="update-item/:id" element={<UpdateItem />} />
+        <Route path="delete-item/:id" element={<DeleteItem />} />
+      </Route>
+
+      {/* ==========================
+             User dashboard
+      ========================== */}
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      >
+        <Route index element={<h2>My Profile</h2>} />
+        <Route path="my-orders" element={<MyOrders />} />
+        <Route path="my-wishlists" element={<MyWishlist />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+
+      {/* dashboard routes */}
+      {/*  <Route
         path="dashboard"
         element={
-          <RequireAuth>
+          <PrivateRoute>
             <Dashboard />
-          </RequireAuth>
+          </PrivateRoute>
         }
       >
         <Route index element={<Overview />} />
 
-        {/*  <Route
-            path="ManageInventories"
-            element={
-              <RequireAdmin>
-                <ManageInventories />
-              </RequireAdmin>
-            }
-          /> */}
         <Route
           path="Manage-items"
           element={
-            <RequireAdmin>
+            <AdminRoute>
               <ManageItems />
-            </RequireAdmin>
+            </AdminRoute>
           }
         />
         <Route
           path="Manage-orders"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <ManageOrders />
-            </RequireAuth>
+            </PrivateRoute>
           }
         />
         <Route
           path="Manage-users"
           element={
-            <RequireAdmin>
+            <AdminRoute>
               <ManageUsers />
-            </RequireAdmin>
+            </AdminRoute>
           }
         />
         <Route
           path="add-item"
           element={
-            <RequireAdmin>
+            <AdminRoute>
               <AddItem />
-            </RequireAdmin>
+            </AdminRoute>
           }
         ></Route>
         <Route
           path="update-item/:id"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <UpdateItem />
-            </RequireAuth>
+            </PrivateRoute>
           }
         ></Route>
         <Route
           path="delete-item/:id"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <DeleteItem />
-            </RequireAuth>
+            </PrivateRoute>
           }
         ></Route>
         <Route
           path="settings"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <Settings />
-            </RequireAuth>
+            </PrivateRoute>
           }
         ></Route>
 
         <Route
           path="my-wishlists"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <MyWishlist />
-            </RequireAuth>
+            </PrivateRoute>
           }
         ></Route>
         <Route
           path="my-orders"
           element={
-            <RequireAuth>
+            <PrivateRoute>
               <MyOrders />
-            </RequireAuth>
+            </PrivateRoute>
           }
         ></Route>
-      </Route>
+      </Route> */}
       {/* ============= */}
 
       <Route path="/about-us" element={<AboutUs />}></Route>
