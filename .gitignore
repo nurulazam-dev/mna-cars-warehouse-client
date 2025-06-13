@@ -28,6 +28,5 @@ FullFrontendCode.js
 /src/Components/Dashboard/User
 
 /src/hooks/useWishlist.js
-/src/hooks/useUsers.js
 /src/hooks/useMyOrders.js
 /src/hooks/useAllOrders.js
