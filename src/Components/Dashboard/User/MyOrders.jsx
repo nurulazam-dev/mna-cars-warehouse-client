@@ -19,6 +19,7 @@ const MyOrders = () => {
               <th>Item Name</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th>Status</th>
               <th>Order Date</th>
             </tr>
           </thead>
@@ -29,6 +30,7 @@ const MyOrders = () => {
                 <td>{order?.itemName}</td>
                 <td>{order?.quantity}</td>
                 <td>${order?.price}</td>
+                <td>{order.status}</td>
                 <td>{new Date(order?.createdAt).toLocaleDateString()}</td>
               </tr>
             ))}
