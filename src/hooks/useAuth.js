@@ -13,7 +13,7 @@ export const useAuth = () => {
 
   const login = async (data) => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/login`, {
+      const res = await fetch(`${LOCAL_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -35,7 +35,7 @@ export const useAuth = () => {
 
   const register = async (data) => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/register`, {
+      const res = await fetch(`${LOCAL_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

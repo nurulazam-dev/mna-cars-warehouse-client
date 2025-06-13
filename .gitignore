@@ -24,3 +24,5 @@ yarn-error.log*
 
 FullFrontendCode.js
 /src/Components/Login/v1
+/src/Components/Shared/Header/v1
+/src/Routes/v1

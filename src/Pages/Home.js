@@ -1,4 +1,3 @@
-import Footer from "../Components/Shared/Footer";
 import ContactInfo from "../Components/Home/ContactInfo";
 import MapLocation from "../Components/Home/MapLocation";
 import Newsletter from "../Components/Home/Newsletter";
@@ -27,7 +26,6 @@ const Home = () => {
       <Newsletter />
       <MapLocation />
       <ContactInfo />
-      <Footer />
     </>
   );
 };

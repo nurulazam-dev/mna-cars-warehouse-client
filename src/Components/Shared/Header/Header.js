@@ -1,17 +1,18 @@
-import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import auth from "../../../Firebase/firebase.init";
 import "./Header.css";
 import brandLogo from "../../../assets/images/icon/mna-car-warehouse.png";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Header = () => {
-  const [user] = useAuthState(auth);
+  const { user, token, logout } = useAuth();
+
   const handleSignOut = () => {
-    signOut(auth);
+    logout();
   };
+
+  const isAuthenticated = user && token;
 
   return (
     <Navbar
@@ -47,6 +48,7 @@ const Header = () => {
             <Nav.Link as={Link} to="/dashboard" className="fs-5 mx-2">
               Dashboard
             </Nav.Link>
+
             <NavDropdown
               title="About"
               id="collasible-nav-dropdown"
@@ -60,14 +62,14 @@ const Header = () => {
                 Developer
               </NavDropdown.Item>
             </NavDropdown>
-            {user ? (
+            {isAuthenticated ? (
               <NavDropdown
-                title={<span>{user.displayName || "User"}</span>}
+                title={<span>{user?.name || "User"}</span>}
                 id="user-nav-dropdown"
                 align="end"
                 className="mx-2"
               >
-                <NavDropdown.Item disabled>{user.email}</NavDropdown.Item>
+                <NavDropdown.Item disabled>{user?.email}</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleSignOut}>
                   Sign out
