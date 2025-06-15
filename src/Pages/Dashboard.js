@@ -12,7 +12,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className="sidebar">
-        <h4 className="text-center my-4">Dashboard</h4>
+        <h4 className="text-center mb-3 dashboard-title">Dashboard</h4>
         <Nav className="flex-column">
           {!isAdmin && (
             <>
