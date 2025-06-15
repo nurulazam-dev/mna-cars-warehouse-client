@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { useItems } from "../../../hooks/useItems";
 import { LOCAL_BASE_URL } from "../../../config";
+import Loader from "../../Shared/Loader/Loader";
 
 const ManageItems = () => {
   const { items, loading, refetch } = useItems();
@@ -25,39 +26,56 @@ const ManageItems = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
 
   return (
-    <div className="container mt-4">
-      <h2>Manage Items</h2>
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Seller</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items?.map((item) => (
-            <tr key={item?._id}>
-              <td>{item?.name}</td>
-              <td>{item?.price}</td>
-              <td>{item?.sellerEmail}</td>
-              <td>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(item?._id)}
-                >
-                  Delete
-                </button>
-                {/* Add Edit Button */}
-              </td>
+    <div className="container">
+      <h2 className="text-center mb-2 text-primary fw-bold">Manage Items</h2>
+
+      {items?.length === 0 ? (
+        <p className="text-center text-danger">No items found.</p>
+      ) : (
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Item Img</th>
+              <th>Item Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Seller</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {items?.map((item, index) => (
+              <tr key={item?._id}>
+                <td>{item?.index + 1}</td>
+                <td>{item?.img}</td>
+                <td>{item?.name}</td>
+                <td>{item?.price}</td>
+                <td>{item?.quantity}</td>
+                <td>{item?.sellerEmail}</td>
+                <td>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    // onClick={() => handleUpdate(item?._id)}
+                  >
+                    Update
+                  </button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(item?._id)}
+                  >
+                    Delete
+                  </button>
+                  {/* Add Edit Button */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
