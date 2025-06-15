@@ -19,7 +19,9 @@ const DashboardStats = () => {
 
   return (
     <div>
-      <h3>Dashboard Statistics</h3>
+      <h3 className="text-center mb-2 text-primary fw-bold">
+        Dashboard Statistics
+      </h3>
       <div className="row mt-4">
         <div className="col-md-4">
           <div className="card text-white bg-primary mb-3">

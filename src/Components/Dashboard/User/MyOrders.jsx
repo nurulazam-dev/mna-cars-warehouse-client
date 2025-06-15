@@ -8,7 +8,7 @@ const MyOrders = () => {
 
   return (
     <div className="container">
-      <h2 className="text-primary text-center">My Items</h2>
+      <h2 className="text-center mb-2 text-primary fw-bold">My Items</h2>
 
       {orders?.length === 0 ? (
         <p className="text-center text-danger">No items found.</p>

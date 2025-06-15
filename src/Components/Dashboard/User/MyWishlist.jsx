@@ -13,7 +13,7 @@ const MyWishlist = () => {
 
   return (
     <div className="container">
-      <h2 className="text-primary text-center">My Wishlist</h2>
+      <h2 className="text-center mb-2 text-primary fw-bold">My Wishlist</h2>
       {wishlist?.length === 0 ? (
         <p className="text-center text-danger">No items in wishlist.</p>
       ) : (

@@ -30,79 +30,87 @@ const AddItem = () => {
 
   return (
     <div className="container">
-      <h2 className="text-primary text-center">Add new item</h2>
-      <form
-        className="d-flex flex-column w-full"
-        onSubmit={handleSubmit(handleOnSubmit)}
-      >
-        <div className="d-flex justify-content-between w-full">
-          <div className="mb-3 w-50">
-            <label className="mb-1">Item Name/Model</label>
+      <h2 className="text-center mb-2 text-primary fw-bold">Add New Item</h2>
+
+      <form onSubmit={handleSubmit(handleOnSubmit)}>
+        <div className="row mb-3">
+          <div className="col-md-6">
+            <label className="form-label">Item Name/Model</label>
             <input
-              className="form-control border-0 rounded p-2"
+              type="text"
+              className="form-control"
               placeholder="Car Name/Model"
               {...register("name", { required: true })}
             />
           </div>
-          <div className="mb-3 w-50">
-            <label className="mb-1">Seller Email</label>
+
+          <div className="col-md-6">
+            <label className="form-label">Seller Email</label>
             <input
-              className="form-control border-0 rounded p-2"
-              placeholder="Seller Email"
               type="email"
+              className="form-control"
+              placeholder="Seller Email"
               {...register("sellerEmail")}
             />
           </div>
-        </div>
-        {/* <input
-          className="mb-3 border-0 rounded p-2"
-          placeholder="Supplier"
-          {...register("supplier")}
-        /> */}
-
-        <div className="d-flex justify-content-between w-full">
-          <div className="mb-3 w-25">
-            <label className="mb-1">Item Price</label>
+          {/* <div className="col-md-4">
+            <label className="form-label">Supplier Name</label>
             <input
-              className="form-control border-0 rounded p-2"
-              placeholder="Price"
+              type="text"
+              className="form-control"
+              placeholder="Supplier Name"
+              {...register("supplier")}
+            />
+          </div> */}
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-md-4">
+            <label className="form-label">Price</label>
+            <input
               type="number"
+              className="form-control"
+              placeholder="Price"
               {...register("price", { required: true })}
             />
           </div>
-          <div className="mb-3 w-25">
-            <label className="mb-1">Item Quantity</label>
+
+          <div className="col-md-4">
+            <label className="form-label">Quantity</label>
             <input
-              className="form-control border-0 rounded p-2"
-              placeholder="Quantity"
               type="number"
+              className="form-control"
+              placeholder="Quantity"
               {...register("quantity")}
             />
           </div>
-          <div className="mb-3 w-25">
-            <label className="mb-1">Item Image URL</label>
+
+          <div className="col-md-4">
+            <label className="form-label">Image URL</label>
             <input
-              className="form-control fs-6 border-0 rounded p-2"
-              placeholder="Image URL"
               type="text"
+              className="form-control"
+              placeholder="Image URL"
               {...register("img")}
             />
           </div>
         </div>
+
         <div className="mb-3">
-          <label className="mb-1">Item Description</label>
+          <label className="form-label">Description</label>
           <textarea
-            className="form-control p-2 border-0 rounded p-2"
+            rows="4"
+            className="form-control"
             placeholder="Description: Engine, Trim, Transmission Type, Transmission"
             {...register("description")}
-          />
+          ></textarea>
         </div>
 
-        <input
-          className="bg-success text-white border-0 rounded py-2 fs-5 mb-4"
-          type="submit"
-          value="Add Item"
-        />
+        <div className="text-center">
+          <button type="submit" className="btn btn-primary px-5 py-2 fs-5">
+            Add Item
+          </button>
+        </div>
       </form>
     </div>
   );
