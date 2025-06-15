@@ -13,7 +13,7 @@ const Dashboard = () => {
       {/* Sidebar */}
       <div className="sidebar">
         <h4 className="text-center mb-3 dashboard-title">Dashboard</h4>
-        <Nav className="flex-column">
+        <Nav className="flex-column" variant="pills">
           {!isAdmin && (
             <>
               <NavItem

@@ -17,26 +17,13 @@
 }
 
 .sidebar-item {
-  display: flex;
-  align-items: center;
   padding: 10px;
   margin-bottom: 5px;
-  color: white;
-  border-radius: 5px;
-  transition: background 0.3s;
 }
+
 .nav-label {
   color: white;
   font-size: 0.95rem;
-}
-
-.sidebar-item:hover {
-  background-color: #02db02;
-  text-decoration: none;
-}
-
-.sidebar-item.active {
-  background-color: #008000;
 }
 
 .nav-icon {
