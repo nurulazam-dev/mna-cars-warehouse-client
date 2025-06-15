@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useItems } from "../../../../hooks/useItems";
-import Loader from "../../../Shared/Loader/Loader";
 import UpdateItemModal from "./UpdateItemModal";
 import DeleteItemModal from "./DeleteItemModal";
 import { Button } from "react-bootstrap";
+import { useItems } from "../../../../hooks/useItems";
+import Loader from "../../../Shared/Loader/Loader.jsx";
 
 const ManageItems = () => {
   const { items, loading, refetch } = useItems();
