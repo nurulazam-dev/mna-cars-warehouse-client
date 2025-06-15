@@ -1,25 +1,13 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "../../styles/Dashboard.css";
+import SidebarNavItem from "./SidebarNavItem";
 
 const Sidebar = () => {
   const { user, isAdmin } = useAuth();
   const location = useLocation();
-
-  const NavItem = ({ to, icon, label, active }) => {
-    return (
-      <Nav.Link
-        as={Link}
-        to={to}
-        className={`sidebar-item ${active ? "active" : ""}`}
-      >
-        <i className={`bi ${icon} nav-icon`}></i>
-        <span className="nav-label">{label}</span>
-      </Nav.Link>
-    );
-  };
 
   return (
     <div className="sidebar">
@@ -27,13 +15,13 @@ const Sidebar = () => {
       <Nav className="flex-column" variant="pills">
         {!isAdmin && (
           <>
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/my-wishlists"
               icon="bi-heart"
               label="My Wishlists"
               active={location.pathname.includes("/dashboard/my-wishlists")}
             />
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/my-orders"
               icon="bi-box-seam"
               label="My Orders"
@@ -44,19 +32,19 @@ const Sidebar = () => {
 
         {isAdmin && (
           <>
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/admin"
               icon="bi-speedometer2"
               label="Overview"
               active={location.pathname === "/dashboard/admin"}
             />
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/admin/add-item"
               icon="bi-plus-circle"
               label="Add Item"
               active={location.pathname.includes("/dashboard/admin/add-item")}
             />
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/admin/manage-items"
               icon="bi-box"
               label="Manage Items"
@@ -64,7 +52,7 @@ const Sidebar = () => {
                 "/dashboard/admin/manage-items"
               )}
             />
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/admin/manage-orders"
               icon="bi-receipt"
               label="Manage Orders"
@@ -72,7 +60,7 @@ const Sidebar = () => {
                 "/dashboard/admin/manage-orders"
               )}
             />
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/admin/manage-users"
               icon="bi-people"
               label="Manage Users"
@@ -85,7 +73,7 @@ const Sidebar = () => {
 
         {user && (
           <>
-            <NavItem
+            <SidebarNavItem
               to="/dashboard/settings"
               icon="bi-gear"
               label="Settings"
