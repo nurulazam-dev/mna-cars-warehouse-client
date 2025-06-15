@@ -1,7 +1,7 @@
 const Settings = () => {
   return (
-    <div>
-      <h2 className="text-center text-primary mt-3">Settings Profile</h2>
+    <div className="container">
+      <h2 className="text-primary text-center">Settings</h2>
     </div>
   );
 };
