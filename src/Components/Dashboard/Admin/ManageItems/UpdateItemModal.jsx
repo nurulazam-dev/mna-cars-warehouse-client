@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../../../../config";
@@ -38,35 +38,42 @@ const UpdateItemModal = ({ show, onHide, item, refetch }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} size="lg" centered>
       <Modal.Header closeButton>
         <Modal.Title>Update Item</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className="mb-3">
-            <Form.Label>Item Name</Form.Label>
-            <Form.Control
-              type="text"
-              {...register("name", { required: true })}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Seller Email</Form.Label>
-            <Form.Control type="email" {...register("sellerEmail")} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Price</Form.Label>
-            <Form.Control type="number" {...register("price")} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control type="number" {...register("quantity")} />
-          </Form.Group>
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Label>Item Name</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("name", { required: true })}
+              />
+            </Col>
+            <Col md={6}>
+              <Form.Label>Seller Email</Form.Label>
+              <Form.Control type="email" {...register("sellerEmail")} />
+            </Col>
+          </Row>
+
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Label>Price</Form.Label>
+              <Form.Control type="number" {...register("price")} />
+            </Col>
+            <Col md={6}>
+              <Form.Label>Quantity</Form.Label>
+              <Form.Control type="number" {...register("quantity")} />
+            </Col>
+          </Row>
+
           <Form.Group className="mb-3">
             <Form.Label>Image URL</Form.Label>
             <Form.Control type="text" {...register("img")} />
           </Form.Group>
+
           <Form.Group className="mb-3">
             <Form.Label>Description</Form.Label>
             <Form.Control as="textarea" rows={3} {...register("description")} />
