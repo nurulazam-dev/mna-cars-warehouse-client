@@ -1,114 +1,99 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import "../../styles/Dashboard.css";
 
 const Sidebar = () => {
   const { user, isAdmin } = useAuth();
+  const location = useLocation();
+
+  const NavItem = ({ to, icon, label, active }) => {
+    return (
+      <Nav.Link
+        as={Link}
+        to={to}
+        className={`sidebar-item ${active ? "active" : ""}`}
+      >
+        <i className={`bi ${icon} nav-icon`}></i>
+        <span className="nav-label">{label}</span>
+      </Nav.Link>
+    );
+  };
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "220px",
-        background: "#212529",
-        color: "#fff",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        paddingTop: "30px",
-        boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
-      }}
-    >
-      <h3 className="text-center mt-5 mb-4" style={{ color: "#0d6efd" }}>
-        Dashboard
-      </h3>
-      <Nav className="d-flex flex-column" variant="pills">
-        {/* =================
-          User Only Routes
-        ================= */}
+    <div className="sidebar">
+      <h4 className="text-center mb-3 dashboard-title">Dashboard</h4>
+      <Nav className="flex-column" variant="pills">
         {!isAdmin && (
           <>
-            <Nav.Link
-              as={Link}
+            <NavItem
               to="/dashboard/my-wishlists"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-bar-chart me-2"></i> My wishlists
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
+              icon="bi-heart"
+              label="My Wishlists"
+              active={location.pathname.includes("/dashboard/my-wishlists")}
+            />
+            <NavItem
               to="/dashboard/my-orders"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-bar-chart me-2"></i> My Items
-            </Nav.Link>
+              icon="bi-box-seam"
+              label="My Orders"
+              active={location.pathname.includes("/dashboard/my-orders")}
+            />
           </>
         )}
 
-        {/* =================
-          User Only Routes
-        ================= */}
         {isAdmin && (
           <>
-            <Nav.Link
-              as={Link}
+            <NavItem
               to="/dashboard/admin"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-speedometer2 me-2"></i> Overview
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
+              icon="bi-speedometer2"
+              label="Overview"
+              active={location.pathname === "/dashboard/admin"}
+            />
+            <NavItem
               to="/dashboard/admin/add-item"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-gear me-2"></i> Add Item
-            </Nav.Link>
-
-            <Nav.Link
-              as={Link}
+              icon="bi-plus-circle"
+              label="Add Item"
+              active={location.pathname.includes("/dashboard/admin/add-item")}
+            />
+            <NavItem
               to="/dashboard/admin/manage-items"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-person me-2"></i> Manage Items
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
+              icon="bi-box"
+              label="Manage Items"
+              active={location.pathname.includes(
+                "/dashboard/admin/manage-items"
+              )}
+            />
+            <NavItem
               to="/dashboard/admin/manage-orders"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-person me-2"></i> Manage Orders
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
+              icon="bi-receipt"
+              label="Manage Orders"
+              active={location.pathname.includes(
+                "/dashboard/admin/manage-orders"
+              )}
+            />
+            <NavItem
               to="/dashboard/admin/manage-users"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-person me-2"></i> Manage Users
-            </Nav.Link>
+              icon="bi-people"
+              label="Manage Users"
+              active={location.pathname.includes(
+                "/dashboard/admin/manage-users"
+              )}
+            />
           </>
         )}
+
         {user && (
           <>
-            <Nav.Link
-              as={Link}
+            <NavItem
               to="/dashboard/settings"
-              className="text-white mb-2"
-              activeClassName="active"
-            >
-              <i className="bi bi-speedometer2 me-2"></i> Settings
-            </Nav.Link>
-            <div className="mt-5 px-4">
+              icon="bi-gear"
+              label="Settings"
+              active={location.pathname.includes("/dashboard/settings")}
+            />
+            <div className="logged-in-user">
               <small>Logged in as:</small>
-              <p>{user?.email}</p>
+              <div>{user?.email}</div>
             </div>
           </>
         )}
