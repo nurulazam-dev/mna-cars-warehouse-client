@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../config";
-import { useUsers } from "../../../hooks/useUsers";
-import { useAuth } from "../../../hooks/useAuth";
+import { LOCAL_BASE_URL } from "../../../../config";
+import { useUsers } from "../../../../hooks/useUsers";
+import { useAuth } from "../../../../hooks/useAuth";
 
 const ManageUsers = () => {
   const { token } = useAuth();

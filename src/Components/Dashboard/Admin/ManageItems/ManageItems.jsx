@@ -25,8 +25,8 @@ const ManageItems = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="container my-4 p-4 shadow bg-white rounded">
-      <h2 className="text-center mb-4 text-primary fw-bold">Manage Items</h2>
+    <div className="container">
+      <h2 className="text-center mb-2 text-primary fw-bold">Manage Items</h2>
 
       {items?.length === 0 ? (
         <p className="text-center text-danger">No items found.</p>

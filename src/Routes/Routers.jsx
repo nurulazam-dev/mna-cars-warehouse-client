@@ -12,11 +12,8 @@ import AboutUs from "../Components/About/AboutUs";
 import AboutDeveloper from "../Components/About/AboutDeveloper";
 import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
-// import Overview from "../Components/Dashboard/Overview";
-import DeleteItem from "../Components/Dashboard/Admin/DeleteItem";
-import ManageUsers from "../Components/Dashboard/Admin/ManageUsers";
+import ManageUsers from "../Components/Dashboard/Admin/ManageUsers/ManageUsers";
 import AddItem from "../Components/Dashboard/Admin/AddItem";
-import UpdateItem from "../Components/Dashboard/Admin/UpdateItem";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
 import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import Settings from "../Components/Dashboard/Settings";
@@ -55,8 +52,6 @@ const Routers = () => {
         <Route path="Manage-orders" element={<ManageOrders />} />
         <Route path="Manage-users" element={<ManageUsers />} />
         <Route path="add-item" element={<AddItem />} />
-        <Route path="update-item/:id" element={<UpdateItem />} />
-        <Route path="delete-item/:id" element={<DeleteItem />} />
       </Route>
 
       {/* ==========================
