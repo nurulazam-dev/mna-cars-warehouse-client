@@ -1,5 +1,3 @@
-// src/hooks/useItem.js
-
 import { useState, useEffect } from "react";
 import { LOCAL_BASE_URL } from "../config";
 
