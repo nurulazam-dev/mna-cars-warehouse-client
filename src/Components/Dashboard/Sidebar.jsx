@@ -1,9 +1,9 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
 import "../../styles/Dashboard.css";
 import SidebarNavItem from "./SidebarNavItem";
+import { useAuth } from "../../hooks/useAuth.js";
 
 const Sidebar = () => {
   const { user, isAdmin } = useAuth();

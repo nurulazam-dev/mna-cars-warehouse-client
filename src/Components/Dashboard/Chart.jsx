@@ -13,7 +13,7 @@ const Chart = () => {
     { quantity: 50, price: 40000 },
   ];
   return (
-    <div className="w-50 mx-auto bg-light py-7 px-5 my-5 rounded">
+    <div className="w-30 mx-auto bg-light py-7 px-5 my-5 rounded">
       <div className="mx-auto text-center">
         <h2>Items Stock</h2>
         {items.length === 0 ? (

@@ -23,6 +23,7 @@ import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import Settings from "../Components/Dashboard/Settings";
 import MyOrders from "../Components/Dashboard/User/MyOrders";
 import AdminRoute from "./AdminRoute";
+import Overview from "../Components/Dashboard/Overview";
 
 const Routers = () => {
   return (
@@ -49,6 +50,7 @@ const Routers = () => {
           </AdminRoute>
         }
       >
+        <Route index element={<Overview />} />
         <Route path="Manage-items" element={<ManageItems />} />
         <Route path="Manage-orders" element={<ManageOrders />} />
         <Route path="Manage-users" element={<ManageUsers />} />
