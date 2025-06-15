@@ -1,16 +1,17 @@
 import { useMyOrders } from "../../../hooks/useMyOrders";
+import Loader from "../../Shared/Loader/Loader";
 
 const MyOrders = () => {
   const { orders, loading } = useMyOrders();
 
-  if (loading) return <h3>Loading orders...</h3>;
+  if (loading) return <Loader />;
 
   return (
-    <div className="container mt-4">
-      <h2>My Purchased Orders</h2>
+    <div className="container">
+      <h2 className="text-primary text-center">My Items</h2>
 
       {orders?.length === 0 ? (
-        <p>No orders found.</p>
+        <p className="text-center text-danger">No items found.</p>
       ) : (
         <table className="table table-striped">
           <thead>
