@@ -14,7 +14,6 @@ import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 // import Overview from "../Components/Dashboard/Overview";
 import DeleteItem from "../Components/Dashboard/Admin/DeleteItem";
-import ManageItems from "../Components/Dashboard/Admin/ManageItems";
 import ManageUsers from "../Components/Dashboard/Admin/ManageUsers";
 import AddItem from "../Components/Dashboard/Admin/AddItem";
 import UpdateItem from "../Components/Dashboard/Admin/UpdateItem";
@@ -24,6 +23,7 @@ import Settings from "../Components/Dashboard/Settings";
 import MyOrders from "../Components/Dashboard/User/MyOrders";
 import AdminRoute from "./AdminRoute";
 import Overview from "../Components/Dashboard/Overview";
+import ManageItems from "../Components/Dashboard/Admin/ManageItems/ManageItems";
 
 const Routers = () => {
   return (
