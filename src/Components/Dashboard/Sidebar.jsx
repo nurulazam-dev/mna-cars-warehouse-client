@@ -74,11 +74,18 @@ const Sidebar = () => {
         {user && (
           <>
             <SidebarNavItem
+              to="/dashboard/profile"
+              icon="bi-people"
+              label="Profile"
+              active={location.pathname.includes("/dashboard/profile")}
+            />
+            <SidebarNavItem
               to="/dashboard/settings"
               icon="bi-gear"
               label="Settings"
               active={location.pathname.includes("/dashboard/settings")}
             />
+
             <div className="logged-in-user">
               <small>Logged in as:</small>
               <div>{user?.email}</div>
