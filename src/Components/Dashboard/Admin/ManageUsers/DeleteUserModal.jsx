@@ -26,7 +26,7 @@ const DeleteUserModal = ({ show, onHide, user, token, refetch }) => {
         <Modal.Title>Confirm Delete</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>Are you sure you want to delete user:</p>
+        <p>Are you sure you want to delete {user?.role}:</p>
         <h5>{user?.email}</h5>
       </Modal.Body>
       <Modal.Footer>

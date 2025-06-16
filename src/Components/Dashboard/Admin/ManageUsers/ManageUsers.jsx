@@ -1,90 +1,94 @@
-import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { useState } from "react";
 import { useUsers } from "../../../../hooks/useUsers";
 import { useAuth } from "../../../../hooks/useAuth";
+import { Table, Button } from "react-bootstrap";
+import UpdateUserModal from "./UpdateUserModal";
+import DeleteUserModal from "./DeleteUserModal";
 
 const ManageUsers = () => {
   const { token } = useAuth();
   const { users, refetch } = useUsers();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
-  const handleRoleChange = async (id, role) => {
-    try {
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ role }),
-      });
-
-      if (!res.ok) throw new Error("Failed to update role");
-      toast.success("Role updated");
-      refetch();
-    } catch (err) {
-      toast.error(err.message);
-    }
+  const handleOpenUpdate = (user) => {
+    setSelectedUser(user);
+    setShowUpdate(true);
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure?")) {
-      try {
-        const res = await fetch(`${LOCAL_BASE_URL}/users/${id}`, {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-
-        if (res.ok) {
-          toast.success("User deleted");
-          refetch();
-        } else {
-          toast.error("Delete failed");
-        }
-      } catch (err) {
-        toast.error("Delete failed");
-      }
-    }
+  const handleOpenDelete = (user) => {
+    setSelectedUser(user);
+    setShowDelete(true);
   };
 
   return (
-    <div className="container mt-4">
-      <h2>Manage Users</h2>
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+    <div className="container">
+      <h2 className="text-center text-primary fw-bold mb-2">Manage Users</h2>
 
-        <tbody>
-          {users?.map((user) => (
-            <tr key={user?._id}>
-              <td>{user?.email}</td>
-              <td>{user?.name}</td>
-              <td>{user?.role}</td>
-              <td>
-                {user?.role !== "admin" && (
-                  <button
-                    className="btn btn-sm btn-success me-2"
-                    onClick={() => handleRoleChange(user?._id, "admin")}
-                  >
-                    Make Admin
-                  </button>
-                )}
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => handleDelete(user?._id)}
-                >
-                  Delete
-                </button>
-              </td>
+      {users?.length === 0 ? (
+        <p className="text-center text-danger">No user found.</p>
+      ) : (
+        <Table striped bordered hover responsive>
+          <thead className="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {users?.map((user, index) => (
+              <tr key={user?._id}>
+                <td>{index + 1}</td>
+                <td>{user?.email}</td>
+                <td>{user?.name}</td>
+                <td>{user?.role}</td>
+                <td>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="me-2"
+                    onClick={() => handleOpenUpdate(user)}
+                  >
+                    Update
+                  </Button>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleOpenDelete(user)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
+
+      {/* Modals */}
+      {selectedUser && (
+        <>
+          <UpdateUserModal
+            show={showUpdate}
+            onHide={() => setShowUpdate(false)}
+            user={selectedUser}
+            token={token}
+            refetch={refetch}
+          />
+          <DeleteUserModal
+            show={showDelete}
+            onHide={() => setShowDelete(false)}
+            user={selectedUser}
+            token={token}
+            refetch={refetch}
+          />
+        </>
+      )}
     </div>
   );
 };
