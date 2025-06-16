@@ -14,13 +14,13 @@ import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 import ManageUsers from "../Components/Dashboard/Admin/ManageUsers/ManageUsers";
 import AddItem from "../Components/Dashboard/Admin/AddItem";
-import ManageOrders from "../Components/Dashboard/Admin/ManageOrders";
 import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import Settings from "../Components/Dashboard/Settings";
 import MyOrders from "../Components/Dashboard/User/MyOrders";
 import AdminRoute from "./AdminRoute";
 import Overview from "../Components/Dashboard/Overview";
 import ManageItems from "../Components/Dashboard/Admin/ManageItems/ManageItems";
+import ManageOrders from "../Components/Dashboard/Admin/ManageOrders/ManageOrders";
 
 const Routers = () => {
   return (
