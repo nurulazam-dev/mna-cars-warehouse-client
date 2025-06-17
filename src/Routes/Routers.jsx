@@ -66,7 +66,7 @@ const Routers = () => {
           </PrivateRoute>
         }
       >
-        <Route index element={<h2>My Profile</h2>} />
+        <Route index element={<Profile />} />
         <Route path="my-orders" element={<MyOrders />} />
         <Route path="my-wishlists" element={<MyWishlist />} />
         <Route path="settings" element={<Settings />} />
