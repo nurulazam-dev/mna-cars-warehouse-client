@@ -24,7 +24,7 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="container">
+    <section className="container">
       <h2 className="text-center text-primary fw-bold mb-2">Manage Users</h2>
       {loading && <Loader />}
 
@@ -95,7 +95,7 @@ const ManageUsers = () => {
           />
         </>
       )}
-    </div>
+    </section>
   );
 };
 
