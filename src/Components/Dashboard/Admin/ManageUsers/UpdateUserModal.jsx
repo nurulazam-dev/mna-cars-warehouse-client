@@ -14,8 +14,10 @@ const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
   }, [user, reset]);
 
   const onSubmit = async (data) => {
+    const userId = user?._id || user?.id;
+
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${user._id}`, {
+      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -23,9 +25,9 @@ const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
         },
         body: JSON.stringify(data),
       });
-
-      if (!res.ok) throw new Error("Failed to update user");
-      toast.success("User updated");
+      const resData = await res.json();
+      if (!res.ok) throw new Error(resData.message || "Failed to update user");
+      toast.success(resData.message || "User updated successfully");
       refetch();
       onHide();
     } catch (err) {
@@ -42,13 +44,6 @@ const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row className="mb-3">
             <Col md={6}>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                {...register("name", { required: true })}
-              />
-            </Col>
-            <Col md={6}>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -56,15 +51,36 @@ const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
                 disabled
               />
             </Col>
+            <Col md={6}>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("name", { required: true })}
+              />
+            </Col>
           </Row>
 
           <Row className="mb-3">
-            <Col md={6}>
+            <Col md={4}>
               <Form.Label>Role</Form.Label>
               <Form.Select {...register("role", { required: true })}>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
               </Form.Select>
+            </Col>
+            <Col md={4}>
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("phone", { required: true })}
+              />
+            </Col>
+            <Col md={4}>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("address", { required: true })}
+              />
             </Col>
           </Row>
 

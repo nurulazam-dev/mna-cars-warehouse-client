@@ -40,7 +40,9 @@ const ManageUsers = () => {
                   <th>Email</th>
                   <th>Name</th>
                   <th>Phone</th>
+                  <th>Address</th>
                   <th>Role</th>
+                  <th>Registered</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -52,7 +54,13 @@ const ManageUsers = () => {
                     <td>{user?.email}</td>
                     <td>{user?.name}</td>
                     <td>{user?.phone}</td>
+                    <td>{user?.address}</td>
                     <td>{user?.role}</td>
+                    <td>
+                      {user?.createdAt
+                        ? new Date(user.createdAt).toLocaleDateString()
+                        : "Unknown"}
+                    </td>
                     <td>
                       <Button
                         variant="secondary"
