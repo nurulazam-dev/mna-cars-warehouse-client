@@ -3,9 +3,14 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../../config";
+import { useUsers } from "../../hooks/useUsers";
 
 const Profile = () => {
+  const { users } = useUsers();
   const { user, refetchUser } = useAuth();
+
+  const activatedUser = users?.find((u) => u?.email === user?.email);
+
   const {
     register,
     handleSubmit,
@@ -65,6 +70,7 @@ const Profile = () => {
                 style={{ width: "120px", height: "120px" }}
               >
                 <img
+                  // src={activatedUser?.img}
                   src="https://randomuser.me/api/portraits/men/32.jpg"
                   alt="User Avatar"
                   className="rounded-circle img-fluid shadow"
@@ -72,33 +78,38 @@ const Profile = () => {
                 />
                 <span
                   className={`badge position-absolute top-0 end-0 translate-right p-2 border border-light rounded-circle ${
-                    user?.role === "admin" ? "bg-success" : "bg-primary"
+                    activatedUser?.role === "admin"
+                      ? "bg-success"
+                      : "bg-primary"
                   }`}
                   style={{ fontSize: "0.60rem" }}
-                  title={`Role: ${user?.role || "User"}`}
+                  title={`Role: ${activatedUser?.role || "User"}`}
                 >
-                  {user?.role?.toUpperCase() || "USER"}
+                  {activatedUser?.role?.toUpperCase() || "USER"}
                 </span>
               </div>
 
-              <h5 className="text-muted mt-1 mb-1">{user?.email || "N/A"}</h5>
+              <h5 className="text-muted mt-1 mb-1">
+                {activatedUser?.email || "N/A"}
+              </h5>
             </div>
 
             <div className="col-md-8">
               <ul className="list-group list-group-flush text-start">
                 <li className="list-group-item">
-                  <strong>Name:</strong> {user?.name || "Unnamed User"}
+                  <strong>Name:</strong> {activatedUser?.name || "Unnamed User"}
                 </li>
                 <li className="list-group-item">
-                  <strong>Phone:</strong> {user?.phone || "N/A"}
+                  <strong>Phone:</strong> {activatedUser?.phone || "N/A"}
                 </li>
                 <li className="list-group-item">
-                  <strong>Address:</strong> {user?.address || "Not set"}
+                  <strong>Address:</strong>{" "}
+                  {activatedUser?.address || "Not set"}
                 </li>
                 <li className="list-group-item">
                   <strong>Joined:</strong>{" "}
-                  {user?.createdAt
-                    ? new Date(user.createdAt).toLocaleDateString()
+                  {activatedUser?.createdAt
+                    ? new Date(activatedUser.createdAt).toLocaleDateString()
                     : "Unknown"}
                 </li>
               </ul>

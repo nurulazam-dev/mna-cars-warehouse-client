@@ -39,6 +39,7 @@ const ManageUsers = () => {
                   <th>#</th>
                   <th>Email</th>
                   <th>Name</th>
+                  <th>Phone</th>
                   <th>Role</th>
                   <th>Actions</th>
                 </tr>
@@ -50,6 +51,7 @@ const ManageUsers = () => {
                     <td>{index + 1}</td>
                     <td>{user?.email}</td>
                     <td>{user?.name}</td>
+                    <td>{user?.phone}</td>
                     <td>{user?.role}</td>
                     <td>
                       <Button
