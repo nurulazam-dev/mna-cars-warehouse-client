@@ -11,6 +11,24 @@ export const useAuth = () => {
   const token = localStorage.getItem("token");
   const isAdmin = user?.role === "admin";
 
+  const refetchUser = async () => {
+    try {
+      const res = await fetch(`${LOCAL_BASE_URL}/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) throw new Error("Failed to fetch user");
+
+      const updatedUser = await res.json();
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.error("refetchUser error:", error);
+    }
+  };
+
   const login = async (data) => {
     try {
       const res = await fetch(`${LOCAL_BASE_URL}/auth/login`, {
@@ -56,5 +74,5 @@ export const useAuth = () => {
     toast.success("Logged out");
   };
 
-  return { user, token, isAdmin, login, register, logout };
+  return { user, token, isAdmin, login, register, refetchUser, logout };
 };
