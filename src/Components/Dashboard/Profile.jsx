@@ -51,8 +51,6 @@ const Profile = () => {
     }
   };
 
-  console.log(user);
-
   return (
     <section className="container">
       <h2 className="text-center text-primary mb-2">My Profile</h2>
@@ -61,23 +59,31 @@ const Profile = () => {
       <div className="card shadow-sm mb-4 border-0">
         <div className="card-body p-4 text-center">
           <div className="row">
-            <div className="col-md-4">
-              <img
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt="User Avatar"
-                className="rounded-circle"
-                style={{ width: "120px", height: "120px", objectFit: "cover" }}
-              />
-              <h5 className="text-muted mb-1">{user?.email || "N/A"}</h5>
-
-              <span
-                className={`badge ${
-                  user?.role === "admin" ? "bg-success" : "bg-primary"
-                }`}
+            <div className="col-md-4 d-flex flex-column align-items-center position-relative">
+              <div
+                className="position-relative"
+                style={{ width: "120px", height: "120px" }}
               >
-                {user?.role?.toUpperCase() || "USER"}
-              </span>
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="User Avatar"
+                  className="rounded-circle img-fluid shadow"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <span
+                  className={`badge position-absolute top-0 end-0 translate-right p-2 border border-light rounded-circle ${
+                    user?.role === "admin" ? "bg-success" : "bg-primary"
+                  }`}
+                  style={{ fontSize: "0.60rem" }}
+                  title={`Role: ${user?.role || "User"}`}
+                >
+                  {user?.role?.toUpperCase() || "USER"}
+                </span>
+              </div>
+
+              <h5 className="text-muted mt-1 mb-1">{user?.email || "N/A"}</h5>
             </div>
+
             <div className="col-md-8">
               <ul className="list-group list-group-flush text-start">
                 <li className="list-group-item">
