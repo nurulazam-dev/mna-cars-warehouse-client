@@ -33,7 +33,6 @@ const AddItem = () => {
       <h2 className="text-center mb-2 text-primary fw-bold">Add New Item</h2>
       <div className="card shadow-sm border-0 p-4">
         <form onSubmit={handleSubmit(handleOnSubmit)}>
-          {/* Row 1: Name & Supplier Email */}
           <div className="row mb-3">
             <div className="col-md-3">
               <label className="form-label">Item Name / Model</label>
@@ -73,7 +72,6 @@ const AddItem = () => {
             </div>
           </div>
 
-          {/* Row 2: Price, Quantity, Image */}
           <div className="row mb-3">
             <div className="col-md-3">
               <label className="form-label">Price</label>
@@ -112,8 +110,6 @@ const AddItem = () => {
               />
             </div>
           </div>
-
-          {/* Row 3: Badge, Brand, Year */}
           <div className="row mb-3">
             <div className="col-md-3">
               <label className="form-label">Badge</label>
@@ -154,7 +150,6 @@ const AddItem = () => {
             </div>
           </div>
 
-          {/* Row 6: Specs */}
           <div className="mb-3">
             <label className="form-label">Specifications</label>
             <div className="row">
@@ -171,7 +166,6 @@ const AddItem = () => {
             </div>
           </div>
 
-          {/* Submit */}
           <div className="text-center">
             <button type="submit" className="btn btn-primary px-5 py-2 fs-5">
               Add Item
