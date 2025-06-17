@@ -36,12 +36,15 @@ const ManageItems = () => {
               <table className="table table-striped align-middle table-hover">
                 <thead className="table-dark">
                   <tr>
-                    <th>No</th>
-                    <th>Item Img</th>
-                    <th>Item Name</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Year</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Seller</th>
+                    <th>Color</th>
+                    <th>Transmission</th>
+                    <th>Supplier</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -49,19 +52,15 @@ const ManageItems = () => {
                   {items?.map((item, index) => (
                     <tr key={item?._id}>
                       <td>{index + 1}</td>
-                      <td>
-                        <img
-                          src={item?.img}
-                          alt={item?.name}
-                          width="50"
-                          height="40"
-                          style={{ objectFit: "cover", borderRadius: "5px" }}
-                        />
-                      </td>
+
                       <td>{item?.name}</td>
+                      <td>{item?.brand}</td>
+                      <td>{item?.year}</td>
                       <td>${item?.price}</td>
                       <td>{item?.quantity}</td>
-                      <td>{item?.sellerEmail}</td>
+                      <td>{item?.color}</td>
+                      <td>{item?.transmission}</td>
+                      <td>{item?.supplierEmail}</td>
                       <td>
                         <div className="d-flex gap-2">
                           <Button
