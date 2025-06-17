@@ -51,33 +51,52 @@ const Profile = () => {
     }
   };
 
+  console.log(user);
+
   return (
     <section className="container">
       <h2 className="text-center text-primary mb-2">My Profile</h2>
 
       {/* Profile Overview */}
-      <div className="card shadow mb-4">
-        <div className="card-body d-flex align-items-center flex-wrap">
-          <div className="me-4">
-            <img
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-              alt="profile"
-              className="rounded-circle"
-              width="120"
-              height="120"
-            />
-          </div>
-          <div>
-            <h4 className="mb-1">{user?.name}</h4>
-            <p className="mb-1">
-              <strong>Email:</strong> {user?.email}
-            </p>
-            <p className="mb-1">
-              <strong>Role:</strong> {user?.role}
-            </p>
-            <p className="mb-1">
-              <strong>Phone:</strong> {user?.phone || "N/A"}
-            </p>
+      <div className="card shadow-sm mb-4 border-0">
+        <div className="card-body p-4 text-center">
+          <div className="row">
+            <div className="col-md-4">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="User Avatar"
+                className="rounded-circle"
+                style={{ width: "120px", height: "120px", objectFit: "cover" }}
+              />
+              <h5 className="text-muted mb-1">{user?.email || "N/A"}</h5>
+
+              <span
+                className={`badge ${
+                  user?.role === "admin" ? "bg-success" : "bg-primary"
+                }`}
+              >
+                {user?.role?.toUpperCase() || "USER"}
+              </span>
+            </div>
+            <div className="col-md-8">
+              <ul className="list-group list-group-flush text-start">
+                <li className="list-group-item">
+                  <strong>Name:</strong> {user?.name || "Unnamed User"}
+                </li>
+                <li className="list-group-item">
+                  <strong>Phone:</strong> {user?.phone || "N/A"}
+                </li>
+                <li className="list-group-item">
+                  <strong>Address:</strong> {user?.address || "Not set"}
+                </li>
+                <li className="list-group-item">
+                  <strong>Joined:</strong>{" "}
+                  {user?.createdAt
+                    ? new Date(user.createdAt).toLocaleDateString()
+                    : "Unknown"}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
