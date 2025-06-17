@@ -3,7 +3,14 @@ import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../../../config";
 
 const AddItem = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const currentYear = new Date().getFullYear();
 
   const handleOnSubmit = async (data) => {
     try {
@@ -40,8 +47,11 @@ const AddItem = () => {
                 type="text"
                 className="form-control"
                 placeholder="Car Name / Model"
-                {...register("name", { required: true })}
+                {...register("name", { required: "Item name is required" })}
               />
+              {errors.name && (
+                <small className="text-danger">{errors.name.message}</small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Image URL</label>
@@ -49,8 +59,11 @@ const AddItem = () => {
                 type="text"
                 className="form-control"
                 placeholder="Image URL"
-                {...register("img")}
+                {...register("img", { required: "Image URL is required" })}
               />
+              {errors.img && (
+                <small className="text-danger">{errors.img.message}</small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Supplier Email</label>
@@ -58,8 +71,19 @@ const AddItem = () => {
                 type="email"
                 className="form-control"
                 placeholder="Supplier Email"
-                {...register("supplierEmail")}
+                {...register("supplierEmail", {
+                  required: "Supplier email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Invalid email format",
+                  },
+                })}
               />
+              {errors.supplierEmail && (
+                <small className="text-danger">
+                  {errors.supplierEmail.message}
+                </small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Color</label>
@@ -67,8 +91,11 @@ const AddItem = () => {
                 type="text"
                 className="form-control"
                 placeholder="e.g. Black"
-                {...register("color")}
+                {...register("color", { required: "Color is required" })}
               />
+              {errors.color && (
+                <small className="text-danger">{errors.color.message}</small>
+              )}
             </div>
           </div>
 
@@ -79,8 +106,14 @@ const AddItem = () => {
                 type="number"
                 className="form-control"
                 placeholder="Price"
-                {...register("price", { required: true })}
+                {...register("price", {
+                  required: "Price is required",
+                  min: { value: 1, message: "Price must be positive" },
+                })}
               />
+              {errors.price && (
+                <small className="text-danger">{errors.price.message}</small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Quantity</label>
@@ -88,8 +121,14 @@ const AddItem = () => {
                 type="number"
                 className="form-control"
                 placeholder="Quantity"
-                {...register("quantity")}
+                {...register("quantity", {
+                  required: "Quantity is required",
+                  min: { value: 1, message: "Quantity must be at least 1" },
+                })}
               />
+              {errors.quantity && (
+                <small className="text-danger">{errors.quantity.message}</small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Year</label>
@@ -97,8 +136,18 @@ const AddItem = () => {
                 type="number"
                 className="form-control"
                 placeholder="e.g. 2022"
-                {...register("year")}
+                {...register("year", {
+                  required: "Year is required",
+                  min: { value: 1990, message: "Year must be after 1990" },
+                  max: {
+                    value: currentYear,
+                    message: `Year can't be beyond ${currentYear}`,
+                  },
+                })}
               />
+              {errors.year && (
+                <small className="text-danger">{errors.year.message}</small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Brand</label>
@@ -106,10 +155,14 @@ const AddItem = () => {
                 type="text"
                 className="form-control"
                 placeholder="Brand Name"
-                {...register("brand")}
+                {...register("brand", { required: "Brand is required" })}
               />
+              {errors.brand && (
+                <small className="text-danger">{errors.brand.message}</small>
+              )}
             </div>
           </div>
+
           <div className="row mb-3">
             <div className="col-md-3">
               <label className="form-label">Badge</label>
@@ -123,12 +176,22 @@ const AddItem = () => {
             </div>
             <div className="col-md-3">
               <label className="form-label">Transmission</label>
-              <select className="form-select" {...register("transmission")}>
+              <select
+                className="form-select"
+                {...register("transmission", {
+                  required: "Transmission type is required",
+                })}
+              >
                 <option value="">-- Select Type --</option>
                 <option value="Automatic">Automatic</option>
                 <option value="Manual">Manual</option>
                 <option value="Semi-Automatic">Semi-Automatic</option>
               </select>
+              {errors.transmission && (
+                <small className="text-danger">
+                  {errors.transmission.message}
+                </small>
+              )}
             </div>
             <div className="col-md-3">
               <label className="form-label">Mileage</label>
@@ -145,8 +208,11 @@ const AddItem = () => {
                 type="text"
                 className="form-control"
                 placeholder="e.g. Dhaka, Bangladesh"
-                {...register("location")}
+                {...register("location", { required: "Location is required" })}
               />
+              {errors.location && (
+                <small className="text-danger">{errors.location.message}</small>
+              )}
             </div>
           </div>
 
