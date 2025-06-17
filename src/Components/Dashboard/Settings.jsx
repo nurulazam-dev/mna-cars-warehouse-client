@@ -6,7 +6,6 @@ import { LOCAL_BASE_URL } from "../../config";
 
 const Settings = () => {
   const { user } = useAuth();
-
   const { register, handleSubmit, reset, setValue } = useForm();
 
   useEffect(() => {
@@ -17,82 +16,77 @@ const Settings = () => {
 
   const onSubmit = async (data) => {
     if (data.newPassword !== data.confirmPassword) {
-      toast.error("New Password and Confirm Password do not match");
+      toast.error("Passwords do not match.");
       return;
     }
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${user._id}/settings`, {
+
+      const userId = user._id || user.id;
+
+      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}/settings`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          email: data.email,
-          currentPassword: data.currentPassword,
           newPassword: data.newPassword,
         }),
       });
 
+      const result = await res.json();
+
       if (res.ok) {
-        toast.success("Profile updated successfully!");
-        reset();
-        setValue("email", data.email);
+        toast.success("Password updated successfully.");
+        reset({ newPassword: "", confirmPassword: "", email: user.email });
       } else {
-        const errData = await res.json();
-        toast.error(errData.message || "Failed to update");
+        toast.error(result.message || "Failed to update password.");
       }
-    } catch (err) {
-      toast.error("Error updating settings");
+    } catch (error) {
+      toast.error("An error occurred while updating password.");
     }
   };
 
   return (
-    <div className="container">
-      <h2 className="text-center text-primary mb-2">Account Settings</h2>
+    <section className="container">
+      <h2 className="text-center text-primary mb-4">Account Settings</h2>
 
       <div className="card shadow-sm border-0 p-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <h5 className="mb-3 text-secondary fw-bold">Update Email</h5>
+            <label className="form-label fw-semibold">Email Address</label>
             <input
-              className="form-control form-control-lg"
               type="email"
-              {...register("email", { required: true })}
-              placeholder="Email Address"
+              className="form-control form-control-lg"
+              {...register("email")}
+              readOnly
+              disabled
             />
           </div>
 
           <div className="mb-4 border-top pt-4">
-            <h5 className="mb-3 text-secondary fw-bold">Change Password</h5>
+            <h5 className="text-secondary fw-bold mb-3">Change Password</h5>
 
             <div className="row">
-              <div className="col-md-4 mb-3">
+              <div className="col-md-6 mb-3">
+                <label className="form-label">New Password</label>
                 <input
-                  className="form-control form-control-lg"
                   type="password"
-                  {...register("currentPassword", { required: true })}
-                  placeholder="Current Password"
-                />
-              </div>
-
-              <div className="col-md-4 mb-3">
-                <input
                   className="form-control form-control-lg"
-                  type="password"
+                  placeholder="Enter new password"
                   {...register("newPassword", { required: true })}
-                  placeholder="New Password"
                 />
               </div>
 
-              <div className="col-md-4 mb-3">
+              <div className="col-md-6 mb-3">
+                <label className="form-label">Confirm New Password</label>
                 <input
-                  className="form-control form-control-lg"
                   type="password"
+                  className="form-control form-control-lg"
+                  placeholder="Confirm new password"
                   {...register("confirmPassword", { required: true })}
-                  placeholder="Confirm New Password"
                 />
               </div>
             </div>
@@ -105,7 +99,7 @@ const Settings = () => {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
