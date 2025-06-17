@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -7,6 +7,7 @@ import { LOCAL_BASE_URL } from "../../config";
 const Profile = () => {
   const { user, refetchUser } = useAuth();
   const { register, handleSubmit, reset } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -14,14 +15,24 @@ const Profile = () => {
         name: user?.name || "",
         email: user?.email || "",
         phone: user?.phone || "",
+        address: user?.address || "",
       });
     }
   }, [user, reset]);
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true);
+
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${user._id}`, {
+      const userId = user?._id || user?.id;
+
+      if (!userId || typeof userId !== "string") {
+        toast.error("Invalid user ID");
+        return;
+      }
+
+      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -31,26 +42,29 @@ const Profile = () => {
       });
 
       if (res.ok) {
-        toast.success("Profile updated successfully!");
+        toast.success("Profile updated successfully");
         refetchUser();
       } else {
-        toast.error("Failed to update profile");
+        const errData = await res.json();
+        toast.error(errData?.message || "Failed to update profile");
       }
-    } catch (err) {
-      toast.error("Error updating profile");
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="container">
+    <section className="container">
       <h2 className="text-center text-primary mb-2">My Profile</h2>
 
-      {/*  user info */}
+      {/* Profile Info */}
       <div className="card shadow mb-4">
         <div className="card-body d-flex align-items-center flex-wrap">
           <div className="me-4">
             <img
-              src="https://i.ibb.co/2S5NQHd/avatar.png"
+              src="https://randomuser.me/api/portraits/men/32.jpg"
               alt="profile"
               className="rounded-circle"
               width="120"
@@ -72,7 +86,7 @@ const Profile = () => {
         </div>
       </div>
 
-      {/*  update form */}
+      {/* Update Form */}
       <div className="card shadow">
         <div className="card-body">
           <h5 className="mb-4">Update Your Profile</h5>
@@ -92,7 +106,7 @@ const Profile = () => {
                 <input
                   className="form-control"
                   type="email"
-                  {...register("email", { required: true })}
+                  {...register("email")}
                   readOnly
                 />
               </div>
@@ -119,14 +133,18 @@ const Profile = () => {
             </div>
 
             <div className="text-end">
-              <button type="submit" className="btn btn-primary px-4">
-                Update Profile
+              <button
+                type="submit"
+                className="btn btn-primary px-4"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Updating..." : "Update Profile"}
               </button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
