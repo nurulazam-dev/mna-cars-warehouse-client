@@ -4,6 +4,7 @@ import { LOCAL_BASE_URL } from "../config";
 
 export const useUsers = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchUsers = async () => {
     try {
@@ -18,6 +19,8 @@ export const useUsers = () => {
       setUsers(data);
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -25,5 +28,5 @@ export const useUsers = () => {
     fetchUsers();
   }, []);
 
-  return { users, refetch: fetchUsers };
+  return { users, loading, refetch: fetchUsers };
 };
