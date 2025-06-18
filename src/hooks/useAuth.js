@@ -51,7 +51,7 @@ export const useAuth = () => {
     }
   };
 
-  const register = async (data) => {
+  const registerUser = async (data) => {
     try {
       const res = await fetch(`${LOCAL_BASE_URL}/auth/register`, {
         method: "POST",
@@ -74,5 +74,5 @@ export const useAuth = () => {
     toast.success("Logged out");
   };
 
-  return { user, token, isAdmin, login, register, refetchUser, logout };
+  return { user, token, isAdmin, login, registerUser, refetchUser, logout };
 };
