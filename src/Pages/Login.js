@@ -5,14 +5,14 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const { login } = useAuth();
 
-  const onSubmit = (data) => {
+  const handleLogin = (data) => {
     login(data);
   };
 
   return (
     <div className="container mt-5">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <div className="mb-3">
           <label>Email</label>
           <input className="form-control" {...register("email")} required />
