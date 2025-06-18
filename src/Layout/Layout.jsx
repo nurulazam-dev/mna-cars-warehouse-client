@@ -8,9 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 const Layout = () => {
   const location = useLocation();
 
-  const hideFooter = ["/dashboard", "/login", "/register"].some((path) =>
-    location.pathname.startsWith(path)
-  );
+  const hideFooter = [
+    "/dashboard",
+    "/login",
+    "/register",
+    "/forgot-password",
+  ].some((path) => location.pathname.startsWith(path));
 
   return (
     <>

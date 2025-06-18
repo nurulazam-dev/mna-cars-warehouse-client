@@ -22,15 +22,13 @@ import Overview from "../Components/Dashboard/Overview";
 import ManageItems from "../Components/Dashboard/Admin/ManageItems/ManageItems";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders/ManageOrders";
 import Profile from "../Components/Dashboard/Profile";
-// import LoginCopy from "../Components/Login/v1/LoginCopy";
-// import RegisterCopy from "../Components/Login/v1/RegisterCopy";
+import ForgotPassword from "../Pages/ForgotPassword";
+import ResetPassword from "../Pages/ResetPassword";
 
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      {/* <Route path="/loginCopy" element={<LoginCopy />}></Route> */}
-      {/* <Route path="/registerCopy" element={<RegisterCopy />}></Route> */}
       <Route path="/home" element={<Home />}></Route>
       <Route path="/blogs" element={<Blogs />}></Route>
       <Route path="/items" element={<Items />}></Route>
@@ -39,7 +37,8 @@ const Routers = () => {
       <Route path="/contact-dealer" element={<ContactDealer />} />
       <Route path="/register" element={<Register />}></Route>
       <Route path="/login" element={<Login />}></Route>
-
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
       {/* ==========================
                 Admin panel
       ========================== */}
