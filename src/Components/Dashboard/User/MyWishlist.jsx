@@ -25,8 +25,15 @@ const MyWishlist = () => {
                 <div className="col-md-4 mb-3" key={item?._id}>
                   <div className="card">
                     <div className="card-body">
+                      <img
+                        src={item?.img}
+                        alt={item?.title}
+                        style={{
+                          height: 60,
+                        }}
+                      />
                       <h5>{item?.title}</h5>
-                      <p>{item?.description}</p>
+                      <p>{item?._id}</p>
                       <button
                         className="btn btn-danger btn-sm"
                         onClick={() => deleteWishlistItem(item?._id)}

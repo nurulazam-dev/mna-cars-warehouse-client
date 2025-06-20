@@ -12,6 +12,8 @@ export const items = [
     color: "Black",
     location: "New York",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a02",
@@ -26,6 +28,8 @@ export const items = [
     color: "White",
     location: "Los Angeles",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 50,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a03",
@@ -40,6 +44,8 @@ export const items = [
     color: "Red",
     location: "Chicago",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a04",
@@ -54,6 +60,8 @@ export const items = [
     color: "Silver",
     location: "Houston",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a05",
@@ -68,6 +76,8 @@ export const items = [
     color: "Blue",
     location: "Miami",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a06",
@@ -82,6 +92,8 @@ export const items = [
     color: "Yellow",
     location: "Dallas",
     transmission: "Manual",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a07",
@@ -96,6 +108,8 @@ export const items = [
     color: "Green",
     location: "San Francisco",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a08",
@@ -110,6 +124,8 @@ export const items = [
     color: "White",
     location: "Seattle",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a09",
@@ -124,6 +140,8 @@ export const items = [
     color: "Gray",
     location: "Boston",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0a",
@@ -138,6 +156,8 @@ export const items = [
     color: "Red",
     location: "Denver",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0b",
@@ -152,6 +172,8 @@ export const items = [
     color: "Black",
     location: "Portland",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0c",
@@ -166,6 +188,8 @@ export const items = [
     color: "White",
     location: "Atlanta",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0d",
@@ -180,6 +204,8 @@ export const items = [
     color: "Blue",
     location: "Orlando",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0e",
@@ -194,6 +220,8 @@ export const items = [
     color: "Green",
     location: "Salt Lake City",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a0f",
@@ -208,6 +236,8 @@ export const items = [
     color: "Gray",
     location: "Phoenix",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a10",
@@ -222,6 +252,8 @@ export const items = [
     color: "White",
     location: "San Diego",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a11",
@@ -236,6 +268,8 @@ export const items = [
     color: "Black",
     location: "Las Vegas",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a12",
@@ -250,6 +284,8 @@ export const items = [
     color: "Silver",
     location: "Detroit",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a13",
@@ -264,6 +300,8 @@ export const items = [
     color: "Red",
     location: "Charlotte",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a14",
@@ -278,6 +316,8 @@ export const items = [
     color: "Blue",
     location: "Minneapolis",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
   {
     _id: "665a1f1e1a1a1a1a1a1a1a15",
@@ -292,5 +332,7 @@ export const items = [
     color: "Green",
     location: "Houston",
     transmission: "Automatic",
+    supplierEmail: "",
+    quantity: 5,
   },
 ];
