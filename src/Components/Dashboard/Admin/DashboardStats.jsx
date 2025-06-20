@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import { LOCAL_BASE_URL } from "../../../config";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../../hooks/useAuth"; */
+import InfoContainer from "./DashboardHome/InfoContainer";
+import DistributionPieChart from "./DashboardHome/DistributionPieChart";
+import { stats } from "../../../assets/data/statsData";
 
 const DashboardStats = () => {
-  const { token } = useAuth();
+  /*   const { token } = useAuth();
   const [stats, setStats] = useState({ users: 0, items: 0, orders: 0 });
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const DashboardStats = () => {
       setStats(data);
     };
     fetchStats();
-  }, [token]);
+  }, [token]); */
 
   return (
     <div>
@@ -27,7 +30,7 @@ const DashboardStats = () => {
           <div className="card text-white bg-primary mb-3">
             <div className="card-header">Total Users</div>
             <div className="card-body">
-              <h4>{stats?.users}</h4>
+              <h4>{stats[0]?.users}</h4>
             </div>
           </div>
         </div>
@@ -36,7 +39,7 @@ const DashboardStats = () => {
           <div className="card text-white bg-success mb-3">
             <div className="card-header">Total Items</div>
             <div className="card-body">
-              <h4>{stats?.items}</h4>
+              <h4>{stats[0]?.items}</h4>
             </div>
           </div>
         </div>
@@ -45,11 +48,41 @@ const DashboardStats = () => {
           <div className="card text-white bg-warning mb-3">
             <div className="card-header">Total Orders</div>
             <div className="card-body">
-              <h4>{stats?.orders}</h4>
+              <h4>{stats[0]?.orders}</h4>
             </div>
           </div>
         </div>
       </div>
+      <div className="row mt-2">
+        <div className="col-md-4">
+          <div className="card text-white bg-danger mb-3">
+            <div className="card-header">Pending Orders</div>
+            <div className="card-body">
+              <h4>{stats[0]?.pendingOrders || 0}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-4">
+          <div className="card text-white bg-info mb-3">
+            <div className="card-header">Delivered Orders</div>
+            <div className="card-body">
+              <h4>{stats[0]?.deliveredOrders || 0}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-4">
+          <div className="card text-white bg-dark mb-3">
+            <div className="card-header">Total Revenue</div>
+            <div className="card-body">
+              <h4>${stats[0]?.revenue?.toFixed(2) || 0}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <InfoContainer />
+      <DistributionPieChart />
     </div>
   );
 };
