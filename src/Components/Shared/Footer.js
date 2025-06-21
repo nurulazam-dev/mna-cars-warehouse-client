@@ -148,7 +148,7 @@ const Footer = () => {
           </div>
           <div className="col-md-6 small text-center text-md-end">
             <span>
-              Designed by{" "}
+              Designed & Developed by{" "}
               <a
                 href="https://www.facebook.com/mnaofficialbd"
                 className="text-warning text-decoration-none"

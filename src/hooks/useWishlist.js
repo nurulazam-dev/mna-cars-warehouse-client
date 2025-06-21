@@ -23,6 +23,30 @@ export const useWishlist = (email, token) => {
     }
   };
 
+  const addToWishlistItem = async (wishlistItem, token) => {
+    try {
+      const response = await fetch(`${LOCAL_BASE_URL}/wishlist`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(wishlistItem),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to add item to wishlist.");
+      }
+      toast.success("Successfully added Item");
+      return data;
+    } catch (err) {
+      toast.error(err.message);
+      throw err;
+    }
+  };
+
   const deleteWishlistItem = async (id) => {
     try {
       const res = await fetch(`${LOCAL_BASE_URL}/wishlist/${id}`, {
@@ -45,5 +69,11 @@ export const useWishlist = (email, token) => {
     }
   }, [email, token]);
 
-  return { wishlist, loading, deleteWishlistItem, refresh: fetchWishlist };
+  return {
+    wishlist,
+    loading,
+    addToWishlistItem,
+    deleteWishlistItem,
+    refresh: fetchWishlist,
+  };
 };

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useItems } from "../../hooks/useItems";
 import Loader from "../../Components/Shared/Loader/Loader";
 import { useAuth } from "../../hooks/useAuth";
-import { LOCAL_BASE_URL } from "../../config";
+import { useWishlist } from "../../hooks/useWishlist";
 
 const Items = () => {
+  const { user, token } = useAuth();
   const { items, loading } = useItems();
+  const { addToWishlistItem } = useWishlist();
 
   const uniqueBrands = [...new Set(items.map((item) => item.brand))].sort();
   const uniqueColors = [...new Set(items.map((item) => item.color))].sort();
@@ -17,7 +19,7 @@ const Items = () => {
   const [search, setSearch] = useState("");
   const [brand, setBrand] = useState("");
   // const [price, setPrice] = useState(maxPrice);
-  const [price, setPrice] = useState(100000);
+  const [price, setPrice] = useState(900000);
   const [transmission, setTransmission] = useState("");
   const [color, setColor] = useState("");
 
@@ -39,32 +41,6 @@ const Items = () => {
     Special: "warning",
   };
 
-  const { user, token } = useAuth();
-
-  const addToWishlist = async (wishlistItem, token) => {
-    try {
-      const response = await fetch(`${LOCAL_BASE_URL}/wishlist`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(wishlistItem),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to add item to wishlist.");
-      }
-
-      return data;
-    } catch (error) {
-      console.error("Error adding to wishlist:", error);
-      throw error;
-    }
-  };
-
   const handleAddWishlist = (item) => {
     if (!user) {
       alert("Please login to add items to your wishlist.");
@@ -77,15 +53,7 @@ const Items = () => {
       img: item?.img,
       productId: item?._id,
     };
-
-    addToWishlist(wishlistItem, token)
-      .then(() => {
-        alert("Item added to wishlist!");
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Failed to add to wishlist.");
-      });
+    addToWishlistItem(wishlistItem, token);
   };
 
   return (
