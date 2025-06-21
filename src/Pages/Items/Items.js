@@ -16,7 +16,8 @@ const Items = () => {
 
   const [search, setSearch] = useState("");
   const [brand, setBrand] = useState("");
-  const [price, setPrice] = useState(maxPrice);
+  // const [price, setPrice] = useState(maxPrice);
+  const [price, setPrice] = useState(100000);
   const [transmission, setTransmission] = useState("");
   const [color, setColor] = useState("");
 
@@ -108,8 +109,8 @@ const Items = () => {
             ) : (
               <div>
                 {/* =====================
-           Search & Filter Bar
-        ===================== */}
+                    Search & Filter Bar
+                  ===================== */}
                 <div className="row mb-4">
                   <div className="col-12">
                     <div className="p-4 bg-white rounded-4 shadow-sm d-flex flex-wrap gap-3 align-items-center justify-content-between animate__animated animate__fadeInDown">
@@ -165,6 +166,7 @@ const Items = () => {
                           type="range"
                           min={minPrice}
                           max={maxPrice}
+                          // value={price === "-Infinity" ? 10000 : price}
                           value={price}
                           onChange={(e) => setPrice(Number(e.target.value))}
                           className="form-range"
@@ -178,8 +180,8 @@ const Items = () => {
                   </div>
                 </div>
                 {/* =====================
-               Items Grid
-        ===================== */}
+                        Items Grid
+                 ===================== */}
                 <div className="row g-4">
                   {filteredItems.length === 0 && (
                     <div className="col-12 text-center text-danger fs-5">
@@ -281,14 +283,6 @@ const Items = () => {
             )}
           </div>
         )}
-
-        {/* =====================
-            Animate.css CDN
-     ===================== */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        />
       </div>
     </section>
   );
