@@ -9,7 +9,9 @@ const MyWishlist = () => {
     token
   );
 
-  // const subTotal=wishlist?.price
+  const subtotal = wishlist?.reduce((acc, p) => {
+    return p ? acc + p?.price : acc;
+  }, 0);
 
   return (
     <section className="container">
@@ -98,10 +100,7 @@ const MyWishlist = () => {
                   </div>
                   <div className="d-flex justify-content-between mb-4">
                     <h2 className="fs-5">Subtotal : </h2>
-                    <h3 className="fs-5">
-                      ${/* {subTotal} */}
-                      1200{" "}
-                    </h3>
+                    <h3 className="fs-5">$ {subtotal?.toLocaleString()}</h3>
                   </div>
                   <button className="btn btn-success btn-md px-4 py-2">
                     Continue to Checkout
