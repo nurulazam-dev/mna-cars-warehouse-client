@@ -48,6 +48,47 @@ const MyWishlist = () => {
           )}
         </div>
       )}
+
+      <div className="border row">
+        <div className="col-md-8 border shadow">
+          <h4 className="fs-6 text-primary">
+            My wishlist Items: ({wishlist ? wishlist?.length : 0})
+          </h4>
+          {wishlist?.map((item) => (
+            <div className="card mb-3 m-2" key={item?._id}>
+              <div className="row p-3">
+                <div className="col-md-2">
+                  <img
+                    src={item?.img}
+                    alt={item?.title}
+                    className="rounded"
+                    style={{
+                      height: 60,
+                    }}
+                  />
+                </div>
+                <div className="col-md-8">
+                  <h5 className="fs-6 mb-0">{item?.title}</h5>
+                  <span style={{ fontSize: 14, color: "GrayText" }}>
+                    Brand : {item?.brand}
+                  </span>
+                  <p
+                    style={{ fontSize: 13, color: "GrayText" }}
+                    className="m-0"
+                  >
+                    Supplier : {item?.supplierEmail}
+                  </p>
+                </div>
+                <div className="col-md-2">
+                  <h6 className="fs-6">$ {item?.price} </h6>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="col-md-4 border shadow">continue to checkout</div>
+      </div>
     </section>
   );
 };

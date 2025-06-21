@@ -50,6 +50,9 @@ const Items = () => {
     const wishlistItem = {
       email: user.email,
       title: item?.title || item?.name,
+      brand: item?.brand,
+      supplierEmail: item?.supplierEmail,
+      price: item?.price,
       img: item?.img,
       productId: item?._id,
     };
