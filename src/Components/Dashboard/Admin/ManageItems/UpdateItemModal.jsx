@@ -58,8 +58,8 @@ const UpdateItemModal = ({ show, onHide, item, refetch }) => {
               <Form.Control type="text" {...register("color")} />
             </Col>
             <Col md={4}>
-              <Form.Label>Seller Email</Form.Label>
-              <Form.Control type="email" {...register("sellerEmail")} />
+              <Form.Label>Supplier Email</Form.Label>
+              <Form.Control type="email" {...register("supplierEmail")} />
             </Col>
           </Row>
 
