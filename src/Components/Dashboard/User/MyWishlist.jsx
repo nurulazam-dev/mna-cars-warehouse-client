@@ -1,6 +1,8 @@
 import { useWishlist } from "../../../hooks/useWishlist";
 import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../Shared/Loader/Loader";
+import { LOCAL_BASE_URL } from "../../../config";
+import { toast } from "react-toastify";
 
 const MyWishlist = () => {
   const { user, token } = useAuth();
@@ -10,6 +12,33 @@ const MyWishlist = () => {
   );
 
   const subtotal = wishlist?.reduce((acc, item) => acc + (item?.price || 0), 0);
+
+  const checkoutHandler = async () => {
+    try {
+      const res = await fetch(
+        // `${LOCAL_BASE_URL}/orders/checkout-session/${orderId}`,
+        `${LOCAL_BASE_URL}/orders/checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(),
+        }
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.message + " Please try again");
+      }
+      if (data?.session?.url) {
+        window.location.href = data?.session?.url;
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   if (loading) return <Loader />;
 
@@ -87,7 +116,10 @@ const MyWishlist = () => {
                 </span>
               </div>
 
-              <button className="btn btn-success w-100 rounded-pill py-2 fw-semibold">
+              <button
+                className="btn btn-success w-100 rounded-pill py-2 fw-semibold"
+                onClick={checkoutHandler}
+              >
                 Continue to Checkout
               </button>
             </div>
