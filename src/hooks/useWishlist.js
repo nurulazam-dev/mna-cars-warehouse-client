@@ -63,6 +63,20 @@ export const useWishlist = (email, token) => {
     }
   };
 
+  const clearWishlist = async () => {
+    try {
+      await fetch(`${LOCAL_BASE_URL}/wishlist/clear/${email}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setWishlist([]);
+    } catch (err) {
+      console.error("Failed to clear wishlist:", err);
+    }
+  };
+
   useEffect(() => {
     if (email && token) {
       fetchWishlist();
@@ -74,6 +88,7 @@ export const useWishlist = (email, token) => {
     loading,
     addToWishlistItem,
     deleteWishlistItem,
+    clearWishlist,
     refresh: fetchWishlist,
   };
 };
