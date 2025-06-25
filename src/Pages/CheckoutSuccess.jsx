@@ -20,9 +20,15 @@ const CheckoutSuccess = () => {
           </p>
           <h6>Have a great day!</h6>
         </div>
-        <Link to="/home" className="btn btn-primary w-100 py-2">
-          Go Back To Home
-        </Link>
+
+        <div className="d-flex justify-content-center gap-3">
+          <Link to="/orders" className="btn btn-outline-primary rounded-pill">
+            View My Orders
+          </Link>
+          <Link to="/" className="btn btn-primary rounded-pill">
+            Back to Home
+          </Link>
+        </div>
       </div>
     </section>
   );

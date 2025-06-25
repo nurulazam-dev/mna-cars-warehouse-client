@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const MyWishlist = () => {
   const { user, token } = useAuth();
-  const { wishlist, loading, deleteWishlistItem } = useWishlist(
+  const { wishlist, loading, deleteWishlistItem, clearWishlist } = useWishlist(
     user?.email,
     token
   );
@@ -49,11 +49,16 @@ const MyWishlist = () => {
       }
 
       if (data?.session?.url) {
-        // Stripe checkout session
         window.location.href = data.session.url;
       } else {
         toast.success("Order placed successfully.");
-        // Optionally, clear wishlist or redirect
+        if (typeof clearWishlist === "function") {
+          clearWishlist();
+
+          setTimeout(() => {
+            window.location.href = "/checkout-success";
+          }, 1500);
+        }
       }
     } catch (err) {
       toast.error(err.message);
