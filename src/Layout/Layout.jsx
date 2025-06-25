@@ -13,6 +13,7 @@ const Layout = () => {
     "/login",
     "/register",
     "/forgot-password",
+    "/checkout-success",
   ].some((path) => location.pathname.startsWith(path));
 
   return (

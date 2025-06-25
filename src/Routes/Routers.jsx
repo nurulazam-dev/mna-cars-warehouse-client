@@ -24,6 +24,7 @@ import ManageOrders from "../Components/Dashboard/Admin/ManageOrders/ManageOrder
 import Profile from "../Components/Dashboard/Profile";
 import ForgotPassword from "../Pages/ForgotPassword";
 import ResetPassword from "../Pages/ResetPassword";
+import CheckoutSuccess from "../Pages/CheckoutSuccess";
 
 const Routers = () => {
   return (
@@ -39,6 +40,7 @@ const Routers = () => {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/checkout-success" element={<CheckoutSuccess />} />
       {/* ==========================
                 Admin panel
       ========================== */}
