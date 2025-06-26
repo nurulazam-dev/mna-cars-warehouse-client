@@ -3,6 +3,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../Shared/Loader/Loader";
 import { LOCAL_BASE_URL } from "../../../config";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const MyWishlist = () => {
   const { user, token } = useAuth();
@@ -10,6 +11,7 @@ const MyWishlist = () => {
     user?.email,
     token
   );
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   const subtotal = wishlist?.reduce((acc, item) => acc + (item?.price || 0), 0);
 
@@ -17,7 +19,7 @@ const MyWishlist = () => {
     if (!wishlist || wishlist.length === 0) {
       return toast.error("Your wishlist is empty.");
     }
-
+    setCheckoutLoading(true);
     try {
       const response = await fetch(
         `${LOCAL_BASE_URL}/orders/checkout-session`,
@@ -28,7 +30,6 @@ const MyWishlist = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            email: user?.email,
             items: wishlist.map((item) => ({
               productId: item?.productId || item?._id,
               title: item?.title,
@@ -48,21 +49,21 @@ const MyWishlist = () => {
         throw new Error(data?.message || "Checkout failed.");
       }
 
-      if (data?.session?.url) {
-        window.location.href = data.session.url;
+      if (data?.url) {
+        window.location.href = data.url;
       } else {
         toast.success("Order placed successfully.");
         if (typeof clearWishlist === "function") {
           clearWishlist();
-
           setTimeout(() => {
             window.location.href = "/checkout-success";
           }, 1500);
         }
       }
     } catch (err) {
-      toast.error(err.message);
+      toast.error(err.message || "Checkout failed.");
     }
+    setCheckoutLoading(false);
   };
 
   if (loading) return <Loader />;
@@ -147,8 +148,9 @@ const MyWishlist = () => {
               <button
                 className="btn btn-success w-100 rounded-pill py-2 fw-semibold"
                 onClick={checkoutHandler}
+                disabled={checkoutLoading}
               >
-                Continue to Checkout
+                {checkoutLoading ? "Processing..." : "Continue to Checkout"}
               </button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../config";
 
@@ -6,7 +6,7 @@ export const useWishlist = (email, token) => {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchWishlist = async () => {
+  const fetchWishlist = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch(`${LOCAL_BASE_URL}/wishlist/${email}`, {
@@ -21,7 +21,7 @@ export const useWishlist = (email, token) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [email, token]);
 
   const addToWishlistItem = async (wishlistItem, token) => {
     try {
@@ -81,7 +81,7 @@ export const useWishlist = (email, token) => {
     if (email && token) {
       fetchWishlist();
     }
-  }, [email, token]);
+  }, [email, token, fetchWishlist]);
 
   return {
     wishlist,
