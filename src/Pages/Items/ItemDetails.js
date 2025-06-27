@@ -1,6 +1,6 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { items } from "../../assets/data/itemsData";
+import { Link, useParams } from "react-router-dom";
+import { useItem } from "../../hooks/useItem";
+import Loader from "../../Components/Shared/Loader/Loader";
 
 const badgeColors = {
   "New Arrival": "primary",
@@ -11,7 +11,7 @@ const badgeColors = {
 
 const ItemDetails = () => {
   const { id } = useParams();
-  const item = items.find((item) => item._id === id);
+  const { item, loading } = useItem(id);
 
   if (!item) {
     return (
@@ -29,9 +29,13 @@ const ItemDetails = () => {
         minHeight: "100vh",
       }}
     >
+      {loading && <Loader />}
       <div className="container">
         <div className="mb-2">
-          <Link to="/" className="btn btn-outline-primary rounded-pill px-4">
+          <Link
+            to="/items"
+            className="btn btn-outline-primary rounded-pill px-4"
+          >
             <i className="bi bi-arrow-left me-2"></i>Back to Items
           </Link>
         </div>
