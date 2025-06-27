@@ -1,6 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useItem } from "../../hooks/useItem";
 import Loader from "../../Components/Shared/Loader/Loader";
+import { useAuth } from "../../hooks/useAuth";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { LOCAL_BASE_URL } from "../../config";
 
 const badgeColors = {
   "New Arrival": "primary",
@@ -12,6 +16,57 @@ const badgeColors = {
 const ItemDetails = () => {
   const { id } = useParams();
   const { item, loading } = useItem(id);
+  const { user, token } = useAuth();
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
+  const checkoutHandler = async () => {
+    if (!user || !token) {
+      return toast.error("You must be logged in to proceed.");
+    }
+    setCheckoutLoading(true);
+    try {
+      const response = await fetch(
+        `${LOCAL_BASE_URL}/orders/checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            items: [
+              {
+                productId: item?.productId || item?._id,
+                title: item?.name,
+                price: item?.price,
+                quantity: 1,
+                img: item?.img,
+                brand: item?.brand,
+                supplierEmail: item?.supplierEmail || "",
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Checkout failed.");
+      }
+
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        toast.success("Order placed successfully.");
+        window.location.href = "/checkout-success";
+      }
+    } catch (err) {
+      toast.error(err.message || "Checkout failed.");
+    }
+    setCheckoutLoading(false);
+  };
 
   if (!item) {
     return (
@@ -103,12 +158,13 @@ const ItemDetails = () => {
                 ))}
               </ul>
               <div className="d-flex gap-3 mt-4">
-                <Link
-                  to={`/booking?itemId=${item._id}`}
-                  className="btn btn-primary btn-lg rounded-pill px-4 animate__animated animate__pulse animate__infinite"
+                <button
+                  onClick={checkoutHandler}
+                  disabled={checkoutLoading}
+                  className="btn btn-primary btn-lg rounded-pill p2-4 animate__animated animate__pulse animate__infinite"
                 >
-                  Book Test Drive
-                </Link>
+                  {checkoutLoading ? "Processing..." : "Continue to Checkout"}
+                </button>
                 <Link
                   to={`/contact-dealer?itemId=${item._id}`}
                   className="btn btn-outline-success btn-lg rounded-pill px-4"
