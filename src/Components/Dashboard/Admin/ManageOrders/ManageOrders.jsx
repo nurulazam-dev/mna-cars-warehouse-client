@@ -330,7 +330,10 @@ const ManageOrders = () => {
               </table>
             </div>
           )}
-          {/* Pagination part */}
+
+          {/* ================
+            Pagination part
+          ================ */}
           {totalPages > 1 && (
             <nav className="d-flex justify-content-center mt-2">
               <ul className="pagination pagination-md">
@@ -375,7 +378,9 @@ const ManageOrders = () => {
         </>
       )}
 
-      {/* Modals */}
+      {/* ================
+            Modals
+      ================ */}
       {selectedOrder && (
         <>
           <UpdateOrderModal
