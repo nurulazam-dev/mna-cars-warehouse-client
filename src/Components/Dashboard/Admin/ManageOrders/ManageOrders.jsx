@@ -23,6 +23,51 @@ const ManageOrders = () => {
   const [date, setDate] = useState("");
   const [page, setPage] = useState(1);
 
+  // Stats calculations
+  const {
+    totalOrders,
+    uniqueBuyers,
+    totalQty,
+    totalSales,
+    pendingCount,
+    processingCount,
+    completedCount,
+    cancelledCount,
+  } = useMemo(() => {
+    const totalOrders = orders?.length || 0;
+    const uniqueBuyers = new Set(orders?.map((o) => o.email)).size || 0;
+    let totalQty = 0;
+    let totalSales = 0;
+    let pendingCount = 0;
+    let processingCount = 0;
+    let completedCount = 0;
+    let cancelledCount = 0;
+
+    (orders || []).forEach((order) => {
+      totalQty += order?.items?.length || 0;
+      totalSales += (order?.items || []).reduce(
+        (sum, item) => sum + (Number(item?.price) || 0),
+        0
+      );
+      const status = order?.status?.toLowerCase();
+      if (status === "pending") pendingCount++;
+      else if (status === "processing") processingCount++;
+      else if (status === "completed") completedCount++;
+      else if (status === "cancelled") cancelledCount++;
+    });
+
+    return {
+      totalOrders,
+      uniqueBuyers,
+      totalQty,
+      totalSales,
+      pendingCount,
+      processingCount,
+      completedCount,
+      cancelledCount,
+    };
+  }, [orders]);
+
   const filteredOrders = useMemo(() => {
     return (orders || [])
       .filter((order) =>
@@ -67,11 +112,72 @@ const ManageOrders = () => {
 
   return (
     <section className="container animate__animated animate__fadeIn">
-      <h2 className="text-center text-primary fw-bold mb-3">Manage Orders</h2>
-      {/* ===================
-              Filters part
-          =================== */}
-      <div className="row g-2 mb-4 justify-content-center">
+      <h2 className="text-center text-primary fw-bold mb-2">Manage Orders</h2>
+
+      {/* =========================
+          Statistics Overview
+      ========================== */}
+      <div className="row text-center g-3 mb-4">
+        <div className="col-md-3">
+          <div className="bg-light rounded shadow-sm p-3">
+            <h6 className="text-primary mb-1">
+              Total Orders:{" "}
+              <span className="fw-bold text-success">{totalOrders}</span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="bg-light rounded shadow-sm p-3">
+            <h6 className="text-primary mb-1">
+              Unique Buyers:{" "}
+              <span className="fw-bold text-success">{uniqueBuyers}</span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="bg-light rounded shadow-sm p-3">
+            <h6 className="text-primary mb-1">
+              Total Items:{" "}
+              <span className="fw-bold text-success">{totalQty}</span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="bg-light rounded shadow-sm p-3">
+            <h6 className="mb-1 text-primary">
+              Total Sales:{" "}
+              <span className="fw-bold text-success">
+                $ {totalSales.toLocaleString()}
+              </span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-warning bg-opacity-25 text-warning text-center">
+            Pending: {pendingCount}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-info bg-opacity-25 text-info text-center">
+            Processing: {processingCount}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-success bg-opacity-25 text-success text-center">
+            Completed: {completedCount}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-danger bg-opacity-25 text-danger text-center">
+            Cancelled: {cancelledCount}
+          </div>
+        </div>
+      </div>
+
+      {/* =========================
+              Filters
+      ========================== */}
+      <div className="row mb-4 justify-content-center">
         <div className="col-md-3">
           <input
             type="text"
@@ -90,7 +196,7 @@ const ManageOrders = () => {
             onChange={handleFilterChange(setOrderId)}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -124,16 +230,13 @@ const ManageOrders = () => {
       </div>
 
       {loading && <Loader />}
-      {/* ===================
-              table part
-          =================== */}
       {!loading && (
         <>
           {paginatedOrders.length === 0 ? (
             <p className="text-center text-danger">No orders found.</p>
           ) : (
             <div className="table-responsive">
-              <table className="table table-hover table-bordered rounded shadow-sm animate__animated animate__fadeInUp">
+              <table className="table table-hover table-bordered shadow-sm rounded animate__animated animate__fadeInUp">
                 <thead className="table-light text-center">
                   <tr>
                     <th>#</th>
@@ -227,12 +330,10 @@ const ManageOrders = () => {
               </table>
             </div>
           )}
-          {/* ===================
-              Pagination part
-          =================== */}
+          {/* Pagination part */}
           {totalPages > 1 && (
-            <nav className="d-flex justify-content-center mt-4">
-              <ul className="pagination pagination-lg">
+            <nav className="d-flex justify-content-center mt-2">
+              <ul className="pagination pagination-md">
                 <li className={`page-item${page === 1 ? " disabled" : ""}`}>
                   <button
                     className="page-link"
