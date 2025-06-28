@@ -19,10 +19,14 @@ const MyOrders = () => {
       .filter((order) =>
         search
           ? order.items.some((item) =>
-              item.title.toLowerCase().includes(search.toLowerCase())
+              item.title
+                ?.toLowerCase()
+                .replace(/\s+/g, "")
+                .includes(search.toLowerCase().replace(/\s+/g, ""))
             )
           : true
       )
+
       .filter((order) =>
         _id ? String(order._id).toLowerCase().includes(_id.toLowerCase()) : true
       )
