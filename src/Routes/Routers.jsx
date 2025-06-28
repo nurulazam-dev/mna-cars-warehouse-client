@@ -5,7 +5,6 @@ import Dashboard from "../Pages/Dashboard";
 import Blogs from "../Pages/Blogs";
 import Items from "../Pages/Items/Items";
 import ItemDetails from "../Pages/Items/ItemDetails";
-import Booking from "../Pages/Items/Booking";
 import ContactDealer from "../Pages/Items/ContactDealer";
 import Register from "../Pages/Register";
 import AboutUs from "../Components/About/AboutUs";
@@ -34,7 +33,6 @@ const Routers = () => {
       <Route path="/blogs" element={<Blogs />}></Route>
       <Route path="/items" element={<Items />}></Route>
       <Route path="/items/:id" element={<ItemDetails />}></Route>
-      <Route path="/booking" element={<Booking />} />
       <Route path="/contact-dealer" element={<ContactDealer />} />
       <Route path="/register" element={<Register />}></Route>
       <Route path="/login" element={<Login />}></Route>
