@@ -6,24 +6,32 @@ import { LOCAL_BASE_URL } from "../../../../config";
 import { formatDate } from "../../../../utils/formatDate";
 
 const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      status: order?.status || "Pending",
-      email: order?.email || "",
-    },
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
-    reset({
-      status: order?.status || "Pending",
-      email: order?.email || "",
-    });
+    if (order) {
+      reset({
+        email: order.email || "",
+        status: order.status || "Pending",
+      });
+    }
   }, [order, reset]);
 
   const onSubmit = async (data) => {
     try {
+      if (!order?._id) {
+        toast.error("Order ID is missing.");
+        return;
+      }
+
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/orders/${order._id}`, {
+
+      const response = await fetch(`${LOCAL_BASE_URL}/orders/${order._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -32,24 +40,43 @@ const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
         body: JSON.stringify({ status: data.status }),
       });
 
-      if (res.ok) {
-        toast.success("Order updated successfully");
-        refetch();
-        onHide();
-      } else {
-        const errData = await res.json();
-        toast.error(errData.message || "Failed to update order");
+      const contentType = response.headers.get("content-type");
+
+      if (!response.ok) {
+        let errorMessage = "Failed to update order";
+
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } else {
+          const errorText = await response.text();
+          console.error("Raw server response:", errorText);
+        }
+
+        throw new Error(errorMessage);
       }
+
+      toast.success("Order updated successfully");
+      refetch?.();
+      onHide();
     } catch (err) {
-      toast.error("Error updating order");
+      console.error("Update error:", err);
+      toast.error(err.message || "Error updating order");
     }
   };
+
+  const totalItems = order?.items?.length || 0;
+  const totalPrice = order?.items?.reduce(
+    (acc, item) => acc + (item?.price || 0),
+    0
+  );
 
   return (
     <Modal show={show} onHide={onHide} size="lg" centered>
       <Modal.Header closeButton>
         <Modal.Title>Update Order</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row className="mb-3">
@@ -57,19 +84,22 @@ const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
               <Form.Label>Buyer Email</Form.Label>
               <Form.Control
                 type="email"
-                {...register("email")}
                 value={order?.email || ""}
                 disabled
+                readOnly
               />
             </Col>
             <Col md={6}>
               <Form.Label>Status</Form.Label>
-              <Form.Select {...register("status")}>
+              <Form.Select {...register("status", { required: true })}>
                 <option value="Pending">Pending</option>
                 <option value="Processing">Processing</option>
                 <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
               </Form.Select>
+              {errors.status && (
+                <small className="text-danger">Status is required</small>
+              )}
             </Col>
           </Row>
 
@@ -84,10 +114,10 @@ const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
               />
             </Col>
             <Col md={4}>
-              <Form.Label>Total Order</Form.Label>
+              <Form.Label>Total Items</Form.Label>
               <Form.Control
                 type="number"
-                value={order?.items?.length || 0}
+                value={totalItems}
                 disabled
                 readOnly
               />
@@ -121,7 +151,14 @@ const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
             ))}
           </ul>
 
-          <div className="text-end">
+          <div className="d-flex justify-content-between">
+            <span className="fw-semibold">Total Order Price:</span>
+            <span className="text-success fw-bold">
+              ${totalPrice?.toLocaleString()}
+            </span>
+          </div>
+
+          <div className="text-end mt-4">
             <Button variant="secondary" onClick={onHide} className="me-2">
               Cancel
             </Button>
