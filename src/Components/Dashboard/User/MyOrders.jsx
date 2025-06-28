@@ -1,4 +1,5 @@
 import { useMyOrders } from "../../../hooks/useMyOrders";
+import { formatDate } from "../../../utils/formatDate";
 import { getOrderStatusColor } from "../../../utils/getOrderStatusColor";
 import Loader from "../../Shared/Loader/Loader";
 
@@ -61,7 +62,7 @@ const MyOrders = () => {
                       {order?.status}
                     </td>
 
-                    <td>{new Date(order?.createdAt).toLocaleDateString()}</td>
+                    <td>{formatDate(order?.createdAt)}</td>
                   </tr>
                 ))}
               </tbody>
