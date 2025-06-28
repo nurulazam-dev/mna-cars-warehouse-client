@@ -1,4 +1,5 @@
 import { useMyOrders } from "../../../hooks/useMyOrders";
+import { getOrderStatusColor } from "../../../utils/getOrderStatusColor";
 import Loader from "../../Shared/Loader/Loader";
 
 const MyOrders = () => {
@@ -35,12 +36,13 @@ const MyOrders = () => {
                     <td>{order?._id}</td>
                     <td>
                       {order?.items?.map((item, idx) => (
-                        <span
+                        <li
                           key={item?._id || idx}
-                          className="badge bg-light text-dark me-1"
+                          className="badge text-dark me-1"
                         >
-                          {item?.title}
-                        </span>
+                          {idx + 1}.{" "}
+                          <span className="text-success">{item?.title}</span>
+                        </li>
                       ))}
                     </td>
                     <td>{order?.items?.length}</td>
@@ -50,7 +52,15 @@ const MyOrders = () => {
                         ?.reduce((acc, item) => acc + item.price, 0)
                         .toLocaleString()}
                     </td>
-                    <td>{order.status}</td>
+                    <td
+                      style={{
+                        color: getOrderStatusColor(order?.status),
+                        fontWeight: "semibold",
+                      }}
+                    >
+                      {order?.status}
+                    </td>
+
                     <td>{new Date(order?.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
