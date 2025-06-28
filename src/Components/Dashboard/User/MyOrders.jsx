@@ -150,7 +150,11 @@ const MyOrders = () => {
                         <td className="text-start">
                           <ul className="list-unstyled mb-0">
                             {order?.items?.map((item, idx) => (
-                              <li key={idx} className="small text-secondary">
+                              <li
+                                key={idx}
+                                className="text-secondary"
+                                style={{ fontSize: 13 }}
+                              >
                                 <span className="fw-semibold text-dark">
                                   {idx + 1}. {item?.title}
                                 </span>
@@ -159,7 +163,7 @@ const MyOrders = () => {
                           </ul>
                         </td>
                         <td>{order?.items?.length}</td>
-                        <td className="text-success fw-bold">
+                        <td className="text-success fw-semibold">
                           ${total.toLocaleString()}
                         </td>
                         <td>
@@ -170,7 +174,7 @@ const MyOrders = () => {
                                 order?.status
                               )}20`,
                               color: getOrderStatusColor(order?.status),
-                              fontWeight: "600",
+                              fontWeight: "400",
                             }}
                           >
                             {order?.status}
