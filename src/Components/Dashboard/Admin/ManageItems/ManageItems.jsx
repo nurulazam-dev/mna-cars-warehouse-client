@@ -24,6 +24,7 @@ const ManageItems = () => {
 
   // Stats
   const totalItems = items?.length || 0;
+  console.log(items);
 
   const totalQty = items?.reduce((acc, item) => acc + (item.quantity || 0), 0);
   const totalBrands = useMemo(

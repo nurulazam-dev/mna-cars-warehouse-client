@@ -16,13 +16,20 @@ const UpdateItemModal = ({ show, onHide, item, refetch }) => {
   const onSubmit = async (data) => {
     try {
       const token = localStorage.getItem("token");
+
+      const payload = {
+        ...data,
+        price: data.price ? Number(data.price) : 0,
+        quantity: data.quantity ? Number(data.quantity) : 0,
+        year: data.year ? Number(data.year) : undefined,
+      };
       const res = await fetch(`${LOCAL_BASE_URL}/items/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
