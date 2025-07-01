@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useAllOrders } from "../../../../hooks/useAllOrders";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import Loader from "../../../Shared/Loader/Loader";
 import UpdateOrderModal from "./UpdateOrderModal";
 import DeleteOrderModal from "./DeleteOrderModal";
@@ -119,7 +119,7 @@ const ManageOrders = () => {
       ========================== */}
       <div className="row text-center g-3 mb-4">
         <div className="col-md-3">
-          <div className="bg-light rounded shadow-sm p-3">
+          <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
               Total Orders:{" "}
               <span className="fw-bold text-success">{totalOrders}</span>
@@ -127,7 +127,7 @@ const ManageOrders = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-light rounded shadow-sm p-3">
+          <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
               Unique Buyers:{" "}
               <span className="fw-bold text-success">{uniqueBuyers}</span>
@@ -135,7 +135,7 @@ const ManageOrders = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-light rounded shadow-sm p-3">
+          <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
               Total Items:{" "}
               <span className="fw-bold text-success">{totalQty}</span>
@@ -143,7 +143,7 @@ const ManageOrders = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-light rounded shadow-sm p-3">
+          <div className="bg-white rounded shadow-sm p-3">
             <h6 className="mb-1 text-primary">
               Total Sales:{" "}
               <span className="fw-bold text-success">
@@ -235,100 +235,106 @@ const ManageOrders = () => {
           {paginatedOrders.length === 0 ? (
             <p className="text-center text-danger">No orders found.</p>
           ) : (
-            <div className="table-responsive">
-              <table className="table table-hover table-bordered shadow-sm rounded animate__animated animate__fadeInUp">
-                <thead className="table-light text-center">
-                  <tr>
-                    <th>#</th>
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Buyer</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Ordered</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="align-middle text-center">
-                  {paginatedOrders.map((order, index) => {
-                    const total = order?.items?.reduce(
-                      (acc, item) => acc + (item?.price || 0),
-                      0
-                    );
-                    return (
-                      <tr
-                        key={order?._id}
-                        className="animate__animated animate__fadeInUp"
-                      >
-                        <td>{(page - 1) * ORDERS_PER_PAGE + index + 1}</td>
-                        <td className="text-muted" style={{ fontSize: 13 }}>
-                          ...{order?._id?.slice(-8).toUpperCase()}
-                        </td>
-                        <td className="text-start">
-                          <ul className="list-unstyled mb-0">
-                            {order?.items?.map((item, idx) => (
-                              <li
-                                key={idx}
-                                className="text-secondary"
-                                style={{ fontSize: 13 }}
-                              >
-                                <span className="fw-semibold text-dark">
-                                  {idx + 1}. {item?.title || "Untitled Item"}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </td>
-                        <td>{order?.email}</td>
-                        <td>{order?.items?.length || 0}</td>
-                        <td className="text-success fw-semibold">
-                          ${Number(total || 0).toLocaleString()}
-                        </td>
-                        <td>
-                          <span
-                            className="badge px-3 py-2 rounded-pill"
-                            style={{
-                              backgroundColor: `${getOrderStatusColor(
-                                order?.status
-                              )}20`,
-                              color: getOrderStatusColor(order?.status),
-                              fontWeight: "500",
-                            }}
-                          >
-                            {order?.status}
-                          </span>
-                        </td>
-                        <td>{formatDate(order?.createdAt)}</td>
-                        <td>
-                          <Button
-                            variant="secondary"
-                            size="sm"
-                            className="me-2"
-                            onClick={() => {
-                              setSelectedOrder(order);
-                              setShowUpdate(true);
-                            }}
-                          >
-                            Update
-                          </Button>
-                          <Button
-                            variant="danger"
-                            size="sm"
-                            onClick={() => {
-                              setSelectedOrder(order);
-                              setShowDelete(true);
-                            }}
-                          >
-                            Delete
-                          </Button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+            <Table
+              striped
+              bordered
+              hover
+              responsive
+              className="shadow-sm rounded animate__animated animate__fadeInUp"
+            >
+              <thead className="table-dark text-center">
+                <tr>
+                  <th>#</th>
+                  <th>Order ID</th>
+                  <th>Items</th>
+                  <th>Buyer</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Ordered</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody className="align-middle text-center">
+                {paginatedOrders.map((order, index) => {
+                  const total = order?.items?.reduce(
+                    (acc, item) => acc + (item?.price || 0),
+                    0
+                  );
+                  return (
+                    <tr
+                      key={order?._id}
+                      className="animate__animated animate__fadeInUp"
+                    >
+                      <td>{(page - 1) * ORDERS_PER_PAGE + index + 1}</td>
+                      <td className="text-muted" style={{ fontSize: 13 }}>
+                        ...{order?._id?.slice(-8).toUpperCase()}
+                      </td>
+                      <td className="text-start">
+                        <ul className="list-unstyled mb-0">
+                          {order?.items?.map((item, idx) => (
+                            <li
+                              key={idx}
+                              className="text-secondary"
+                              style={{ fontSize: 13 }}
+                            >
+                              <span className="fw-semibold text-dark">
+                                {idx + 1}. {item?.title || "Untitled Item"}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td>{order?.email}</td>
+                      <td>{order?.items?.length || 0}</td>
+                      <td className="text-success fw-semibold">
+                        ${Number(total || 0).toLocaleString()}
+                      </td>
+                      <td>
+                        <span
+                          className="badge px-3 py-2 rounded-pill"
+                          style={{
+                            backgroundColor: `${getOrderStatusColor(
+                              order?.status
+                            )}20`,
+                            color: getOrderStatusColor(order?.status),
+                            fontWeight: "500",
+                          }}
+                        >
+                          {order?.status}
+                        </span>
+                      </td>
+                      <td>{formatDate(order?.createdAt)}</td>
+                      <td>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          className="me-2"
+                          title="Update"
+                          onClick={() => {
+                            setSelectedOrder(order);
+                            setShowUpdate(true);
+                          }}
+                        >
+                          <i className="bi bi-pencil-square"></i>
+                        </Button>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          title="Delete"
+                          onClick={() => {
+                            setSelectedOrder(order);
+                            setShowDelete(true);
+                          }}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           )}
 
           {/* ================
