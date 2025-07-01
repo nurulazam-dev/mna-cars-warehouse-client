@@ -26,56 +26,78 @@ const DashboardStats = () => {
         Dashboard Statistics
       </h3>
       <div className="row mt-4">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card text-white bg-primary mb-3">
             <div className="card-header">Total Users</div>
-            <div className="card-body">
+            <div className="card-body pb-0">
+              <h4>{stats[0]?.users}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div
+            className="card text-white mb-3"
+            style={{ backgroundColor: "#6c757d" }}
+          >
+            <div className="card-header">Total Admins</div>
+            <div className="card-body pb-0">
               <h4>{stats[0]?.users}</h4>
             </div>
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card text-white bg-success mb-3">
             <div className="card-header">Total Items</div>
-            <div className="card-body">
+            <div className="card-body pb-0">
               <h4>{stats[0]?.items}</h4>
             </div>
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card text-white bg-warning mb-3">
-            <div className="card-header">Total Orders</div>
-            <div className="card-body">
+            <div className="card-header">Total QTYs</div>
+            <div className="card-body pb-0">
               <h4>{stats[0]?.orders}</h4>
             </div>
           </div>
         </div>
       </div>
       <div className="row mt-2">
-        <div className="col-md-4">
+        <div className="col-md-3">
+          <div
+            className="card text-white mb-3"
+            style={{ backgroundColor: "indigo" }}
+          >
+            <div className="card-header">Total Orders</div>
+            <div className="card-body pb-0">
+              <h4>{stats[0]?.orders || 0}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
           <div className="card text-white bg-danger mb-3">
             <div className="card-header">Pending Orders</div>
-            <div className="card-body">
+            <div className="card-body pb-0">
               <h4>{stats[0]?.pendingOrders || 0}</h4>
             </div>
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card text-white bg-info mb-3">
             <div className="card-header">Delivered Orders</div>
-            <div className="card-body">
+            <div className="card-body pb-0">
               <h4>{stats[0]?.deliveredOrders || 0}</h4>
             </div>
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card text-white bg-dark mb-3">
             <div className="card-header">Total Revenue</div>
-            <div className="card-body">
+            <div className="card-body pb-0">
               <h4>${stats[0]?.revenue?.toFixed(2) || 0}</h4>
             </div>
           </div>
