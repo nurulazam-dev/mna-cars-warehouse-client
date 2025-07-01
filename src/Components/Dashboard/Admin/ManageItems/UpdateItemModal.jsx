@@ -12,7 +12,6 @@ const UpdateItemModal = ({ show, onHide, item, refetch }) => {
   useEffect(() => {
     reset(item);
   }, [item, reset]);
-  console.log("item:", item);
 
   const onSubmit = async (data) => {
     try {

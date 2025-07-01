@@ -265,7 +265,7 @@ const ManageUsers = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <nav className="d-flex justify-content-center mt-4">
+            <nav className="d-flex justify-content-center mt-2">
               <ul className="pagination pagination-md">
                 <li className={`page-item${page === 1 ? " disabled" : ""}`}>
                   <button
