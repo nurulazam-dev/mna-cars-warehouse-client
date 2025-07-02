@@ -16,16 +16,18 @@ const Sidebar = () => {
         {!isAdmin && (
           <>
             <SidebarNavItem
-              to="/dashboard/my-wishlists"
+              to="/dashboard/user/my-wishlists"
               icon="bi-heart"
               label="My Wishlists"
-              active={location.pathname.includes("/dashboard/my-wishlists")}
+              active={location.pathname.includes(
+                "/dashboard/user/my-wishlists"
+              )}
             />
             <SidebarNavItem
-              to="/dashboard/my-orders"
+              to="/dashboard/user/my-orders"
               icon="bi-box-seam"
               label="My Orders"
-              active={location.pathname.includes("/dashboard/my-orders")}
+              active={location.pathname.includes("/dashboard/user/my-orders")}
             />
           </>
         )}
@@ -33,10 +35,10 @@ const Sidebar = () => {
         {isAdmin && (
           <>
             <SidebarNavItem
-              to="/dashboard/admin"
+              to="/dashboard"
               icon="bi-speedometer2"
               label="Overview"
-              active={location.pathname === "/dashboard/admin"}
+              active={location.pathname === "/dashboard"}
             />
             <SidebarNavItem
               to="/dashboard/admin/add-item"

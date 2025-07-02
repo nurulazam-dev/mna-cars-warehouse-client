@@ -5,7 +5,6 @@ const AboutUs = () => {
   const navigate = useNavigate();
   return (
     <div>
-      {/* Hero Section */}
       <div className="bg-primary text-white py-5 mb-4 shadow">
         <div className="container text-center">
           <h1 className="display-4 fw-bold">About MNA Cars Warehouse</h1>
@@ -13,7 +12,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="container mb-5">
         <div className="row align-items-center">
           <div className="col-md-6 mb-4 mb-md-0">
@@ -52,7 +50,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Features Section */}
       <div className="container mb-5">
         <h4 className="text-center text-success mb-4">Why Choose Us?</h4>
         <div className="row text-center">
@@ -80,10 +77,9 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Call to Action */}
       <div className="text-center mb-5">
         <button
-          onClick={() => navigate("/developer")}
+          onClick={() => navigate("/about-developer")}
           className="btn btn-success text-white fs-5 px-4 py-2 shadow"
         >
           About Developer

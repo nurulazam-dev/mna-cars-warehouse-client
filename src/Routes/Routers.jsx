@@ -24,15 +24,38 @@ import Profile from "../Components/Dashboard/Profile";
 import ForgotPassword from "../Pages/ForgotPassword";
 import ResetPassword from "../Pages/ResetPassword";
 import CheckoutSuccess from "../Pages/CheckoutSuccess";
+import { useAuth } from "../hooks/useAuth";
 
 const Routers = () => {
+  const { role } = useAuth();
+
+  const getDashboardComponent = () => {
+    if (role === "user") return <Profile />;
+    if (role === "admin") return <Overview />;
+    return <Home />;
+  };
+
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/home" element={<Home />}></Route>
       <Route path="/blogs" element={<Blogs />}></Route>
-      <Route path="/items" element={<Items />}></Route>
-      <Route path="/items/:id" element={<ItemDetails />}></Route>
+      <Route
+        path="/items"
+        element={
+          <PrivateRoute>
+            <Items />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/items/:id"
+        element={
+          <PrivateRoute>
+            <ItemDetails />
+          </PrivateRoute>
+        }
+      />
       <Route path="/contact-dealer" element={<ContactDealer />} />
       <Route path="/register" element={<Register />}></Route>
       <Route path="/login" element={<Login />}></Route>
@@ -44,24 +67,59 @@ const Routers = () => {
       ========================== */}
 
       <Route
-        path="/dashboard/admin"
+        path="/dashboard"
         element={
-          <AdminRoute>
+          <PrivateRoute>
             <Dashboard />
-          </AdminRoute>
+          </PrivateRoute>
         }
       >
-        <Route index element={<Overview />} />
-        <Route path="Manage-items" element={<ManageItems />} />
-        <Route path="Manage-orders" element={<ManageOrders />} />
-        <Route path="Manage-users" element={<ManageUsers />} />
-        <Route path="add-item" element={<AddItem />} />
+        <Route index element={getDashboardComponent()} />
+        <Route
+          path="admin/manage-items"
+          element={
+            <AdminRoute>
+              <ManageItems />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="admin/manage-orders"
+          element={
+            <AdminRoute>
+              <ManageOrders />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="admin/manage-users"
+          element={
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="admin/add-item"
+          element={
+            <AdminRoute>
+              <AddItem />
+            </AdminRoute>
+          }
+        />
+
+        {/* user routes */}
+        <Route path="user/my-orders" element={<MyOrders />} />
+        <Route path="user/my-wishlists" element={<MyWishlist />} />
+
+        <Route path="settings" element={<Settings />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
 
       {/* ==========================
              User dashboard
       ========================== */}
-      <Route
+      {/* <Route
         path="/dashboard"
         element={
           <PrivateRoute>
@@ -74,10 +132,10 @@ const Routers = () => {
         <Route path="my-wishlists" element={<MyWishlist />} />
         <Route path="settings" element={<Settings />} />
         <Route path="profile" element={<Profile />} />
-      </Route>
+      </Route> */}
 
       {/* dashboard routes */}
-      {/*  <Route
+      {/* <Route
         path="dashboard"
         element={
           <PrivateRoute>
@@ -85,7 +143,7 @@ const Routers = () => {
           </PrivateRoute>
         }
       >
-        <Route index element={<Overview />} />
+        <Route index element={getDashboardComponent()} />
 
         <Route
           path="Manage-items"
@@ -98,9 +156,9 @@ const Routers = () => {
         <Route
           path="Manage-orders"
           element={
-            <PrivateRoute>
+            <AdminRoute>
               <ManageOrders />
-            </PrivateRoute>
+            </AdminRoute>
           }
         />
         <Route

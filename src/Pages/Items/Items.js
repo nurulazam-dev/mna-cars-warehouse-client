@@ -10,11 +10,11 @@ const Items = () => {
   const { items, loading } = useItems();
   const { addToWishlistItem } = useWishlist();
 
-  const uniqueBrands = [...new Set(items.map((item) => item.brand))].sort();
-  const uniqueColors = [...new Set(items.map((item) => item.color))].sort();
+  const uniqueBrands = [...new Set(items?.map((item) => item?.brand))].sort();
+  const uniqueColors = [...new Set(items?.map((item) => item?.color))].sort();
 
-  const minPrice = Math.min(...items.map((item) => item.price));
-  const maxPrice = Math.max(...items.map((item) => item.price));
+  const minPrice = Math.min(...items?.map((item) => item?.price));
+  const maxPrice = Math.max(...items?.map((item) => item?.price));
 
   const [search, setSearch] = useState("");
   const [brand, setBrand] = useState("");
@@ -23,7 +23,7 @@ const Items = () => {
   const [transmission, setTransmission] = useState("");
   const [color, setColor] = useState("");
 
-  const filteredItems = items.filter((item) => {
+  const filteredItems = items?.filter((item) => {
     return (
       (item.name.toLowerCase().includes(search.toLowerCase()) ||
         item.brand.toLowerCase().includes(search.toLowerCase())) &&

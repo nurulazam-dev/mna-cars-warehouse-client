@@ -10,6 +10,8 @@ export const useAuth = () => {
 
   const token = localStorage.getItem("token");
   const isAdmin = user?.role === "admin";
+  const isUser = user?.role === "user";
+  const role = isAdmin ? "admin" : isUser ? "user" : null;
 
   const refetchUser = async () => {
     try {
@@ -74,5 +76,5 @@ export const useAuth = () => {
     toast.success("Logged out");
   };
 
-  return { user, token, isAdmin, login, register, refetchUser, logout };
+  return { user, role, token, isAdmin, login, register, refetchUser, logout };
 };
