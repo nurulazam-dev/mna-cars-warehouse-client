@@ -40,6 +40,13 @@ const Routers = () => {
       <Route path="/" element={<Home />}></Route>
       <Route path="/home" element={<Home />}></Route>
       <Route path="/blogs" element={<Blogs />}></Route>
+      <Route path="/contact-dealer" element={<ContactDealer />} />
+      <Route path="/register" element={<Register />}></Route>
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/checkout-success" element={<CheckoutSuccess />} />
+
       <Route
         path="/items"
         element={
@@ -56,16 +63,6 @@ const Routers = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/contact-dealer" element={<ContactDealer />} />
-      <Route path="/register" element={<Register />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password/:token" element={<ResetPassword />} />
-      <Route path="/checkout-success" element={<CheckoutSuccess />} />
-      {/* ==========================
-                Admin panel
-      ========================== */}
-
       <Route
         path="/dashboard"
         element={
@@ -108,118 +105,12 @@ const Routers = () => {
           }
         />
 
-        {/* user routes */}
         <Route path="user/my-orders" element={<MyOrders />} />
         <Route path="user/my-wishlists" element={<MyWishlist />} />
 
         <Route path="settings" element={<Settings />} />
         <Route path="profile" element={<Profile />} />
       </Route>
-
-      {/* ==========================
-             User dashboard
-      ========================== */}
-      {/* <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      >
-        <Route index element={<Profile />} />
-        <Route path="my-orders" element={<MyOrders />} />
-        <Route path="my-wishlists" element={<MyWishlist />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="profile" element={<Profile />} />
-      </Route> */}
-
-      {/* dashboard routes */}
-      {/* <Route
-        path="dashboard"
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      >
-        <Route index element={getDashboardComponent()} />
-
-        <Route
-          path="Manage-items"
-          element={
-            <AdminRoute>
-              <ManageItems />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="Manage-orders"
-          element={
-            <AdminRoute>
-              <ManageOrders />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="Manage-users"
-          element={
-            <AdminRoute>
-              <ManageUsers />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="add-item"
-          element={
-            <AdminRoute>
-              <AddItem />
-            </AdminRoute>
-          }
-        ></Route>
-        <Route
-          path="update-item/:id"
-          element={
-            <PrivateRoute>
-              <UpdateItem />
-            </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="delete-item/:id"
-          element={
-            <PrivateRoute>
-              <DeleteItem />
-            </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="settings"
-          element={
-            <PrivateRoute>
-              <Settings />
-            </PrivateRoute>
-          }
-        ></Route>
-
-        <Route
-          path="my-wishlists"
-          element={
-            <PrivateRoute>
-              <MyWishlist />
-            </PrivateRoute>
-          }
-        ></Route>
-        <Route
-          path="my-orders"
-          element={
-            <PrivateRoute>
-              <MyOrders />
-            </PrivateRoute>
-          }
-        ></Route>
-      </Route> */}
-      {/* ============= */}
 
       <Route path="/about-us" element={<AboutUs />}></Route>
       <Route path="/about-developer" element={<AboutDeveloper />}></Route>
