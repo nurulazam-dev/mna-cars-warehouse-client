@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../config";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   });
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [token, setToken] = useState(
+    () => localStorage.getItem("token") || null
+  );
 
-  const token = localStorage.getItem("token");
   const isAdmin = user?.role === "admin";
   const isUser = user?.role === "user";
   const role = isAdmin ? "admin" : isUser ? "user" : null;
@@ -46,6 +51,10 @@ export const useAuth = () => {
       localStorage.setItem("token", result.token);
       localStorage.setItem("user", JSON.stringify(result.user));
       setUser(result.user);
+      setToken(result.token);
+
+      const from = location.state?.from?.pathname || "/dashboard";
+      navigate(from, { replace: true });
 
       toast.success("Logged in successfully");
     } catch (err) {
@@ -62,7 +71,7 @@ export const useAuth = () => {
       });
 
       if (!res.ok) throw new Error("Registration failed");
-
+      navigate("/login", { replace: true });
       toast.success("Registration successful");
     } catch (err) {
       toast.error(err.message);
@@ -73,6 +82,8 @@ export const useAuth = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
+    setToken(null);
+    navigate("/login", { replace: true });
     toast.success("Logged out");
   };
 

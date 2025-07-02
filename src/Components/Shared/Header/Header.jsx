@@ -1,15 +1,17 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import brandLogo from "../../../assets/images/icon/mna-car-warehouse.png";
 import { useAuth } from "../../../hooks/useAuth";
 
 const Header = () => {
   const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     logout();
+    navigate("/login", { replace: true });
   };
 
   const isAuthenticated = user && token;

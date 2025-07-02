@@ -17,24 +17,14 @@ import MyWishlist from "../Components/Dashboard/User/MyWishlist";
 import Settings from "../Components/Dashboard/Settings";
 import MyOrders from "../Components/Dashboard/User/MyOrders";
 import AdminRoute from "./AdminRoute";
-import Overview from "../Components/Dashboard/Overview";
 import ManageItems from "../Components/Dashboard/Admin/ManageItems/ManageItems";
 import ManageOrders from "../Components/Dashboard/Admin/ManageOrders/ManageOrders";
 import Profile from "../Components/Dashboard/Profile";
 import ForgotPassword from "../Pages/ForgotPassword";
 import ResetPassword from "../Pages/ResetPassword";
 import CheckoutSuccess from "../Pages/CheckoutSuccess";
-import { useAuth } from "../hooks/useAuth";
 
 const Routers = () => {
-  const { role } = useAuth();
-
-  const getDashboardComponent = () => {
-    if (role === "user") return <Profile />;
-    if (role === "admin") return <Overview />;
-    return <Home />;
-  };
-
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
@@ -71,7 +61,6 @@ const Routers = () => {
           </PrivateRoute>
         }
       >
-        <Route index element={getDashboardComponent()} />
         <Route
           path="admin/manage-items"
           element={
