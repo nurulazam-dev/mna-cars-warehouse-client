@@ -1,33 +1,33 @@
-/* import React, { useEffect, useState } from "react";
-import { LOCAL_BASE_URL } from "../../../config";
-import { useAuth } from "../../../hooks/useAuth"; */
 import InfoContainer from "./DashboardHome/InfoContainer";
 import DistributionPieChart from "./DashboardHome/DistributionPieChart";
-import { stats } from "../../../assets/data/statsData";
+import {
+  useItemsStatistics,
+  useOrdersStatistics,
+  useUsersStatistics,
+} from "../../../hooks/statisticsData";
 
 const DashboardStats = () => {
-  /*   const { token } = useAuth();
-  const [stats, setStats] = useState({ users: 0, items: 0, orders: 0 });
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      const res = await fetch(`${LOCAL_BASE_URL}/admin/stats`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await res.json();
-      setStats(data);
-    };
-    fetchStats();
-  }, [token]); */
+  const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
+  const { totalItems, totalBrands, totalQty, totalSuppliers } =
+    useItemsStatistics();
+  const {
+    totalOrders,
+    totalOrderQty,
+    totalSalesAmount,
+    pendingOrderCount,
+    processingOrderCount,
+    completedOrderCount,
+    cancelledOrderCount,
+  } = useOrdersStatistics();
 
   return (
     <div>
       <div className="row mt-4">
         <div className="col-md-3">
           <div className="card text-white bg-primary mb-3">
-            <div className="card-header">Total Users</div>
+            <div className="card-header">Registered Users</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.users}</h4>
+              <h4>{totalUsers}</h4>
             </div>
           </div>
         </div>
@@ -36,27 +36,51 @@ const DashboardStats = () => {
             className="card text-white mb-3"
             style={{ backgroundColor: "#6c757d" }}
           >
-            <div className="card-header">Total Admins</div>
+            <div className="card-header">Admins</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.users}</h4>
+              <h4>{totalAdmins}</h4>
             </div>
           </div>
         </div>
 
         <div className="col-md-3">
           <div className="card text-white bg-success mb-3">
-            <div className="card-header">Total Items</div>
+            <div className="card-header">Active Users</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.items}</h4>
+              <h4>{totalRegularUsers}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card text-white bg-success mb-3">
+            <div className="card-header">Suppliers</div>
+            <div className="card-body pb-0">
+              <h4>{totalSuppliers}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card text-white bg-success mb-3">
+            <div className="card-header">Items</div>
+            <div className="card-body pb-0">
+              <h4>{totalItems}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card text-white bg-success mb-3">
+            <div className="card-header">Brands</div>
+            <div className="card-body pb-0">
+              <h4>{totalBrands}</h4>
             </div>
           </div>
         </div>
 
         <div className="col-md-3">
           <div className="card text-white bg-warning mb-3">
-            <div className="card-header">Total QTYs</div>
+            <div className="card-header">Total Quantities</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.orders}</h4>
+              <h4>{totalQty}</h4>
             </div>
           </div>
         </div>
@@ -69,7 +93,18 @@ const DashboardStats = () => {
           >
             <div className="card-header">Total Orders</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.orders || 0}</h4>
+              <h4>{totalOrders}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div
+            className="card text-white mb-3"
+            style={{ backgroundColor: "indigo" }}
+          >
+            <div className="card-header">Total Orders Quantity</div>
+            <div className="card-body pb-0">
+              <h4>{totalOrderQty}</h4>
             </div>
           </div>
         </div>
@@ -77,7 +112,15 @@ const DashboardStats = () => {
           <div className="card text-white bg-danger mb-3">
             <div className="card-header">Pending Orders</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.pendingOrders || 0}</h4>
+              <h4>{pendingOrderCount}</h4>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card text-white bg-danger mb-3">
+            <div className="card-header">Processing Orders</div>
+            <div className="card-body pb-0">
+              <h4>{processingOrderCount}</h4>
             </div>
           </div>
         </div>
@@ -86,16 +129,23 @@ const DashboardStats = () => {
           <div className="card text-white bg-info mb-3">
             <div className="card-header">Delivered Orders</div>
             <div className="card-body pb-0">
-              <h4>{stats[0]?.deliveredOrders || 0}</h4>
+              <h4>{completedOrderCount}</h4>
             </div>
           </div>
         </div>
-
+        <div className="col-md-3">
+          <div className="card text-white bg-danger mb-3">
+            <div className="card-header">Cancelled Orders</div>
+            <div className="card-body pb-0">
+              <h4>{cancelledOrderCount}</h4>
+            </div>
+          </div>
+        </div>
         <div className="col-md-3">
           <div className="card text-white bg-dark mb-3">
             <div className="card-header">Total Revenue</div>
             <div className="card-body pb-0">
-              <h4>${stats[0]?.revenue?.toFixed(2) || 0}</h4>
+              <h4>$ {totalSalesAmount}</h4>
             </div>
           </div>
         </div>
