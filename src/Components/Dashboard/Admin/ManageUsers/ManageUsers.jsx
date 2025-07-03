@@ -5,6 +5,7 @@ import { Table, Button } from "react-bootstrap";
 import UpdateUserModal from "./UpdateUserModal";
 import DeleteUserModal from "./DeleteUserModal";
 import Loader from "../../../Shared/Loader/Loader";
+import { formatDate } from "../../../../utils/formatDate";
 
 const ManageUsers = () => {
   const { token } = useAuth();
@@ -81,7 +82,6 @@ const ManageUsers = () => {
     page * USERS_PER_PAGE
   );
 
-  // Unique roles for filter dropdown
   const roleOptions = useMemo(
     () =>
       Array.from(new Set((users || []).map((user) => user.role))).filter(
@@ -90,7 +90,6 @@ const ManageUsers = () => {
     [users]
   );
 
-  // Reset to page 1 when filters change
   const handleFilterChange = (setter) => (e) => {
     setter(e.target.value);
     setPage(1);
@@ -104,7 +103,7 @@ const ManageUsers = () => {
       <div className="row text-center g-3 mb-4">
         <div className="col-md-4">
           <div className="bg-white rounded shadow-sm p-3">
-            <h6 className="text-primary mb-1">
+            <h6 className="text-secondary mb-1">
               Total Users:{" "}
               <span className="fw-bold text-success">{totalUsers}</span>
             </h6>
@@ -112,19 +111,17 @@ const ManageUsers = () => {
         </div>
         <div className="col-md-4">
           <div className="bg-white rounded shadow-sm p-3">
-            <h6 className="text-primary mb-1">
+            <h6 className="text-secondary mb-1">
               Total Admins:{" "}
-              <span className="fw-bold text-info">{totalAdmins}</span>
+              <span className="fw-bold text-success">{totalAdmins}</span>
             </h6>
           </div>
         </div>
         <div className="col-md-4">
           <div className="bg-white rounded shadow-sm p-3">
-            <h6 className="text-primary mb-1">
+            <h6 className="text-secondary mb-1">
               Total Regular Users:{" "}
-              <span className="fw-bold text-secondary">
-                {totalRegularUsers}
-              </span>
+              <span className="fw-bold text-success">{totalRegularUsers}</span>
             </h6>
           </div>
         </div>
@@ -220,17 +217,15 @@ const ManageUsers = () => {
               </thead>
               <tbody>
                 {paginatedUsers.map((user, index) => (
-                  <tr key={user?._id}>
+                  <tr key={user?._id} className="text-center">
                     <td>{(page - 1) * USERS_PER_PAGE + index + 1}</td>
-                    <td>{user?.email}</td>
-                    <td>{user?.name}</td>
-                    <td>{user?.phone}</td>
-                    <td>{user?.address}</td>
+                    <td className="text-start">{user?.email}</td>
+                    <td className="text-start">{user?.name}</td>
+                    <td>{user?.phone ? user.phone : "N/A"}</td>
+                    <td>{user?.address ? user.address : "N/A"}</td>
                     <td>{user?.role}</td>
                     <td>
-                      {user?.createdAt
-                        ? new Date(user.createdAt).toLocaleDateString()
-                        : "Unknown"}
+                      {user?.createdAt ? formatDate(user.createdAt) : "Unknown"}
                     </td>
                     <td>
                       <Button

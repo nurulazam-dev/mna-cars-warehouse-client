@@ -213,7 +213,7 @@ const ManageItems = () => {
                   <th>Brand</th>
                   <th>Year</th>
                   <th>Price</th>
-                  <th>Quantity</th>
+                  <th>Qty</th>
                   <th>Color</th>
                   <th>Transmission</th>
                   <th>Supplier</th>
@@ -228,9 +228,15 @@ const ManageItems = () => {
                     <td style={{ fontSize: 14 }}>{item?.brand}</td>
                     <td style={{ fontSize: 14 }}>{item?.year}</td>
                     <td style={{ fontSize: 14 }}>${item?.price}</td>
-                    <td style={{ fontSize: 14 }}>{item?.quantity}</td>
-                    <td style={{ fontSize: 14 }}>{item?.color}</td>
-                    <td>{item?.transmission}</td>
+                    <td style={{ fontSize: 14, textAlign: "center" }}>
+                      {item?.quantity}
+                    </td>
+                    <td style={{ fontSize: 14, textAlign: "center" }}>
+                      {item?.color}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {item?.transmission}
+                    </td>
                     <td>{item?.supplierEmail}</td>
                     <td>
                       <div className="d-flex gap-2">
