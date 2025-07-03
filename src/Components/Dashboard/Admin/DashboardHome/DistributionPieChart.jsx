@@ -1,12 +1,15 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
-import { stats } from "../../../../assets/data/statsData";
+import { useUsersStatistics } from "../../../../hooks/statisticsData";
+import { useUsers } from "../../../../hooks/useUsers";
 
 const DistributionPieChart = () => {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
+  const { totalAdmins, totalRegularUsers } = useUsersStatistics();
+  const { users } = useUsers();
 
   const userRolesData = [
-    { name: "Admins", value: stats[0]?.admins || 1 },
-    { name: "Users", value: stats[0]?.regularUsers || 10 },
+    { name: "Admins", value: totalAdmins || 1 },
+    { name: "Users", value: totalRegularUsers || 10 },
   ];
 
   return (
@@ -15,7 +18,7 @@ const DistributionPieChart = () => {
         User Roles Distribution Pie Chart
       </h1>
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-4 border">
           <PieChart width={300} height={250}>
             <Pie
               data={userRolesData}
@@ -46,18 +49,23 @@ const DistributionPieChart = () => {
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Role</th>
               </tr>
             </thead>
             <tbody>
-              {(stats[0]?.recentUsers || []).map((user, index) => (
-                <tr key={user?._id}>
-                  <td>{index + 1}</td>
-                  <td>{user?.name}</td>
-                  <td>{user?.email}</td>
-                  <td>{user?.role}</td>
-                </tr>
-              ))}
+              {[...(users || [])]
+                .reverse()
+                .slice(0, 5)
+                .map((user, index) => (
+                  <tr key={user?._id}>
+                    <td>{index + 1}</td>
+                    <td>{user?.name}</td>
+                    <td>{user?.email}</td>
+                    <td>{user?.phone ? user?.phone : "N/A"}</td>
+                    <td>{user?.role}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
