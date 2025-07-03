@@ -90,9 +90,30 @@ export const useMyOrdersStatistics = () => {
   const totalMyOrderAmount = myOrders?.reduce(
     (acc, order) =>
       acc +
-      (order?.items?.reduce((sum, item) => sum + (item?.price || 0), 0) || 0),
+      (order?.items?.reduce(
+        (sum, item) => sum + (Number(item?.price) || 0),
+        0
+      ) || 0),
     0
   );
+
+  // Status counts
+  const pendingMyOrder =
+    myOrders?.filter(
+      (order) => (order?.status || "").toLowerCase() === "pending"
+    ).length || 0;
+  const processingMyOrder =
+    myOrders?.filter(
+      (order) => (order?.status || "").toLowerCase() === "processing"
+    ).length || 0;
+  const completedMyOrder =
+    myOrders?.filter(
+      (order) => (order?.status || "").toLowerCase() === "completed"
+    ).length || 0;
+  const cancelledMyOrder =
+    myOrders?.filter(
+      (order) => (order?.status || "").toLowerCase() === "cancelled"
+    ).length || 0;
 
   return {
     totalMyOrders,
