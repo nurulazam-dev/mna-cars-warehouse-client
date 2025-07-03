@@ -37,14 +37,7 @@ const Routers = () => {
       <Route path="/reset-password/:token" element={<ResetPassword />} />
       <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
-      <Route
-        path="/items"
-        element={
-          <PrivateRoute>
-            <Items />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/items" element={<Items />} />
       <Route
         path="/items/:id"
         element={

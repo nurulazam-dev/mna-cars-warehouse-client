@@ -100,7 +100,7 @@ const Items = () => {
                         onChange={(e) => setBrand(e.target.value)}
                       >
                         <option value="">All Brands</option>
-                        {uniqueBrands.map((b) => (
+                        {uniqueBrands?.map((b) => (
                           <option key={b} value={b}>
                             {b}
                           </option>
@@ -113,7 +113,7 @@ const Items = () => {
                         onChange={(e) => setColor(e.target.value)}
                       >
                         <option value="">All Colors</option>
-                        {uniqueColors.map((c) => (
+                        {uniqueColors?.map((c) => (
                           <option key={c} value={c}>
                             {c}
                           </option>
@@ -144,7 +144,7 @@ const Items = () => {
                           style={{ width: 120 }}
                         />
                         <span className="fw-bold text-primary">
-                          ${price.toLocaleString()}
+                          ${price?.toLocaleString()}
                         </span>
                       </div>
                     </div>
@@ -154,15 +154,15 @@ const Items = () => {
                         Items Grid
                  ===================== */}
                 <div className="row g-4">
-                  {filteredItems.length === 0 && (
+                  {filteredItems?.length === 0 && (
                     <div className="col-12 text-center text-danger fs-5">
                       No items found matching your criteria.
                     </div>
                   )}
-                  {filteredItems.map((item, idx) => (
+                  {filteredItems?.map((item, idx) => (
                     <div
                       className="col-12 col-md-6 col-lg-4 col-xl-3 d-flex"
-                      key={item.name + idx}
+                      key={item?.name + idx}
                     >
                       <div
                         className={`card border-0 shadow-lg rounded-4 w-100 animate__animated animate__fadeInUp`}
@@ -175,8 +175,8 @@ const Items = () => {
                       >
                         <div className="position-relative">
                           <img
-                            src={item.img}
-                            alt={item.name}
+                            src={item?.img}
+                            alt={item?.name}
                             className="card-img-top rounded-top-4"
                             style={{
                               height: 180,
@@ -187,22 +187,22 @@ const Items = () => {
                           />
                           <span
                             className={`badge bg-${
-                              badgeColors[item.badge]
+                              badgeColors[item?.badge]
                             } position-absolute top-0 start-0 m-2 px-3 py-2 fs-6 rounded-pill shadow`}
                             style={{ letterSpacing: "1px" }}
                           >
-                            {item.badge}
+                            {item?.badge}
                           </span>
                         </div>
                         <div className="card-body d-flex flex-column justify-content-between">
                           <h5 className="card-title fw-bold mb-2">
-                            {item.name}
+                            {item?.name}
                           </h5>
                           <h6 className="fw-bold fs-5 text-primary">
-                            ${item?.price.toLocaleString()}
+                            ${item?.price?.toLocaleString()}
                           </h6>
                           <ul className="list-unstyled mb-2">
-                            {item.specs.map((spec, i) => (
+                            {item?.specs?.map((spec, i) => (
                               <li key={i} className="text-secondary small mb-1">
                                 <i className="bi bi-check-circle-fill text-success me-2"></i>
                                 {spec}
@@ -211,21 +211,21 @@ const Items = () => {
                           </ul>
                           <div className="mb-2">
                             <span className="badge bg-light text-dark me-2">
-                              {item.year}
+                              {item?.year}
                             </span>
                             <span className="badge bg-light text-dark me-2">
-                              {item.mileage}
+                              {item?.mileage}
                             </span>
                             <span className="badge bg-light text-dark me-2">
-                              {item.color}
+                              {item?.color}
                             </span>
                             <span className="badge bg-light text-dark">
-                              {item.transmission}
+                              {item?.transmission}
                             </span>
                           </div>
                           <div className="mb-2 text-secondary small">
                             <i className="bi bi-geo-alt-fill text-primary me-1"></i>
-                            {item.location}
+                            {item?.location}
                           </div>
                           <div className="d-flex align-items-center justify-content-between mt-auto">
                             <button
