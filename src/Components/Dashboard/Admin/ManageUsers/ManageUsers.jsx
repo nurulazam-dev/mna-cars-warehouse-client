@@ -6,10 +6,12 @@ import UpdateUserModal from "./UpdateUserModal";
 import DeleteUserModal from "./DeleteUserModal";
 import Loader from "../../../Shared/Loader/Loader";
 import { formatDate } from "../../../../utils/formatDate";
+import { useUsersStatistics } from "../../../../hooks/statisticsData";
 
 const ManageUsers = () => {
   const { token } = useAuth();
   const { users, loading, refetch } = useUsers();
+  const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
   const [selectedUser, setSelectedUser] = useState(null);
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -23,11 +25,6 @@ const ManageUsers = () => {
   const [searchRole, setSearchRole] = useState("");
   const [searchDate, setSearchDate] = useState("");
   const [page, setPage] = useState(1);
-
-  // Stats
-  const totalUsers = users?.length || 0;
-  const totalAdmins = users?.filter((u) => u.role === "admin").length || 0;
-  const totalRegularUsers = users?.filter((u) => u.role === "user").length || 0;
 
   // Filtering
   const filteredUsers = useMemo(() => {
