@@ -4,9 +4,12 @@ import DeleteItemModal from "./DeleteItemModal";
 import { Button, Table } from "react-bootstrap";
 import { useItems } from "../../../../hooks/useItems";
 import Loader from "../../../Shared/Loader/Loader.jsx";
+import { useItemsStatistics } from "../../../../hooks/statisticsData.js";
 
 const ManageItems = () => {
   const { items, loading, refetch } = useItems();
+  const { totalItems, totalBrands, totalQty, totalSuppliers } =
+    useItemsStatistics();
   const ITEMS_PER_PAGE = 5;
 
   const [selectedItem, setSelectedItem] = useState(null);
@@ -21,21 +24,6 @@ const ManageItems = () => {
   const [searchTransmission, setSearchTransmission] = useState("");
   const [searchSupplier, setSearchSupplier] = useState("");
   const [page, setPage] = useState(1);
-
-  // Stats
-  const totalItems = items?.length || 0;
-
-  const totalQty = items?.reduce((acc, item) => acc + (item.quantity || 0), 0);
-
-  const totalBrands = useMemo(
-    () => new Set((items || []).map((item) => item.brand)).size,
-    [items]
-  );
-
-  const totalSuppliers = useMemo(
-    () => new Set((items || []).map((item) => item.supplierEmail)).size,
-    [items]
-  );
 
   // Filtering
   const filteredItems = useMemo(() => {
