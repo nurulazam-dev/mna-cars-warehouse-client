@@ -3,10 +3,20 @@ import { useMyOrders } from "../../../hooks/useMyOrders";
 import { formatDate } from "../../../utils/formatDate";
 import { getOrderStatusColor } from "../../../utils/getOrderStatusColor";
 import Loader from "../../Shared/Loader/Loader";
+import { useMyOrdersStatistics } from "../../../hooks/statisticsData";
 
 const MyOrders = () => {
-  const { orders, loading } = useMyOrders();
   const ORDERS_PER_PAGE = 5;
+  const { myOrders, loading } = useMyOrders();
+  const {
+    totalMyOrders,
+    totalMyOrderQty,
+    totalMyOrderAmount,
+    pendingMyOrder,
+    processingMyOrder,
+    completedMyOrder,
+    cancelledMyOrder,
+  } = useMyOrdersStatistics();
 
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
@@ -15,7 +25,7 @@ const MyOrders = () => {
   const [page, setPage] = useState(1);
 
   const filteredOrders = useMemo(() => {
-    return (orders || [])
+    return (myOrders || [])
       .filter((order) =>
         search
           ? order.items.some((item) =>
@@ -36,7 +46,7 @@ const MyOrders = () => {
       .filter((order) =>
         date ? formatDate(order.createdAt) === formatDate(date) : true
       );
-  }, [orders, search, _id, status, date]);
+  }, [myOrders, search, _id, status, date]);
 
   const totalPages = Math.ceil(filteredOrders.length / ORDERS_PER_PAGE);
   const paginatedOrders = filteredOrders.slice(
@@ -46,10 +56,10 @@ const MyOrders = () => {
 
   const statusOptions = useMemo(
     () =>
-      Array.from(new Set((orders || []).map((order) => order.status))).filter(
+      Array.from(new Set((myOrders || []).map((order) => order.status))).filter(
         Boolean
       ),
-    [orders]
+    [myOrders]
   );
 
   const handleFilterChange = (setter) => (e) => {
@@ -59,9 +69,60 @@ const MyOrders = () => {
 
   return (
     <section className="container animate__animated animate__fadeIn">
-      <h2 className="text-center mb-2 text-primary fw-bold">
-        My Orders ({filteredOrders.length})
-      </h2>
+      <h2 className="text-center mb-2 text-primary fw-bold">My Orders</h2>
+
+      {/* =========================
+          Statistics Overview
+      ========================== */}
+      <div className="row text-center g-3 mb-4">
+        <div className="col-md-4">
+          <div className="bg-white rounded shadow-sm p-3">
+            <h6 className="text-primary mb-1">
+              Total Orders:{" "}
+              <span className="fw-bold text-success">{totalMyOrders}</span>
+            </h6>
+          </div>
+        </div>
+
+        <div className="col-md-4">
+          <div className="bg-white rounded shadow-sm p-3">
+            <h6 className="text-primary mb-1">
+              Total Items:{" "}
+              <span className="fw-bold text-success">{totalMyOrderQty}</span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className="bg-white rounded shadow-sm p-3">
+            <h6 className="mb-1 text-primary">
+              Total Sales:{" "}
+              <span className="fw-bold text-success">
+                $ {totalMyOrderAmount?.toLocaleString()}
+              </span>
+            </h6>
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-warning bg-opacity-25 text-warning text-center">
+            Pending: {pendingMyOrder}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-info bg-opacity-25 text-info text-center">
+            Processing: {processingMyOrder}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-success bg-opacity-25 text-success text-center">
+            Completed: {completedMyOrder}
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="rounded shadow-sm p-2 bg-danger bg-opacity-25 text-danger text-center">
+            Cancelled: {cancelledMyOrder}
+          </div>
+        </div>
+      </div>
 
       {/* ===================
               filter part

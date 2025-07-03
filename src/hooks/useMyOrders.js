@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../config";
 
 export const useMyOrders = () => {
-  const [orders, setOrders] = useState([]);
+  const [myOrders, setMyOrders] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -24,7 +24,7 @@ export const useMyOrders = () => {
       if (!res.ok) throw new Error("Failed to fetch orders");
 
       const data = await res.json();
-      setOrders(data);
+      setMyOrders(data);
     } catch (err) {
       toast.error(err.message);
     } finally {
@@ -38,5 +38,5 @@ export const useMyOrders = () => {
     }
   }, [user?.email, token]);
 
-  return { orders, loading, refetch: fetchMyOrders };
+  return { myOrders, loading, refetch: fetchMyOrders };
 };

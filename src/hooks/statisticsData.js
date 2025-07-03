@@ -1,6 +1,7 @@
 import { useItems } from "./useItems";
 import { useUsers } from "./useUsers";
 import { useAllOrders } from "./useAllOrders";
+import { useMyOrders } from "./useMyOrders";
 
 // User statistics hook
 export const useUsersStatistics = () => {
@@ -74,5 +75,32 @@ export const useOrdersStatistics = () => {
     processingOrderCount,
     completedOrderCount,
     cancelledOrderCount,
+  };
+};
+
+// My-Order statistics hook
+export const useMyOrdersStatistics = () => {
+  const { myOrders } = useMyOrders();
+
+  const totalMyOrders = myOrders?.length || 0;
+  const totalMyOrderQty = myOrders?.reduce(
+    (acc, order) => acc + (order?.items?.length || 0),
+    0
+  );
+  const totalMyOrderAmount = myOrders?.reduce(
+    (acc, order) =>
+      acc +
+      (order?.items?.reduce((sum, item) => sum + (item?.price || 0), 0) || 0),
+    0
+  );
+
+  return {
+    totalMyOrders,
+    totalMyOrderQty,
+    totalMyOrderAmount,
+    pendingMyOrder,
+    processingMyOrder,
+    completedMyOrder,
+    cancelledMyOrder,
   };
 };
