@@ -29,7 +29,7 @@ const ContactDealer = () => {
           <div className="col-lg-7">
             <div className="bg-white rounded-4 shadow-lg p-5 animate__animated animate__fadeInUp position-relative">
               <Link
-                to={item ? `/items/${item._id}` : "/"}
+                to={item ? `/items/${item?._id}` : "/items"}
                 className="btn btn-outline-primary rounded-pill px-3 py-1 position-absolute"
                 style={{
                   top: 18,
