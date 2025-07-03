@@ -4,6 +4,7 @@ import { useItems } from "../../hooks/useItems";
 import Loader from "../../Components/Shared/Loader/Loader";
 import { useAuth } from "../../hooks/useAuth";
 import { useWishlist } from "../../hooks/useWishlist";
+import { toast } from "react-toastify";
 
 const Items = () => {
   const { user, token } = useAuth();
@@ -53,7 +54,9 @@ const Items = () => {
   };
 
   const handleAddWishlist = (item) => {
-    if (!user) return alert("Please login to add items to your wishlist.");
+    if (!user) {
+      toast.error("Please login to add items to wishlist.");
+    }
     const wishlistItem = {
       email: user.email,
       title: item?.title || item?.name,

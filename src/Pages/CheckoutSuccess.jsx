@@ -22,7 +22,10 @@ const CheckoutSuccess = () => {
         </div>
 
         <div className="d-flex justify-content-center gap-3">
-          <Link to="/orders" className="btn btn-outline-primary rounded-pill">
+          <Link
+            to="/dashboard/user/my-orders"
+            className="btn btn-outline-primary rounded-pill"
+          >
             View My Orders
           </Link>
           <Link to="/" className="btn btn-primary rounded-pill">

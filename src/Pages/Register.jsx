@@ -20,7 +20,12 @@ const Register = () => {
     setLoading(true);
     try {
       const { name, email, password } = formData;
-      const result = await registerUser({ name, email, password });
+      const result = await registerUser({
+        name,
+        email,
+        password,
+        createdAt: new Date().toISOString(),
+      });
 
       if (result?.success || result?.user) {
         toast.success("Registration successful!");
