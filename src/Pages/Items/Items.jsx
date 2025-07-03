@@ -69,9 +69,14 @@ const Items = () => {
       }}
     >
       <div className="container">
-        <h2 className="text-center mb-2 text-primary fw-bold">
-          Inventory Items
-        </h2>
+        <div className="d-flex justify-content-center align-items-center mb-2">
+          <h2 className="text-center text-primary fw-bold me-3">
+            Inventory Items
+          </h2>
+          <span className="badge text-success border fs-6 px-2 py-2">
+            Search Results: {filteredItems?.length || 0}
+          </span>
+        </div>
         {loading && <Loader />}
         {!loading && (
           <div>
@@ -88,7 +93,7 @@ const Items = () => {
                       <input
                         type="text"
                         className="form-control w-auto"
-                        style={{ minWidth: 180 }}
+                        style={{ minWidth: 160 }}
                         placeholder="Search by name or brand"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -129,7 +134,7 @@ const Items = () => {
                         <option value="Automatic">Automatic</option>
                         <option value="Manual">Manual</option>
                       </select>
-                      <div className="d-flex align-items-center gap-2">
+                      <div className="d-flex align-items-center gap-1">
                         <label className="me-2 text-secondary small">
                           Max Price:
                         </label>
@@ -150,6 +155,7 @@ const Items = () => {
                     </div>
                   </div>
                 </div>
+
                 {/* =====================
                         Items Grid
                  ===================== */}
