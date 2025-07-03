@@ -6,11 +6,23 @@ import UpdateOrderModal from "./UpdateOrderModal";
 import DeleteOrderModal from "./DeleteOrderModal";
 import { getOrderStatusColor } from "../../../../utils/getOrderStatusColor";
 import { formatDate } from "../../../../utils/formatDate";
-
-const ORDERS_PER_PAGE = 5;
+import { useOrdersStatistics } from "../../../../hooks/statisticsData";
 
 const ManageOrders = () => {
   const { orders, loading, refetch } = useAllOrders();
+  const {
+    totalOrders,
+    totalUniqueBuyers,
+    totalOrderQty,
+    totalSalesAmount,
+    pendingOrderCount,
+    processingOrderCount,
+    completedOrderCount,
+    cancelledOrderCount,
+  } = useOrdersStatistics();
+
+  const ORDERS_PER_PAGE = 5;
+
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -22,51 +34,6 @@ const ManageOrders = () => {
   const [status, setStatus] = useState("");
   const [date, setDate] = useState("");
   const [page, setPage] = useState(1);
-
-  // Stats calculations
-  const {
-    totalOrders,
-    uniqueBuyers,
-    totalQty,
-    totalSales,
-    pendingCount,
-    processingCount,
-    completedCount,
-    cancelledCount,
-  } = useMemo(() => {
-    const totalOrders = orders?.length || 0;
-    const uniqueBuyers = new Set(orders?.map((o) => o.email)).size || 0;
-    let totalQty = 0;
-    let totalSales = 0;
-    let pendingCount = 0;
-    let processingCount = 0;
-    let completedCount = 0;
-    let cancelledCount = 0;
-
-    (orders || []).forEach((order) => {
-      totalQty += order?.items?.length || 0;
-      totalSales += (order?.items || []).reduce(
-        (sum, item) => sum + (Number(item?.price) || 0),
-        0
-      );
-      const status = order?.status?.toLowerCase();
-      if (status === "pending") pendingCount++;
-      else if (status === "processing") processingCount++;
-      else if (status === "completed") completedCount++;
-      else if (status === "cancelled") cancelledCount++;
-    });
-
-    return {
-      totalOrders,
-      uniqueBuyers,
-      totalQty,
-      totalSales,
-      pendingCount,
-      processingCount,
-      completedCount,
-      cancelledCount,
-    };
-  }, [orders]);
 
   const filteredOrders = useMemo(() => {
     return (orders || [])
@@ -130,7 +97,7 @@ const ManageOrders = () => {
           <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
               Unique Buyers:{" "}
-              <span className="fw-bold text-success">{uniqueBuyers}</span>
+              <span className="fw-bold text-success">{totalUniqueBuyers}</span>
             </h6>
           </div>
         </div>
@@ -138,7 +105,7 @@ const ManageOrders = () => {
           <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
               Total Items:{" "}
-              <span className="fw-bold text-success">{totalQty}</span>
+              <span className="fw-bold text-success">{totalOrderQty}</span>
             </h6>
           </div>
         </div>
@@ -147,29 +114,29 @@ const ManageOrders = () => {
             <h6 className="mb-1 text-primary">
               Total Sales:{" "}
               <span className="fw-bold text-success">
-                $ {totalSales.toLocaleString()}
+                $ {totalSalesAmount?.toLocaleString()}
               </span>
             </h6>
           </div>
         </div>
         <div className="col-md-6 col-lg-3">
           <div className="rounded shadow-sm p-2 bg-warning bg-opacity-25 text-warning text-center">
-            Pending: {pendingCount}
+            Pending: {pendingOrderCount}
           </div>
         </div>
         <div className="col-md-6 col-lg-3">
           <div className="rounded shadow-sm p-2 bg-info bg-opacity-25 text-info text-center">
-            Processing: {processingCount}
+            Processing: {processingOrderCount}
           </div>
         </div>
         <div className="col-md-6 col-lg-3">
           <div className="rounded shadow-sm p-2 bg-success bg-opacity-25 text-success text-center">
-            Completed: {completedCount}
+            Completed: {completedOrderCount}
           </div>
         </div>
         <div className="col-md-6 col-lg-3">
           <div className="rounded shadow-sm p-2 bg-danger bg-opacity-25 text-danger text-center">
-            Cancelled: {cancelledCount}
+            Cancelled: {cancelledOrderCount}
           </div>
         </div>
       </div>
