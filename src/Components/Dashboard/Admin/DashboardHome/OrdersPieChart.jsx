@@ -45,9 +45,6 @@ const OrdersPieChart = () => {
             <Tooltip />
             <Legend />
           </PieChart>
-          {/* other pie charts start */}
-
-          {/* other pie charts end */}
         </div>
       </div>
     </div>

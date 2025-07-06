@@ -6,24 +6,19 @@ import {
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
 import OrdersPieChart from "./DashboardHome/OrdersPieChart";
+import PieDemo from "./DashboardHome/PieDemo";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
   const { totalItems, totalBrands, totalQty, totalSuppliers } =
     useItemsStatistics();
-  const {
-    totalOrders,
-    totalOrderQty,
-    totalSalesAmount,
-    pendingOrderCount,
-    processingOrderCount,
-    completedOrderCount,
-    cancelledOrderCount,
-  } = useOrdersStatistics();
+  const { totalOrders, totalOrderQty, totalSalesAmount } =
+    useOrdersStatistics();
 
   return (
     <div>
       <OrdersPieChart />
+      <PieDemo />
       <div className="row mt-4">
         <div className="col-md-3">
           <div className="card text-white bg-primary mb-3">
@@ -110,39 +105,7 @@ const DashboardStats = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-danger mb-3">
-            <div className="card-header">Pending Orders</div>
-            <div className="card-body pb-0">
-              <h4>{pendingOrderCount}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-danger mb-3">
-            <div className="card-header">Processing Orders</div>
-            <div className="card-body pb-0">
-              <h4>{processingOrderCount}</h4>
-            </div>
-          </div>
-        </div>
 
-        <div className="col-md-3">
-          <div className="card text-white bg-info mb-3">
-            <div className="card-header">Delivered Orders</div>
-            <div className="card-body pb-0">
-              <h4>{completedOrderCount}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-danger mb-3">
-            <div className="card-header">Cancelled Orders</div>
-            <div className="card-body pb-0">
-              <h4>{cancelledOrderCount}</h4>
-            </div>
-          </div>
-        </div>
         <div className="col-md-3">
           <div className="card text-white bg-dark mb-3">
             <div className="card-header">Total Revenue</div>
