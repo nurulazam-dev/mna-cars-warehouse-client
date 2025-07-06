@@ -3,7 +3,7 @@ import { useUsersStatistics } from "../../../../hooks/statisticsData";
 import { useUsers } from "../../../../hooks/useUsers";
 
 const DistributionPieChart = () => {
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
+  const COLORS = ["#ffc107", "#0dcaf0", "#FFBB28"];
   const { totalAdmins, totalRegularUsers } = useUsersStatistics();
   const { users } = useUsers();
 
@@ -43,8 +43,8 @@ const DistributionPieChart = () => {
         </div>
         <div className="col-md-8">
           <h5 className="mb-2 text-primary">Recent Registered Users</h5>
-          <table className="table table-bordered">
-            <thead>
+          <table className="table table-bordered table-striped table-hover">
+            <thead className="table-dark text-center">
               <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -62,8 +62,14 @@ const DistributionPieChart = () => {
                     <td>{index + 1}</td>
                     <td>{user?.name}</td>
                     <td>{user?.email}</td>
-                    <td>{user?.phone ? user?.phone : "N/A"}</td>
-                    <td>{user?.role}</td>
+                    <td className="text-center">
+                      {user?.phone ? (
+                        user?.phone
+                      ) : (
+                        <p className="m-0 text-danger">N/A</p>
+                      )}
+                    </td>
+                    <td className="text-center">{user?.role}</td>
                   </tr>
                 ))}
             </tbody>

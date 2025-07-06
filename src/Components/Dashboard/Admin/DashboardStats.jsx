@@ -4,8 +4,8 @@ import {
   useItemsStatistics,
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
-import OrdersPieChart from "./DashboardHome/OrdersPieChart";
-import PieDemo from "./DashboardHome/PieDemo";
+
+import OrdersSummary from "./DashboardHome/OrdersSummary";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
@@ -13,9 +13,7 @@ const DashboardStats = () => {
     useItemsStatistics();
 
   return (
-    <div>
-      <OrdersPieChart />
-      <PieDemo />
+    <section className="container">
       <div className="row mt-4">
         <div className="col-md-3">
           <div className="card text-white bg-primary mb-3">
@@ -80,9 +78,10 @@ const DashboardStats = () => {
         </div>
       </div>
 
+      <OrdersSummary />
       <InfoContainer />
       <DistributionPieChart />
-    </div>
+    </section>
   );
 };
 

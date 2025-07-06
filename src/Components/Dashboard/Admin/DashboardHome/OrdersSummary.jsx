@@ -8,9 +8,9 @@ import {
 } from "recharts";
 import { useOrdersStatistics } from "../../../../hooks/statisticsData";
 
-const COLORS = ["#ffc107", "#0dcaf0", "#198754", "#dc3545"];
+const OrdersSummary = () => {
+  const COLORS = ["#ffc107", "#0dcaf0", "#198754", "#dc3545"];
 
-const PieDemo = () => {
   const {
     pendingOrderCount,
     processingOrderCount,
@@ -60,8 +60,8 @@ const PieDemo = () => {
   };
 
   return (
-    <section>
-      <h4 className="text-center text-primary fs-2 mb-2">Order Summary</h4>
+    <section className="mb-5">
+      <h1 className="text-center text-success fs-2 mb-3">Order Summary</h1>
       <div style={{ width: "100%", height: 250 }} className="row">
         <div className="col-md-6">
           <ResponsiveContainer>
@@ -88,7 +88,6 @@ const PieDemo = () => {
                 formatter={(value, name) => [`${value} orders`, name]}
                 contentStyle={{ fontWeight: 500 }}
               />
-              {/* <Legend verticalAlign="bottom" iconType="circle" /> */}
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -117,27 +116,36 @@ const PieDemo = () => {
             </li>
           </ul>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 pt-1">
           <div
-            className="card text-white mb-3"
-            style={{ backgroundColor: "indigo" }}
+            className="card mb-3"
+            style={{ borderBlockStart: "4px solid blue" }}
           >
-            <div className="card-header py-1">Total Orders</div>
+            <div className="card-header py-1 text-primary fw-bold">
+              Total Orders
+            </div>
             <div className="card-body py-0">
               <h4>{totalOrders}</h4>
             </div>
           </div>
-          <div
-            className="card text-white mb-3"
-            style={{ backgroundColor: "indigo" }}
-          >
-            <div className="card-header py-1">Total Orders Quantity</div>
+          <div className="card mb-3">
+            <div
+              className="card-header py-1 fw-bold"
+              style={{ borderBlockStart: "4px solid indigo", color: "indigo" }}
+            >
+              Total Orders Quantity
+            </div>
             <div className="card-body py-0">
               <h4>{totalOrderQty}</h4>
             </div>
           </div>
-          <div className="card text-white bg-dark">
-            <div className="card-header py-1">Total Revenue</div>
+          <div className="card" style={{ borderBlockStart: "4px solid green" }}>
+            <div
+              className="card-header py-1 fw-bold"
+              style={{ color: "green" }}
+            >
+              Total Revenue
+            </div>
             <div className="card-body py-0">
               <h4>$ {totalSalesAmount}</h4>
             </div>
@@ -148,4 +156,4 @@ const PieDemo = () => {
   );
 };
 
-export default PieDemo;
+export default OrdersSummary;
