@@ -3,12 +3,19 @@ import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { useOrdersStatistics } from "../../../../hooks/statisticsData";
 
 const OrdersPieChart = () => {
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
-  const { totalPendingOrders, totalCompletedOrders } = useOrdersStatistics();
+  const COLORS = ["#ffc107", "#0dcaf0", "#198754", "#dc3545", "#FFBB28"];
+  const {
+    pendingOrderCount,
+    processingOrderCount,
+    completedOrderCount,
+    cancelledOrderCount,
+  } = useOrdersStatistics();
 
   const orderStatusData = [
-    { name: "Pending", value: totalPendingOrders || 10 },
-    { name: "Completed", value: totalCompletedOrders || 90 },
+    { name: "Pending", value: pendingOrderCount || 10 },
+    { name: "Processing", value: processingOrderCount || 20 },
+    { name: "Completed", value: completedOrderCount || 70 },
+    { name: "Cancelled", value: cancelledOrderCount || 0 },
   ];
 
   return (
@@ -16,7 +23,8 @@ const OrdersPieChart = () => {
       <h1 className="text-center text-success fs-2">Order Summary</h1>
       <div className="">
         <div className="border">
-          <PieChart width={300} height={250}>
+          {/* order status pie chart */}
+          <PieChart width={300} height={270}>
             <Pie
               data={orderStatusData}
               cx="50%"
@@ -37,6 +45,9 @@ const OrdersPieChart = () => {
             <Tooltip />
             <Legend />
           </PieChart>
+          {/* other pie charts start */}
+
+          {/* other pie charts end */}
         </div>
       </div>
     </div>
