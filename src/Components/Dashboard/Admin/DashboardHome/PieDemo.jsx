@@ -97,6 +97,10 @@ const PieDemo = () => {
           <h5 className="text-center">Order Status</h5>
           <ul className="list-unstyled">
             <li className="d-flex justify-content-between align-items-center mb-1">
+              <span className="badge bg-primary">Total Orders</span>
+              <span>{totalOrders}</span>
+            </li>
+            <li className="d-flex justify-content-between align-items-center mb-1">
               <span className="badge bg-warning">Pending</span>
               <span>{pendingOrderCount}</span>
             </li>
