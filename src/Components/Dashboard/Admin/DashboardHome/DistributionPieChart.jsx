@@ -8,8 +8,8 @@ const DistributionPieChart = () => {
   const { users } = useUsers();
 
   const userRolesData = [
-    { name: "Admins", value: totalAdmins || 1 },
-    { name: "Users", value: totalRegularUsers || 10 },
+    { name: "Admins", value: totalAdmins || 50 },
+    { name: "Users", value: totalRegularUsers || 756 },
   ];
 
   return (
