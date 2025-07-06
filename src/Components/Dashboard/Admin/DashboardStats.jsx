@@ -2,7 +2,6 @@ import InfoContainer from "./DashboardHome/InfoContainer";
 import DistributionPieChart from "./DashboardHome/DistributionPieChart";
 import {
   useItemsStatistics,
-  useOrdersStatistics,
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
 import OrdersPieChart from "./DashboardHome/OrdersPieChart";
@@ -12,8 +11,6 @@ const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
   const { totalItems, totalBrands, totalQty, totalSuppliers } =
     useItemsStatistics();
-  const { totalOrders, totalOrderQty, totalSalesAmount } =
-    useOrdersStatistics();
 
   return (
     <div>
@@ -82,39 +79,7 @@ const DashboardStats = () => {
           </div>
         </div>
       </div>
-      <div className="row mt-2">
-        <div className="col-md-3">
-          <div
-            className="card text-white mb-3"
-            style={{ backgroundColor: "indigo" }}
-          >
-            <div className="card-header">Total Orders</div>
-            <div className="card-body pb-0">
-              <h4>{totalOrders}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div
-            className="card text-white mb-3"
-            style={{ backgroundColor: "indigo" }}
-          >
-            <div className="card-header">Total Orders Quantity</div>
-            <div className="card-body pb-0">
-              <h4>{totalOrderQty}</h4>
-            </div>
-          </div>
-        </div>
 
-        <div className="col-md-3">
-          <div className="card text-white bg-dark mb-3">
-            <div className="card-header">Total Revenue</div>
-            <div className="card-body pb-0">
-              <h4>$ {totalSalesAmount}</h4>
-            </div>
-          </div>
-        </div>
-      </div>
       <InfoContainer />
       <DistributionPieChart />
     </div>
