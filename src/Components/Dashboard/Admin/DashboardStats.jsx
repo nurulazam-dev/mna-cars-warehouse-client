@@ -5,6 +5,7 @@ import {
   useOrdersStatistics,
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
+import OrdersPieChart from "./DashboardHome/OrdersPieChart";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
@@ -22,6 +23,7 @@ const DashboardStats = () => {
 
   return (
     <div>
+      <OrdersPieChart />
       <div className="row mt-4">
         <div className="col-md-3">
           <div className="card text-white bg-primary mb-3">
