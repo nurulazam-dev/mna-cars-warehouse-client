@@ -96,21 +96,21 @@ const PieDemo = () => {
         <div className="col-md-2">
           <h5 className="text-center">Order Status</h5>
           <ul className="list-unstyled">
-            <li>
-              <span className="badge bg-warning">Pending</span>:{" "}
-              {pendingOrderCount}
+            <li className="d-flex justify-content-between align-items-center mb-1">
+              <span className="badge bg-warning">Pending</span>
+              <span>{pendingOrderCount}</span>
             </li>
-            <li>
-              <span className="badge bg-info">Processing</span>:{" "}
-              {processingOrderCount}
+            <li className="d-flex justify-content-between align-items-center mb-1">
+              <span className="badge bg-info">Processing</span>
+              <span>{processingOrderCount}</span>
             </li>
-            <li>
-              <span className="badge bg-success">Completed</span>:{" "}
-              {completedOrderCount}
+            <li className="d-flex justify-content-between align-items-center mb-1">
+              <span className="badge bg-success">Completed</span>
+              <span>{completedOrderCount}</span>
             </li>
-            <li>
-              <span className="badge bg-danger">Cancelled</span>:{" "}
-              {cancelledOrderCount}
+            <li className="d-flex justify-content-between align-items-center mb-1">
+              <span className="badge bg-danger">Cancelled</span>
+              <span>{cancelledOrderCount}</span>
             </li>
           </ul>
         </div>
