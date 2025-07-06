@@ -17,6 +17,8 @@ const PieDemo = () => {
     completedOrderCount,
     cancelledOrderCount,
     totalOrders,
+    totalOrderQty,
+    totalSalesAmount,
   } = useOrdersStatistics();
 
   const data = [
@@ -60,10 +62,7 @@ const PieDemo = () => {
   return (
     <section>
       <h4 className="text-center text-primary fs-2 mb-2">Order Summary</h4>
-      <div
-        style={{ width: "100%", height: 250, border: "1px solid #ccc" }}
-        className="row justify-content-center align-items-center"
-      >
+      <div style={{ width: "100%", height: 250 }} className="row">
         <div className="col-md-6">
           <ResponsiveContainer>
             <PieChart>
@@ -93,34 +92,57 @@ const PieDemo = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="col-md-2">
-          <h5 className="text-center">Order Status</h5>
-          <ul className="list-unstyled">
-            <li className="d-flex justify-content-between align-items-center mb-1">
+        <div className="col-md-3 border rounded">
+          <h5 className="text-center py-2 border-bottom">Order Status</h5>
+          <ul className="list-unstyled mt-3">
+            <li className="d-flex justify-content-between align-items-center mb-2">
               <span className="badge bg-primary">Total Orders</span>
               <span>{totalOrders}</span>
             </li>
-            <li className="d-flex justify-content-between align-items-center mb-1">
+            <li className="d-flex justify-content-between align-items-center mb-2">
               <span className="badge bg-warning">Pending</span>
               <span>{pendingOrderCount}</span>
             </li>
-            <li className="d-flex justify-content-between align-items-center mb-1">
+            <li className="d-flex justify-content-between align-items-center mb-2">
               <span className="badge bg-info">Processing</span>
               <span>{processingOrderCount}</span>
             </li>
-            <li className="d-flex justify-content-between align-items-center mb-1">
+            <li className="d-flex justify-content-between align-items-center mb-2">
               <span className="badge bg-success">Completed</span>
               <span>{completedOrderCount}</span>
             </li>
-            <li className="d-flex justify-content-between align-items-center mb-1">
+            <li className="d-flex justify-content-between align-items-center mb-2">
               <span className="badge bg-danger">Cancelled</span>
               <span>{cancelledOrderCount}</span>
             </li>
           </ul>
         </div>
-      </div>
-      <div className="text-center mt-2">
-        <span className="badge bg-dark fs-6">Total Orders: {totalOrders}</span>
+        <div className="col-md-3">
+          <div
+            className="card text-white mb-3"
+            style={{ backgroundColor: "indigo" }}
+          >
+            <div className="card-header py-1">Total Orders</div>
+            <div className="card-body py-0">
+              <h4>{totalOrders}</h4>
+            </div>
+          </div>
+          <div
+            className="card text-white mb-3"
+            style={{ backgroundColor: "indigo" }}
+          >
+            <div className="card-header py-1">Total Orders Quantity</div>
+            <div className="card-body py-0">
+              <h4>{totalOrderQty}</h4>
+            </div>
+          </div>
+          <div className="card text-white bg-dark">
+            <div className="card-header py-1">Total Revenue</div>
+            <div className="card-body py-0">
+              <h4>$ {totalSalesAmount}</h4>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
