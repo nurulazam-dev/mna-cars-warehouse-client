@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "../Chart";
 import DashboardStats from "./DashboardHome/DashboardStats/DashboardStats";
 import OrdersSummary from "./DashboardHome/OrdersSummary";
-import WeeklyOrdersChart from "./DashboardHome/WeeklyOrdersChart";
+import MonthlyOrdersChart from "./DashboardHome/MonthlyOrdersChart";
 import DistributionPieChart from "./DashboardHome/DistributionPieChart";
 import WelcomeBanner from "./DashboardHome/WelcomeBanner";
 
@@ -12,7 +12,7 @@ const Overview = () => {
       <WelcomeBanner />
       <DashboardStats />
       <OrdersSummary />
-      <WeeklyOrdersChart />
+      <MonthlyOrdersChart />
       <DistributionPieChart />
       <Chart />
     </div>
