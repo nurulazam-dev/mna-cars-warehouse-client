@@ -4,7 +4,7 @@ const DashboardStatCard = ({ title, value, bg, icon }) => {
       <div className={`card text-white shadow h-100 ${bg}`}>
         <div className="card-body py-2">
           <h6 className="text-uppercase fw-bold mb-1">{title}</h6>
-          <div className=" d-flex align-items-center justify-content-between">
+          <div className=" d-flex align-items-center justify-content-between border-top">
             <div>
               <h2 className="fw-bold mt-1">{value}</h2>
             </div>
