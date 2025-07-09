@@ -3,7 +3,7 @@ import "../styles/Dashboard.css";
 import Sidebar from "../Components/Dashboard/Sidebar";
 import { useAuth } from "../hooks/useAuth";
 import Profile from "../Components/Dashboard/Profile";
-import Overview from "../Components/Dashboard/Overview";
+import Overview from "../Components/Dashboard/Admin/Overview";
 
 const Dashboard = () => {
   const { role } = useAuth();
