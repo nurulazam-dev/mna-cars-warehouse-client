@@ -3,11 +3,11 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 
 const AboutDeveloper = () => {
   return (
-    <div className="py-5" style={{ background: "#f8f9fa", minHeight: "100vh" }}>
+    <div className="py-3" style={{ background: "#f8f9fa", minHeight: "100vh" }}>
       <Container>
-        <h2 className="text-center text-primary mb-4 fw-bold">
+        <h1 className="text-center text-secondary mb-4 fw-bold">
           About the Developer
-        </h2>
+        </h1>
         <Row className="justify-content-center">
           <Col md={5} className="mb-4">
             <Card className="shadow border-0 text-center p-3">
@@ -17,11 +17,11 @@ const AboutDeveloper = () => {
                 alt="Developer"
                 className="rounded-circle mx-auto"
                 style={{
-                  width: "160px",
-                  height: "160px",
+                  width: "155px",
+                  height: "180px",
                   objectFit: "cover",
                   marginTop: "-60px",
-                  border: "6px solid #fff",
+                  border: "4px solid #fff",
                   boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
                 }}
               />
@@ -29,10 +29,40 @@ const AboutDeveloper = () => {
                 <h3 className="text-success fw-bold mb-1">
                   Mohammad Nurul Azam
                 </h3>
-                <p className="text-muted mb-3">Web Developer & Designer</p>
+                <p className="text-muted mb-0">Web Developer & Designer</p>
+                <button
+                  className="mb-3 text-primary border-0 bg-transparent"
+                  onClick={() =>
+                    (window.location.href = "mailto:nurulazam.dev@gmail.com")
+                  }
+                >
+                  nurulazam.dev@gmail.com
+                </button>
                 <div className="d-flex justify-content-center gap-3 mb-3">
                   <a
-                    href="https://www.facebook.com/mnaofficialbd"
+                    href="https://nurulazam-dev.web.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      style={{ height: "32px", width: "32px" }}
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                      alt="Portfolio"
+                    />
+                  </a>
+                  <a
+                    href="https://github.com/nurulazam-dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      style={{ height: "32px", width: "32px" }}
+                      src="https://img.icons8.com/m_outlined/512/github.png"
+                      alt="GitHub"
+                    />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/nurulazam.dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -43,7 +73,7 @@ const AboutDeveloper = () => {
                     />
                   </a>
                   <a
-                    href="https://www.twitter.com/mnaofficialbd"
+                    href="https://www.twitter.com/nurulazam_dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -54,7 +84,7 @@ const AboutDeveloper = () => {
                     />
                   </a>
                   <a
-                    href="https://www.instagram.com/mnaofficialbd"
+                    href="https://www.instagram.com/nurulazam_dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -67,7 +97,7 @@ const AboutDeveloper = () => {
                 </div>
                 <Button
                   variant="outline-primary"
-                  href="mailto:mnaofficialbd@gmail.com"
+                  href="mailto:nurulazam.dev@gmail.com"
                   className="fw-bold"
                 >
                   Contact Me
@@ -78,29 +108,55 @@ const AboutDeveloper = () => {
           <Col md={7}>
             <Card className="shadow border-0 h-100">
               <Card.Body>
-                <h4 className="text-danger fw-bold mb-3">About Me</h4>
-                <div className="fs-5" style={{ lineHeight: 1.7 }}>
-                  <p>
-                    I am Mohammad Nurul Azam, a passionate web developer and
-                    designer. I'm a student of BBS and Programming Hero.
+                <div className="fs-6 p-3" style={{ lineHeight: 1.8 }}>
+                  <p style={{ fontSize: "1rem", textAlign: "justify" }}>
+                    I'm <strong>𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐍𝐮𝐫𝐮𝐥 𝐀𝐳𝐚𝐦</strong>. I'm working as a{" "}
+                    <strong>𝐅𝐮𝐥𝐥 𝐒𝐭𝐚𝐜𝐤 (𝐌𝐄𝐑𝐍) 𝐖𝐞𝐛 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫</strong> for more
+                    than 4 years. As a MERN stack web developer, I specialize in
+                    building dynamic and responsive web applications using the
+                    MERN (MongoDB, Express.js, React.js, Node.js) technology
+                    stack. With expertise in both frontend and backend
+                    development, I craft efficient and user-friendly interfaces
+                    while ensuring seamless data flow and robust server-side
+                    functionality. Client's satisfaction is the best priority
+                    for me. Thank You.
                   </p>
-                  <p>
-                    I was born in the village of East Raozan Rashidarpara in
-                    Raozan Upazila of Chittagong district on September 09, 1998.
-                  </p>
-                  <p>
-                    I love to dream and strive to fulfill them. My hobbies
-                    include design and programming, and I enjoy working on
-                    creative projects.
-                  </p>
-                  <p>
-                    I have a passion for learning and sharing knowledge with
-                    others. Solving real-world problems excites me.
-                  </p>
-                  <p>
-                    I also enjoy working on YouTube and design, and I run
-                    several YouTube channels.
-                  </p>
+                  <h4 className="fw-bold fs-4 border-bottom text-primary">
+                    Skills:
+                  </h4>
+                  <ul>
+                    <li>
+                      {" "}
+                      <strong>Frontend:</strong> HTML, CSS, JavaScript,
+                      React.js, React Router, ES6, Bootstrap5, Tailwind CSS,
+                      DaisyUi, MaterialUI, etc.
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>Backend:</strong> Node.js, Express.js
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>Database:</strong> MongoDB, Mongoose
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>API:</strong> RESTful APIs
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>Design:</strong> Responsive Web Design
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>Version Control:</strong> Version Control (Git)
+                    </li>
+                    <li>
+                      {" "}
+                      <strong>Tools:</strong> GitHub, Netlify, Heroku, Visual
+                      Studio Code
+                    </li>
+                  </ul>
                 </div>
               </Card.Body>
             </Card>
