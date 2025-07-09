@@ -1,11 +1,7 @@
-import InfoContainer from "./DashboardHome/InfoContainer";
-import DistributionPieChart from "./DashboardHome/DistributionPieChart";
 import {
   useItemsStatistics,
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
-
-import OrdersSummary from "./DashboardHome/OrdersSummary";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
@@ -77,10 +73,6 @@ const DashboardStats = () => {
           </div>
         </div>
       </div>
-
-      <OrdersSummary />
-      <InfoContainer />
-      <DistributionPieChart />
     </section>
   );
 };

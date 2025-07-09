@@ -1,16 +1,14 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  // Legend,
-} from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useOrdersStatistics } from "../../../../hooks/statisticsData";
 
-const OrdersSummary = () => {
-  const COLORS = ["#ffc107", "#0dcaf0", "#198754", "#dc3545"];
+const STATUS_COLORS = {
+  Pending: "#ffc107",
+  Processing: "#0dcaf0",
+  Completed: "#198754",
+  Cancelled: "#dc3545",
+};
 
+const OrdersSummary = () => {
   const {
     pendingOrderCount,
     processingOrderCount,
@@ -21,14 +19,14 @@ const OrdersSummary = () => {
     totalSalesAmount,
   } = useOrdersStatistics();
 
-  const data = [
+  const pieData = [
     { name: "Pending", value: pendingOrderCount },
     { name: "Processing", value: processingOrderCount },
     { name: "Completed", value: completedOrderCount },
     { name: "Cancelled", value: cancelledOrderCount },
-  ].filter((d) => d.value > 0);
+  ].filter(({ value }) => value > 0);
 
-  const renderCustomizedLabel = ({
+  const renderLabel = ({
     cx,
     cy,
     midAngle,
@@ -53,7 +51,7 @@ const OrdersSummary = () => {
           textAnchor={x > cx ? "start" : "end"}
           dominantBaseline="central"
         >
-          {`${data[index].name}: ${(percent * 100).toFixed(0)}%`}
+          {`${pieData[index].name}: ${(percent * 100).toFixed(0)}%`}
         </text>
       )
     );
@@ -62,25 +60,28 @@ const OrdersSummary = () => {
   return (
     <section className="mb-5">
       <h1 className="text-center text-success fs-2 mb-3">Order Summary</h1>
-      <div style={{ width: "100%", height: 250 }} className="row">
+      <div className="row" style={{ width: "100%", height: 250 }}>
+        {/* ==========
+           Pie Chart
+          ========== */}
         <div className="col-md-6">
           <ResponsiveContainer>
             <PieChart>
               <Pie
-                data={data}
+                data={pieData}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={renderCustomizedLabel}
+                label={renderLabel}
                 outerRadius={100}
                 fill="#8884d8"
                 dataKey="value"
-                isAnimationActive={true}
+                isAnimationActive
               >
-                {data.map((entry, index) => (
+                {pieData.map((entry, idx) => (
                   <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
+                    key={`cell-${entry.name}`}
+                    fill={STATUS_COLORS[entry.name] || "#8884d8"}
                   />
                 ))}
               </Pie>
@@ -91,6 +92,10 @@ const OrdersSummary = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
+
+        {/* =================
+           Order Status List
+          ================= */}
         <div className="col-md-3 border rounded">
           <h5 className="text-center py-2 border-bottom">Order Status</h5>
           <ul className="list-unstyled mt-3">
@@ -116,6 +121,10 @@ const OrdersSummary = () => {
             </li>
           </ul>
         </div>
+
+        {/* =================
+           Order Stats Cards
+          ================= */}
         <div className="col-md-3 pt-1">
           <div
             className="card mb-3"
