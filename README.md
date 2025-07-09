@@ -1,4 +1,4 @@
-# 🚗 MNA Cars Warehouse
+# 🚗 MNA Car Warehouse
 
 [Live Project](https://mna-cars-warehouse.web.app/)  
 [Server Side Repo](https://github.com/nurulazam-dev/mna-cars-warehouse-server)
@@ -7,7 +7,7 @@
 
 ## 📖 Overview
 
-**MNA Cars Warehouse** is a full-stack inventory management system for car warehouses. It enables admins and users to manage, track, and analyze car stocks, orders, and users with a modern dashboard, robust authentication, and real-time statistics.
+**MNA Car Warehouse** is a full-stack inventory management system for car warehouses. It enables admins and users to manage, track, and analyze car stocks, orders, and users with a modern dashboard, robust authentication, and real-time statistics.
 
 ---
 
@@ -111,8 +111,7 @@
 
 ## 🙏 Credits
 
-Developed by [Nurul Azam](https://github.com/nurulazam-dev)  
-Special thanks to the open-source community and all contributors!
+Developed by [Mohammad Nurul Azam](https://github.com/nurulazam-dev)
 
 ---
 
