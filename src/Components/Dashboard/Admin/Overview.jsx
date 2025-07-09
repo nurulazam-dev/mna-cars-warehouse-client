@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "../Chart";
-import DashboardStats from "./DashboardStats";
+import DashboardStats from "./DashboardHome/DashboardStats/DashboardStats";
 import OrdersSummary from "./DashboardHome/OrdersSummary";
 import InfoContainer from "./DashboardHome/InfoContainer";
 import DistributionPieChart from "./DashboardHome/DistributionPieChart";

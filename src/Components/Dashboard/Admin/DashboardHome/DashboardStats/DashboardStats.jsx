@@ -1,8 +1,8 @@
 import {
   useItemsStatistics,
   useUsersStatistics,
-} from "../../../hooks/statisticsData";
-import DashboardStatCard from "./DashboardHome/DashboardStats/DashboardStatCard";
+} from "../../../../../hooks/statisticsData";
+import DashboardStatCard from "./DashboardStatCard";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
@@ -43,13 +43,13 @@ const DashboardStats = () => {
     {
       title: "Total Brands",
       value: totalBrands,
-      bg: "bg-primary",
+      bg: "bg-warning",
       icon: "bi-tags-fill",
     },
     {
       title: "Total Quantities",
       value: totalQty,
-      bg: "bg-warning",
+      bg: "bg-primary",
       icon: "bi-archive-fill",
     },
   ];
