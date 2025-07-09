@@ -1,5 +1,3 @@
-import React from "react";
-import Chart from "../Chart";
 import DashboardStats from "./DashboardHome/DashboardStats/DashboardStats";
 import OrdersSummary from "./DashboardHome/OrdersSummary";
 import MonthlyOrdersChart from "./DashboardHome/MonthlyOrdersChart";
@@ -14,7 +12,6 @@ const Overview = () => {
       <OrdersSummary />
       <MonthlyOrdersChart />
       <DistributionPieChart />
-      <Chart />
     </div>
   );
 };
