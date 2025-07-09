@@ -2,76 +2,64 @@ import {
   useItemsStatistics,
   useUsersStatistics,
 } from "../../../hooks/statisticsData";
+import DashboardStatCard from "./DashboardHome/DashboardStats/DashboardStatCard";
 
 const DashboardStats = () => {
   const { totalUsers, totalAdmins, totalRegularUsers } = useUsersStatistics();
   const { totalItems, totalBrands, totalQty, totalSuppliers } =
     useItemsStatistics();
 
+  const stats = [
+    {
+      title: "Registered Users",
+      value: totalUsers,
+      bg: "bg-primary",
+      icon: "bi-people-fill",
+    },
+    {
+      title: "Admins",
+      value: totalAdmins,
+      bg: "bg-secondary",
+      icon: "bi-person-check-fill",
+    },
+    {
+      title: "Active Users",
+      value: totalRegularUsers,
+      bg: "bg-success",
+      icon: "bi-person-check",
+    },
+    {
+      title: "Suppliers",
+      value: totalSuppliers,
+      bg: "bg-info",
+      icon: "bi-person-lines-fill",
+    },
+    {
+      title: "Total Items",
+      value: totalItems,
+      bg: "bg-dark",
+      icon: "bi-box-seam-fill",
+    },
+    {
+      title: "Total Brands",
+      value: totalBrands,
+      bg: "bg-primary",
+      icon: "bi-tags-fill",
+    },
+    {
+      title: "Total Quantities",
+      value: totalQty,
+      bg: "bg-warning",
+      icon: "bi-archive-fill",
+    },
+  ];
+
   return (
-    <section className="container">
-      <div className="row mt-4">
-        <div className="col-md-3">
-          <div className="card text-white bg-primary mb-3">
-            <div className="card-header">Registered Users</div>
-            <div className="card-body pb-0">
-              <h4>{totalUsers}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div
-            className="card text-white mb-3"
-            style={{ backgroundColor: "#6c757d" }}
-          >
-            <div className="card-header">Admins</div>
-            <div className="card-body pb-0">
-              <h4>{totalAdmins}</h4>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-3">
-          <div className="card text-white bg-success mb-3">
-            <div className="card-header">Active Users</div>
-            <div className="card-body pb-0">
-              <h4>{totalRegularUsers}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-success mb-3">
-            <div className="card-header">Suppliers</div>
-            <div className="card-body pb-0">
-              <h4>{totalSuppliers}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-success mb-3">
-            <div className="card-header">Items</div>
-            <div className="card-body pb-0">
-              <h4>{totalItems}</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card text-white bg-success mb-3">
-            <div className="card-header">Brands</div>
-            <div className="card-body pb-0">
-              <h4>{totalBrands}</h4>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-3">
-          <div className="card text-white bg-warning mb-3">
-            <div className="card-header">Total Quantities</div>
-            <div className="card-body pb-0">
-              <h4>{totalQty}</h4>
-            </div>
-          </div>
-        </div>
+    <section className="mt-4">
+      <div className="row">
+        {stats?.map((stat, idx) => (
+          <DashboardStatCard key={idx} {...stat} />
+        ))}
       </div>
     </section>
   );

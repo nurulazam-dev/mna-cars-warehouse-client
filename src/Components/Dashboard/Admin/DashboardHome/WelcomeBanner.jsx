@@ -47,15 +47,17 @@ const WelcomeBanner = () => {
         {/* Admin Avatar */}
         <div className="col-auto">
           <div
-            className="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center"
+            className="d-flex justify-content-center align-items-center shadow-md"
             style={{
               width: 120,
               height: 120,
-              fontSize: 32,
-              fontWeight: "bold",
             }}
           >
-            {user?.name?.charAt(0)?.toUpperCase() || "A"}
+            <i
+              className={`bi bi-person-circle text-primary`}
+              style={{ fontSize: 110 }}
+            ></i>
+            {/* {user?.name?.charAt(0)?.toUpperCase() || "A"} */}
           </div>
         </div>
       </div>
