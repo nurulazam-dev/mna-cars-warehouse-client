@@ -58,8 +58,10 @@ const OrdersSummary = () => {
   };
 
   return (
-    <section className="mb-5">
-      <h1 className="text-center text-success fs-2 mb-3">Order Summary</h1>
+    <section className="mb-4 shadow-sm rounded border p-3">
+      <h1 className="text-center text-secondary fs-2 fw-bold border-bottom pb-2">
+        Order Summary
+      </h1>
       <div className="row" style={{ width: "100%", height: 250 }}>
         {/* ==========
            Pie Chart

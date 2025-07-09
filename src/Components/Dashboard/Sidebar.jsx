@@ -77,7 +77,7 @@ const Sidebar = () => {
           <>
             <SidebarNavItem
               to="/dashboard/profile"
-              icon="bi-people"
+              icon="bi-person-lines-fill"
               label="Profile"
               active={location.pathname.includes("/dashboard/profile")}
             />

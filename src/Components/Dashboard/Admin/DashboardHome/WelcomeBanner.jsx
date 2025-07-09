@@ -54,7 +54,7 @@ const WelcomeBanner = () => {
             }}
           >
             <i
-              className={`bi bi-person-circle text-primary`}
+              className={`bi bi-person-circle text-secondary`}
               style={{ fontSize: 110 }}
             ></i>
             {/* {user?.name?.charAt(0)?.toUpperCase() || "A"} */}

@@ -13,19 +13,19 @@ const DistributionPieChart = () => {
   ];
 
   return (
-    <section>
-      <h1 className="text-center text-success fs-2">
-        User Roles Distribution Pie Chart
+    <section className="mb-4 shadow-sm rounded border p-3">
+      <h1 className="text-center text-secondary fs-2 fw-bold border-bottom pb-2">
+        User Roles Distribution
       </h1>
-      <div className="row">
-        <div className="col-md-4 border">
+      <div className="row" style={{ width: "100%" }}>
+        <div className="col-md-4 d-flex justify-content-center align-items-center">
           <PieChart width={300} height={250}>
             <Pie
               data={userRolesData}
               cx="50%"
               cy="50%"
               labelLine={false}
-              outerRadius={80}
+              outerRadius={90}
               fill="#8884d8"
               dataKey="value"
               label
@@ -42,11 +42,11 @@ const DistributionPieChart = () => {
           </PieChart>
         </div>
         <div className="col-md-8">
-          <h5 className="mb-2 text-primary">Recent Registered Users</h5>
+          <h5 className="mb-2 text-secondary">Recent Registered Users</h5>
           <table className="table table-bordered table-striped table-hover">
             <thead className="table-dark text-center">
               <tr>
-                <th>#</th>
+                <th>User ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -57,9 +57,9 @@ const DistributionPieChart = () => {
               {[...(users || [])]
                 .reverse()
                 .slice(0, 5)
-                .map((user, index) => (
+                .map((user) => (
                   <tr key={user?._id}>
-                    <td>{index + 1}</td>
+                    <td>...{user?._id?.slice(-9)}</td>
                     <td>{user?.name}</td>
                     <td>{user?.email}</td>
                     <td className="text-center">
