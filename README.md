@@ -109,6 +109,10 @@
 
 ---
 
+## License
+
+This project is licensed under the MIT License.
+
 ## 🙏 Credits
 
 Developed by [Mohammad Nurul Azam](https://github.com/nurulazam-dev)
