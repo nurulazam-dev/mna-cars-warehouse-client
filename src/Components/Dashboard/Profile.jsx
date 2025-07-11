@@ -58,11 +58,11 @@ const Profile = () => {
   };
 
   return (
-    <section className="container">
-      <h2 className="text-center text-primary mb-2">My Profile</h2>
+    <section className="container animate__animated animate__fadeIn">
+      <h2 className="text-center text-primary mb-2 fw-bold">My Profile</h2>
 
       {/* Profile Overview */}
-      <div className="card shadow-sm mb-4 border-0">
+      <div className="card shadow-sm mb-4 border-0 animate__animated animate__fadeInUp">
         <div className="card-body p-4 text-center">
           <div className="row">
             <div className="col-md-4 d-flex flex-column align-items-center position-relative">
@@ -109,7 +109,7 @@ const Profile = () => {
                 </li>
                 <li className="list-group-item">
                   <strong>Joined:</strong>{" "}
-                  {formatDate(activatedUser.createdAt) || "Unknown"}
+                  {formatDate(activatedUser?.createdAt) || "Unknown"}
                 </li>
               </ul>
             </div>
@@ -118,7 +118,7 @@ const Profile = () => {
       </div>
 
       {/* Update Form */}
-      <div className="card shadow">
+      <div className="card shadow animate__animated animate__fadeInUp">
         <div className="card-body">
           <h5 className="mb-4">Update Your Profile</h5>
 

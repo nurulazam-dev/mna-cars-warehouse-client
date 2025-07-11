@@ -50,10 +50,12 @@ const Settings = () => {
   };
 
   return (
-    <section className="container">
-      <h2 className="text-center text-primary mb-4">Account Settings</h2>
+    <section className="container animate__animated animate__fadeIn">
+      <h2 className="text-center text-primary mb-2 fw-bold">
+        Account Settings
+      </h2>
 
-      <div className="card shadow-sm border-0 p-4">
+      <div className="card shadow-sm border-0 p-4 animate__animated animate__fadeInUp">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label className="form-label fw-semibold">Email Address</label>
