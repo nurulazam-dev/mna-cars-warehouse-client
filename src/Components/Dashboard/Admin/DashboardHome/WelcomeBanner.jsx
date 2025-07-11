@@ -6,7 +6,7 @@ const WelcomeBanner = () => {
 
   return (
     <div
-      className="card border-0 shadow-sm rounded-4 p-4 mb-4 position-relative overflow-hidden animate__animated animate__fadeInUp"
+      className="card border-0 shadow-sm rounded-4 p-4 mb-4 position-relative overflow-hidden"
       style={{
         minHeight: "180px",
         backgroundImage: "linear-gradient(135deg,rgb(205, 225, 250), #ffffff)",
