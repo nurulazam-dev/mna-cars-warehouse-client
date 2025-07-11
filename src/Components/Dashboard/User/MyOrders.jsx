@@ -88,7 +88,7 @@ const MyOrders = () => {
         <div className="col-md-4">
           <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
-              Total Items:{" "}
+              Total Orders Quantity:{" "}
               <span className="fw-bold text-success">{totalMyOrderQty}</span>
             </h6>
           </div>
@@ -202,7 +202,8 @@ const MyOrders = () => {
               <tbody className="align-middle text-center">
                 {paginatedOrders?.map((order, index) => {
                   const total = order?.items?.reduce(
-                    (acc, item) => acc + item.price,
+                    (acc, item) =>
+                      acc + (Number(item?.price) || 0) * (item?.quantity || 1),
                     0
                   );
                   return (
@@ -229,7 +230,12 @@ const MyOrders = () => {
                           ))}
                         </ul>
                       </td>
-                      <td>{order?.items?.length}</td>
+                      <td>
+                        {order?.items?.reduce(
+                          (acc, item) => acc + item.quantity,
+                          0
+                        )}
+                      </td>
                       <td className="text-success fw-semibold">
                         ${total.toLocaleString()}
                       </td>
@@ -260,7 +266,7 @@ const MyOrders = () => {
           =================== */}
           {totalPages > 1 && (
             <nav className="d-flex justify-content-center mt-4">
-              <ul className="pagination pagination-lg">
+              <ul className="pagination pagination-md">
                 <li className={`page-item${page === 1 ? " disabled" : ""}`}>
                   <button
                     className="page-link"

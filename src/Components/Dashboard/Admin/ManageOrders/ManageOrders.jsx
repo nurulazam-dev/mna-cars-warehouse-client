@@ -104,7 +104,7 @@ const ManageOrders = () => {
         <div className="col-md-3">
           <div className="bg-white rounded shadow-sm p-3">
             <h6 className="text-primary mb-1">
-              Total Items:{" "}
+              Total Orders Quantity:{" "}
               <span className="fw-bold text-success">{totalOrderQty}</span>
             </h6>
           </div>
@@ -225,7 +225,8 @@ const ManageOrders = () => {
               <tbody className="align-middle text-center">
                 {paginatedOrders.map((order, index) => {
                   const total = order?.items?.reduce(
-                    (acc, item) => acc + (item?.price || 0),
+                    (acc, item) =>
+                      acc + (Number(item?.price) || 0) * (item?.quantity || 1),
                     0
                   );
                   return (
@@ -253,9 +254,14 @@ const ManageOrders = () => {
                         </ul>
                       </td>
                       <td>{order?.email}</td>
-                      <td>{order?.items?.length || 0}</td>
+                      <td>
+                        {order?.items?.reduce(
+                          (acc, item) => acc + (Number(item?.quantity) || 0),
+                          0
+                        ) || 0}
+                      </td>
                       <td className="text-success fw-semibold">
-                        ${Number(total || 0).toLocaleString()}
+                        ${total?.toLocaleString() || "0.00"}
                       </td>
                       <td>
                         <span

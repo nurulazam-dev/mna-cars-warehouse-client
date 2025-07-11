@@ -54,9 +54,12 @@ export const useOrdersStatistics = () => {
   let cancelledOrderCount = 0;
 
   (orders || []).forEach((order) => {
-    totalOrderQty += order?.items?.length || 0;
+    totalOrderQty += (order?.items || []).reduce(
+      (sum, item) => sum + (Number(item?.quantity) || 0),
+      0
+    );
     totalSalesAmount += (order?.items || []).reduce(
-      (sum, item) => sum + (Number(item?.price) || 0),
+      (sum, item) => sum + (Number(item?.price) || 0) * (item?.quantity || 1),
       0
     );
     const status = (order?.status || "").toLowerCase();
@@ -84,14 +87,20 @@ export const useMyOrdersStatistics = () => {
 
   const totalMyOrders = myOrders?.length || 0;
   const totalMyOrderQty = myOrders?.reduce(
-    (acc, order) => acc + (order?.items?.length || 0),
+    (acc, order) =>
+      acc +
+      (order?.items?.reduce(
+        (sum, item) => sum + (Number(item?.quantity) || 0),
+        0
+      ) || 0),
     0
   );
+
   const totalMyOrderAmount = myOrders?.reduce(
     (acc, order) =>
       acc +
       (order?.items?.reduce(
-        (sum, item) => sum + (Number(item?.price) || 0),
+        (sum, item) => sum + (Number(item?.price) || 0) * (item?.quantity || 1),
         0
       ) || 0),
     0

@@ -3,7 +3,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../Shared/Loader/Loader";
 import { LOCAL_BASE_URL } from "../../../config";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MyWishlist = () => {
   const { user, token } = useAuth();
@@ -12,11 +12,35 @@ const MyWishlist = () => {
     token
   );
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [quantities, setQuantities] = useState({});
 
-  const subtotal = wishlist?.reduce((acc, item) => acc + (item?.price || 0), 0);
+  useEffect(() => {
+    if (wishlist) {
+      const initial = {};
+      wishlist.forEach((item) => {
+        initial[item?._id] = quantities[item?._id] || 1;
+      });
+      setQuantities(initial);
+    }
+    // eslint-disable-next-line
+  }, [wishlist]);
+
+  const updateQuantity = (itemId, delta) => {
+    setQuantities((prev) => {
+      const newQty = Math.max(1, (prev[itemId] || 1) + delta);
+      return { ...prev, [itemId]: newQty };
+    });
+  };
+
+  const subtotal = wishlist?.reduce(
+    (acc, item) => acc + (item?.price || 0) * (quantities[item?._id] || 1),
+    0
+  );
+
+  console.log(quantities, "Quantities in MyWishlist");
 
   const checkoutHandler = async () => {
-    if (!wishlist || wishlist.length === 0) {
+    if (!wishlist || wishlist?.length === 0) {
       return toast.error("Your wishlist is empty.");
     }
     setCheckoutLoading(true);
@@ -34,7 +58,7 @@ const MyWishlist = () => {
               productId: item?.productId || item?._id,
               title: item?.title,
               price: item?.price,
-              quantity: 1,
+              quantity: quantities[item?._id] || 1,
               img: item?.img,
               brand: item?.brand,
               supplierEmail: item?.supplierEmail || "",
@@ -69,17 +93,17 @@ const MyWishlist = () => {
   if (loading) return <Loader />;
 
   return (
-    <section className="container">
+    <section className="container  animate__animated animate__fadeIn">
       <h2 className="text-center mb-2 text-primary fw-bold">My Wishlist</h2>
 
       {wishlist?.length === 0 ? (
         <p className="text-center text-danger fs-5">Your wishlist is empty.</p>
       ) : (
-        <div className="row border bg-white p-3 rounded shadow-sm">
+        <div className="row border bg-white p-3 rounded shadow-sm  animate__animated animate__fadeInUp">
           {/* ============
             Wishlist Items
             ============ */}
-          <div className="col-lg-8 border-end">
+          <div className="col-lg-7 border-end">
             <h4 className="mb-3 text-muted">
               Wishlist Items{" "}
               <span className="text-primary">({wishlist.length})</span>
@@ -122,14 +146,37 @@ const MyWishlist = () => {
           {/* ============ 
                Summary
             ============  */}
-          <div className="col-lg-4">
+          <div className="col-lg-5">
             <div className="card border-0 p-3">
               <h4 className="text-center text-muted mb-4">Order Summary</h4>
 
               <ul className="list-unstyled small text-muted mb-4">
-                {wishlist.map((item) => (
-                  <li key={item?._id} className="mb-2">
-                    • {item?.title}
+                {wishlist?.map((item) => (
+                  <li
+                    key={item?._id}
+                    className="mb-2 d-flex justify-content-between align-items-center"
+                  >
+                    <span>• {item?.title}</span>
+                    <span>
+                      <button
+                        className="btn btn-sm btn-outline-secondary me-1"
+                        onClick={() => updateQuantity(item?._id, -1)}
+                        disabled={quantities[item?._id] <= 1}
+                        style={{ minWidth: 28 }}
+                      >
+                        −
+                      </button>
+                      <span className="mx-1 fw-bold">
+                        {quantities[item?._id] || 1}
+                      </span>
+                      <button
+                        className="btn btn-sm btn-outline-secondary ms-1"
+                        onClick={() => updateQuantity(item?._id, 1)}
+                        style={{ minWidth: 28 }}
+                      >
+                        +
+                      </button>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -137,6 +184,12 @@ const MyWishlist = () => {
               <div className="d-flex justify-content-between mb-2">
                 <span className="fw-medium">Selected Items</span>
                 <span>{wishlist?.length}</span>
+              </div>
+              <div className="d-flex justify-content-between mb-2">
+                <span className="fw-medium">Selected Quantity</span>
+                <span>
+                  {Object?.values(quantities).reduce((a, b) => a + b, 0)}
+                </span>
               </div>
               <div className="d-flex justify-content-between mb-4">
                 <span className="fw-medium">Subtotal</span>
