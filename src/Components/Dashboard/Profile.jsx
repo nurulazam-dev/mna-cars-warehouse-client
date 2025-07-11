@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { LOCAL_BASE_URL } from "../../config";
 import { useUsers } from "../../hooks/useUsers";
+import { formatDate } from "../../utils/formatDate";
 
 const Profile = () => {
   const { users } = useUsers();
@@ -108,9 +109,7 @@ const Profile = () => {
                 </li>
                 <li className="list-group-item">
                   <strong>Joined:</strong>{" "}
-                  {activatedUser?.createdAt
-                    ? new Date(activatedUser.createdAt).toLocaleDateString()
-                    : "Unknown"}
+                  {formatDate(activatedUser.createdAt) || "Unknown"}
                 </li>
               </ul>
             </div>
@@ -130,6 +129,7 @@ const Profile = () => {
                 <input
                   className="form-control"
                   placeholder="Full Name"
+                  required
                   {...register("name", { required: "Name is required" })}
                 />
               </div>
@@ -149,7 +149,8 @@ const Profile = () => {
                 <input
                   className="form-control"
                   placeholder="Phone Number"
-                  {...register("phone")}
+                  required
+                  {...register("phone", { required: "Phone is required" })}
                 />
               </div>
 
@@ -158,7 +159,8 @@ const Profile = () => {
                 <input
                   className="form-control"
                   placeholder="Address"
-                  {...register("address")}
+                  required
+                  {...register("address", { required: "Address is required" })}
                 />
               </div>
             </div>
