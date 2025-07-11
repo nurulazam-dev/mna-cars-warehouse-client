@@ -6,7 +6,7 @@ import WelcomeBanner from "./DashboardHome/WelcomeBanner";
 
 const Overview = () => {
   return (
-    <div className="container">
+    <div className="container animate__animated animate__fadeIn">
       <WelcomeBanner />
       <DashboardStats />
       <OrdersSummary />
