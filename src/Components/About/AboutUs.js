@@ -1,18 +1,18 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const AboutUs = () => {
   const navigate = useNavigate();
+
   return (
-    <div>
-      <div className="bg-primary text-white py-5 mb-4 shadow">
+    <section className="animate__animated animate__fadeIn">
+      <div className="bg-primary text-white py-3 mb-4 shadow">
         <div className="container text-center">
           <h1 className="display-4 fw-bold">About MNA Cars Warehouse</h1>
           <p className="lead">Used cars in Middlesbrough, Cleveland</p>
         </div>
       </div>
 
-      <div className="container mb-5">
+      <div className="container mb-3">
         <div className="row align-items-center">
           <div className="col-md-6 mb-4 mb-md-0">
             <img
@@ -22,7 +22,7 @@ const AboutUs = () => {
             />
           </div>
           <div className="col-md-6">
-            <h3 className="text-danger mb-3">Who We Are</h3>
+            <h2 className="text-danger mb-3">Who We Are???</h2>
             <div className="fs-5">
               <p>
                 MNA Cars Warehouse was established in 2000. With over twenty-two
@@ -50,8 +50,8 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="container mb-5">
-        <h4 className="text-center text-success mb-4">Why Choose Us?</h4>
+      <div className="container mb-2">
+        <h2 className="text-center text-success mb-3">Why Choose Us?</h2>
         <div className="row text-center">
           <div className="col-md-4 mb-3">
             <div className="p-4 bg-light rounded shadow-sm h-100">
@@ -85,7 +85,7 @@ const AboutUs = () => {
           About Developer
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
