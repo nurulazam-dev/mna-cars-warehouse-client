@@ -1,5 +1,4 @@
-import React from "react";
-import { Card, Container, Row, Col, Badge } from "react-bootstrap";
+import { Card, Row, Col, Badge } from "react-bootstrap";
 
 const blogPosts = [
   {
@@ -98,58 +97,49 @@ const blogPosts = [
 
 const Blogs = () => {
   return (
-    <div
-      style={{
-        background: "#f8f9fa",
-        minHeight: "100vh",
-        paddingTop: "40px",
-        paddingBottom: "40px",
-      }}
-    >
-      <Container>
-        <h2 className="text-center mb-5 fw-bold text-primary">
-          Warehouse Blog & Tips
-        </h2>
-        <Row xs={1} md={2} className="g-4">
-          {blogPosts.map((post, idx) => (
-            <Col key={idx}>
-              <Card className="h-100 shadow border-0 blog-card">
-                <div
+    <section className="container py-3 animate__animated animate__fadeIn">
+      <h2 className="text-center mb-3 fw-bold text-primary">
+        Warehouse Blog & Tips
+      </h2>
+      <Row xs={1} md={3} className="g-4 animate__animated animate__fadeInUp">
+        {blogPosts.map((post, idx) => (
+          <Col key={idx}>
+            <Card className="h-100 shadow border-0 blog-card">
+              <div
+                style={{
+                  overflow: "hidden",
+                  borderTopLeftRadius: "0.5rem",
+                  borderTopRightRadius: "0.5rem",
+                }}
+              >
+                <Card.Img
+                  variant="top"
+                  src={post.image}
+                  alt={post.title}
                   style={{
-                    overflow: "hidden",
-                    borderTopLeftRadius: "0.5rem",
-                    borderTopRightRadius: "0.5rem",
+                    height: "220px",
+                    objectFit: "cover",
+                    transition: "transform 0.3s",
                   }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src={post.image}
-                    alt={post.title}
-                    style={{
-                      height: "220px",
-                      objectFit: "cover",
-                      transition: "transform 0.3s",
-                    }}
-                    className="blog-card-img"
-                  />
+                  className="blog-card-img"
+                />
+              </div>
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <Badge bg="success" className="fs-6">
+                    {post.tag}
+                  </Badge>
+                  <span className="text-muted small">{post.date}</span>
                 </div>
-                <Card.Body>
-                  <div className="d-flex justify-content-between align-items-center mb-2">
-                    <Badge bg="success" className="fs-6">
-                      {post.tag}
-                    </Badge>
-                    <span className="text-muted small">{post.date}</span>
-                  </div>
-                  <Card.Title className="fw-bold fs-4 mb-3 text-dark">
-                    {post.title}
-                  </Card.Title>
-                  <Card.Text className="fs-6">{post.content}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+                <Card.Title className="fw-bold fs-4 mb-3 text-dark">
+                  {post.title}
+                </Card.Title>
+                <Card.Text className="fs-6">{post.content}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
       <style>
         {`
           .blog-card:hover .blog-card-img {
@@ -157,7 +147,7 @@ const Blogs = () => {
           }
         `}
       </style>
-    </div>
+    </section>
   );
 };
 
