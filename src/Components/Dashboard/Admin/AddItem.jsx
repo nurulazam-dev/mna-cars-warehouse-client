@@ -36,9 +36,9 @@ const AddItem = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container animate__animated animate__fadeIn">
       <h2 className="text-center mb-2 text-primary fw-bold">Add New Item</h2>
-      <div className="card shadow-sm border-0 p-4">
+      <div className="card shadow-sm border-0 p-4 animate__animated animate__fadeInUp">
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <div className="row mb-3">
             <div className="col-md-3">
