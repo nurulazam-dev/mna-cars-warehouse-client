@@ -44,9 +44,11 @@ export const useAuth = () => {
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error("Invalid credentials");
-
       const result = await res.json();
+
+      if (!res.ok) {
+        return result;
+      }
 
       localStorage.setItem("token", result.token);
       localStorage.setItem("user", JSON.stringify(result.user));
@@ -56,9 +58,9 @@ export const useAuth = () => {
       const from = location.state?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
 
-      toast.success("Logged in successfully");
+      return { success: true, user: result.user };
     } catch (err) {
-      toast.error(err.message);
+      return { success: false, message: err.message || "Login failed" };
     }
   };
 
