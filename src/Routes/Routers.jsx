@@ -23,6 +23,7 @@ import Profile from "../Components/Dashboard/Profile";
 import ForgotPassword from "../Pages/ForgotPassword";
 import ResetPassword from "../Pages/ResetPassword";
 import CheckoutSuccess from "../Pages/CheckoutSuccess";
+import ContactInfo from "../Components/Home/ContactInfo";
 
 const Routers = () => {
   return (
@@ -94,6 +95,7 @@ const Routers = () => {
         <Route path="profile" element={<Profile />} />
       </Route>
 
+      <Route path="/contact" element={<ContactInfo />}></Route>
       <Route path="/about-us" element={<AboutUs />}></Route>
       <Route path="/about-developer" element={<AboutDeveloper />}></Route>
 

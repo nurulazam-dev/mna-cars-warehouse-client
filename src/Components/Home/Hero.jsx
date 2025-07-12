@@ -38,13 +38,13 @@ const Hero = () => {
               >
                 Explore Cars
               </Link>
-              <a
-                href="#featured"
+              <Link
+                to="/contact"
                 className="btn btn-outline-primary btn-lg rounded-pill px-4"
-                style={{ fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: 1 }}
               >
-                Featured Cars
-              </a>
+                Contact Us
+              </Link>
             </div>
           </div>
           {/* ==============
