@@ -1,5 +1,3 @@
-import React from "react";
-
 const ContactInfo = () => {
   return (
     <section className="py-4" style={{ background: "#f5f7fa" }}>
@@ -60,7 +58,7 @@ const ContactInfo = () => {
               {/* Social */}
               <div className="d-flex justify-content-center gap-3">
                 <a
-                  href="https://www.facebook.com/mnaofficialbd"
+                  href="https://www.facebook.com/nurulazam.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate__animated animate__fadeInUp"
@@ -68,7 +66,7 @@ const ContactInfo = () => {
                   <i className="bi bi-facebook fs-2 text-primary"></i>
                 </a>
                 <a
-                  href="https://www.instagram.com/mnaofficialbd"
+                  href="https://www.instagram.com/nurulazam_dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate__animated animate__fadeInUp animate__delay-1s"
@@ -76,7 +74,7 @@ const ContactInfo = () => {
                   <i className="bi bi-instagram fs-2 text-danger"></i>
                 </a>
                 <a
-                  href="https://www.twitter.com/mnaofficialbd"
+                  href="https://www.twitter.com/nurulazam_dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate__animated animate__fadeInUp animate__delay-2s"
