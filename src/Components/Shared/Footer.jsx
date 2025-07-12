@@ -1,9 +1,9 @@
-import React from "react";
 import brandLogo from "../../assets/images/icon/mna-car-warehouse.png";
 
 const Footer = () => {
   const today = new Date();
   const year = today.getFullYear();
+
   return (
     <footer className="bg-black text-white pt-5 pb-2">
       <div className="container">
@@ -31,7 +31,7 @@ const Footer = () => {
             </p>
             <div className="mb-2">
               <a
-                href="https://www.facebook.com/mnaofficialbd"
+                href="https://www.facebook.com/nurulazam.dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -42,7 +42,7 @@ const Footer = () => {
                 />
               </a>
               <a
-                href="https://www.instagram.com/mnaofficialbd"
+                href="https://www.instagram.com/nurulazam_dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -53,7 +53,7 @@ const Footer = () => {
                 />
               </a>
               <a
-                href="https://www.twitter.com/mnaofficialbd"
+                href="https://www.twitter.com/nurulazam_dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -99,15 +99,12 @@ const Footer = () => {
             <h5 className="mb-2 text-warning">Quick Links</h5>
             <ul className="list-unstyled small mb-3">
               <li>
-                <a
-                  href="/inventory"
-                  className="text-white text-decoration-none"
-                >
+                <a href="/items" className="text-white text-decoration-none">
                   Inventory
                 </a>
               </li>
               <li>
-                <a href="/about" className="text-white text-decoration-none">
+                <a href="/about-us" className="text-white text-decoration-none">
                   About Us
                 </a>
               </li>
