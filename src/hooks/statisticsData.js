@@ -24,12 +24,12 @@ export const useItemsStatistics = () => {
 
   const totalItems = items?.length || 0;
   const totalQty = items?.reduce(
-    (acc, item) => acc + (Number(item.quantity) || 0),
+    (acc, item) => acc + (Number(item?.quantity) || 0),
     0
   );
-  const totalBrands = new Set((items || []).map((item) => item.brand)).size;
+  const totalBrands = new Set((items || []).map((item) => item?.brand)).size;
   const totalSuppliers = new Set(
-    (items || []).map((item) => item.supplierEmail)
+    (items || []).map((item) => item?.supplierEmail)
   ).size;
 
   return {
