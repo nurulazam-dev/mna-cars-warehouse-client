@@ -33,7 +33,7 @@ const CallToAction = () => {
                 <i className="bi bi-envelope-fill me-2"></i>Contact Us
               </a>
               <a
-                href="/book-test-drive"
+                href="/contact-dealer"
                 className="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold shadow-sm"
                 style={{
                   minWidth: 170,

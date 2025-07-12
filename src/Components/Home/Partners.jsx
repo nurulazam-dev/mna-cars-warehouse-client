@@ -54,7 +54,6 @@ const partners = [
 ];
 
 const Partners = () => {
-  // Duplicate the array for infinite scroll effect
   const infinitePartners = [...partners, ...partners, ...partners];
 
   return (
@@ -66,7 +65,7 @@ const Partners = () => {
         overflow: "hidden",
       }}
     >
-      <div className="container">
+      <div>
         <div className="row justify-content-center mb-2">
           <div className="col-lg-8 text-center">
             <h2 className="fw-bold mb-3 animate__animated animate__fadeInDown">
