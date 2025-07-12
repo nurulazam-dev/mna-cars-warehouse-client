@@ -1,37 +1,35 @@
-import React from "react";
-
-const features = [
-  {
-    icon: "bi-shield-check",
-    title: "Certified Quality",
-    desc: "Every car is thoroughly inspected and certified by our expert mechanics for your peace of mind.",
-    color: "#2c5364",
-    bg: "#e9f5ff",
-  },
-  {
-    icon: "bi-cash-coin",
-    title: "Best Price Guarantee",
-    desc: "We offer competitive pricing and transparent deals with no hidden costs.",
-    color: "#43cea2",
-    bg: "#e6fff7",
-  },
-  {
-    icon: "bi-people",
-    title: "Customer-First Service",
-    desc: "Our friendly team is dedicated to helping you before, during, and after your purchase.",
-    color: "#185a9d",
-    bg: "#e9f0ff",
-  },
-  {
-    icon: "bi-truck",
-    title: "Nationwide Delivery",
-    desc: "Get your car delivered safely to your doorstep, anywhere in the country.",
-    color: "#ffc107",
-    bg: "#fffbe6",
-  },
-];
-
 const WhyChooseUs = () => {
+  const features = [
+    {
+      icon: "bi-shield-check",
+      title: "Certified Quality",
+      desc: "Every car is thoroughly inspected and certified by our expert mechanics for your peace of mind.",
+      color: "#2c5364",
+      bg: "#e9f5ff",
+    },
+    {
+      icon: "bi-cash-coin",
+      title: "Best Price Guarantee",
+      desc: "We offer competitive pricing and transparent deals with no hidden costs.",
+      color: "#43cea2",
+      bg: "#e6fff7",
+    },
+    {
+      icon: "bi-people",
+      title: "Customer-First Service",
+      desc: "Our friendly team is dedicated to helping you before, during, and after your purchase.",
+      color: "#185a9d",
+      bg: "#e9f0ff",
+    },
+    {
+      icon: "bi-truck",
+      title: "Nationwide Delivery",
+      desc: "Get your car delivered safely to your doorstep, anywhere in the country.",
+      color: "#ffc107",
+      bg: "#fffbe6",
+    },
+  ];
+
   return (
     <section
       className="py-4"

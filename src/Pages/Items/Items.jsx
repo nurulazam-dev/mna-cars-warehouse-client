@@ -99,71 +99,73 @@ const Items = () => {
                 {/* ========== Filter Bar ========== */}
                 <div className="row mb-4">
                   <div className="col-12">
-                    <div className="p-4 bg-white rounded-4 shadow-sm d-flex flex-wrap gap-3 align-items-center justify-content-between animate__animated animate__fadeInDown">
-                      <input
-                        type="text"
-                        className="form-control w-auto"
-                        style={{ minWidth: 160 }}
-                        placeholder="Search by name or brand"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                      />
-
-                      <select
-                        className="form-select w-auto"
-                        style={{ minWidth: 140 }}
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                      >
-                        <option value="">All Brands</option>
-                        {uniqueBrands.map((b) => (
-                          <option key={b} value={b}>
-                            {b}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select
-                        className="form-select w-auto"
-                        style={{ minWidth: 140 }}
-                        value={color}
-                        onChange={(e) => setColor(e.target.value)}
-                      >
-                        <option value="">All Colors</option>
-                        {uniqueColors.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select
-                        className="form-select w-auto"
-                        style={{ minWidth: 140 }}
-                        value={transmission}
-                        onChange={(e) => setTransmission(e.target.value)}
-                      >
-                        <option value="">All Transmissions</option>
-                        <option value="Automatic">Automatic</option>
-                        <option value="Manual">Manual</option>
-                      </select>
-
-                      <div className="d-flex align-items-center gap-1">
-                        <label className="me-2 text-secondary small">
-                          Max Price:
-                        </label>
-                        <input
-                          type="range"
-                          min={minPrice}
-                          max={maxPrice}
-                          value={price}
-                          onChange={(e) => setPrice(Number(e.target.value))}
-                          className="form-range"
-                          style={{ width: 120 }}
-                        />
-                        <span className="fw-bold text-primary">
-                          ${price?.toLocaleString()}
-                        </span>
+                    <div className="bg-white rounded-4 shadow-sm p-3 animate__animated animate__fadeInDown">
+                      <div className="row g-2">
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search by name or brand"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                          />
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <select
+                            className="form-select"
+                            value={brand}
+                            onChange={(e) => setBrand(e.target.value)}
+                          >
+                            <option value="">All Brands</option>
+                            {uniqueBrands.map((b) => (
+                              <option key={b} value={b}>
+                                {b}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <select
+                            className="form-select"
+                            value={color}
+                            onChange={(e) => setColor(e.target.value)}
+                          >
+                            <option value="">All Colors</option>
+                            {uniqueColors.map((c) => (
+                              <option key={c} value={c}>
+                                {c}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <select
+                            className="form-select"
+                            value={transmission}
+                            onChange={(e) => setTransmission(e.target.value)}
+                          >
+                            <option value="">All Transmissions</option>
+                            <option value="Automatic">Automatic</option>
+                            <option value="Manual">Manual</option>
+                          </select>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center">
+                          <label className="me-2 text-secondary small">
+                            Max Price:
+                          </label>
+                          <input
+                            type="range"
+                            min={minPrice}
+                            max={maxPrice}
+                            value={price}
+                            onChange={(e) => setPrice(Number(e.target.value))}
+                            className="form-range"
+                            style={{ width: 120 }}
+                          />
+                          <span className="fw-bold text-primary ms-2">
+                            ${price?.toLocaleString()}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -249,7 +251,7 @@ const Items = () => {
                               {item?.location}
                             </div>
 
-                            <div className="d-flex align-items-center justify-content-between mt-auto">
+                            <div className="d-flex align-items-center justify-content-around md:justify-content-between mt-auto">
                               <button
                                 className="btn btn-outline-primary btn-sm rounded-pill px-3 fw-semibold"
                                 onClick={() => handleAddWishlist(item)}

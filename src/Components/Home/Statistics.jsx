@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const stats = [
   {
@@ -68,8 +68,8 @@ const Statistics = () => {
           </div>
         </div>
         <div className="row justify-content-center g-4">
-          {stats.map((stat, idx) => (
-            <div className="col-6 col-md-3" key={stat.label}>
+          {stats?.map((stat, idx) => (
+            <div className="col-12 col-md-6 col-lg-3" key={stat?.label}>
               <div
                 className={`text-center bg-white rounded-4 shadow-sm py-4 h-100 animate__animated animate__fadeInUp`}
                 style={{ animationDelay: `${idx * 0.2 + 0.2}s` }}
