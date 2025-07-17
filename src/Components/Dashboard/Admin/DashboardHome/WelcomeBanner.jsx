@@ -1,8 +1,12 @@
 import { useAuth } from "../../../../hooks/useAuth";
+import { useUsers } from "../../../../hooks/useUsers";
 import { formatDate } from "../../../../utils/formatDate";
 
 const WelcomeBanner = () => {
+  const { users } = useUsers();
   const { user } = useAuth();
+
+  const activatedUser = users?.find((u) => u?.email === user?.email);
 
   return (
     <div
@@ -16,30 +20,32 @@ const WelcomeBanner = () => {
         {/* Admin Info */}
         <div className="col">
           <h2 className="fw-bold text-primary mb-1">
-            Welcome back, {user?.name || "Admin"} 👋
+            Welcome back, {activatedUser?.name || "Admin"} 👋
           </h2>
           <p className="mb-2 text-muted">
             You're logged in as{" "}
-            <span className="badge bg-success">{user?.role || "admin"}</span>
+            <span className="badge bg-success text-uppercase">
+              {activatedUser?.role || "admin"}
+            </span>
           </p>
 
           <div className="row">
             <div className="col-md-4">
               <small className="text-muted">📧 Email:</small>
               <div className="fw-semibold">
-                {user?.email || "admin@example.com"}
+                {activatedUser?.email || "admin@example.com"}
               </div>
             </div>
             <div className="col-md-4">
               <small className="text-muted">📅 Joined On:</small>
               <div className="fw-semibold">
-                {formatDate(user.createdAt) || "N/A"}
+                {formatDate(activatedUser?.createdAt) || "N/A"}
               </div>
             </div>
             <div className="col-md-4">
               <small className="text-muted">🛡️ Role:</small>
               <div className="fw-semibold text-capitalize">
-                {user?.role || "admin"}
+                {activatedUser?.role || "admin"}
               </div>
             </div>
           </div>
