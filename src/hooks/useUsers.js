@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const useUsers = () => {
   const [users, setUsers] = useState([]);
@@ -9,7 +9,7 @@ export const useUsers = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/users`, {
+      const res = await fetch(`${BASE_URL}/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

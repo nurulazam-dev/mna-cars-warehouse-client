@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const addToWishlist = async (wishlistItem, token) => {
   try {
-    const res = await fetch(`${LOCAL_BASE_URL}/wishlist`, {
+    const res = await fetch(`${BASE_URL}/wishlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 import { useUsers } from "../../hooks/useUsers";
 import { formatDate } from "../../utils/formatDate";
 
@@ -35,7 +35,7 @@ const Profile = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}`, {
+      const res = await fetch(`${BASE_URL}/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

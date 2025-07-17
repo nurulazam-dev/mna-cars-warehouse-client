@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useAuth } from "../../hooks/useAuth";
-import { LOCAL_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 
 const Settings = () => {
   const { user } = useAuth();
@@ -25,7 +25,7 @@ const Settings = () => {
 
       const userId = user._id || user.id;
 
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}/settings`, {
+      const res = await fetch(`${BASE_URL}/users/${userId}/settings`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

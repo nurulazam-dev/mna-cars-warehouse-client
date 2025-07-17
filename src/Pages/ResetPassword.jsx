@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 
 const ResetPassword = () => {
@@ -17,14 +17,11 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `${LOCAL_BASE_URL}/auth/reset-password/${token}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      );
+      const res = await fetch(`${BASE_URL}/auth/reset-password/${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
       const result = await res.json();
       if (!res.ok) throw new Error(result.message);
       toast.success("Password reset successfully");

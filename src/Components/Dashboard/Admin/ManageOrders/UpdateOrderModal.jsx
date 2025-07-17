@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 import { formatDate } from "../../../../utils/formatDate";
 
 const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
@@ -31,7 +31,7 @@ const UpdateOrderModal = ({ show, onHide, order, refetch }) => {
 
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`${LOCAL_BASE_URL}/orders/${order._id}`, {
+      const response = await fetch(`${BASE_URL}/orders/${order._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

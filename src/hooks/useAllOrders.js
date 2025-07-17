@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const useAllOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -10,7 +10,7 @@ export const useAllOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/orders`, {
+      const res = await fetch(`${BASE_URL}/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

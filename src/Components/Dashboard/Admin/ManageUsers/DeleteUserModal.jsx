@@ -1,11 +1,11 @@
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 
 const DeleteUserModal = ({ show, onHide, user, token, refetch }) => {
   const handleDelete = async () => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/users/${user._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

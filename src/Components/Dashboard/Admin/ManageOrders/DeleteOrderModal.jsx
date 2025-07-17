@@ -1,13 +1,13 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 
 const DeleteOrderModal = ({ show, onHide, order, refetch }) => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/orders/${order._id}`, {
+      const res = await fetch(`${BASE_URL}/orders/${order._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

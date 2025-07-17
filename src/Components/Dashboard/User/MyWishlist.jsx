@@ -1,7 +1,7 @@
 import { useWishlist } from "../../../hooks/useWishlist";
 import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../Shared/Loader/Loader";
-import { LOCAL_BASE_URL } from "../../../config";
+import { BASE_URL } from "../../../config";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 
@@ -45,27 +45,24 @@ const MyWishlist = () => {
     }
     setCheckoutLoading(true);
     try {
-      const response = await fetch(
-        `${LOCAL_BASE_URL}/orders/checkout-session`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            items: wishlist.map((item) => ({
-              productId: item?.productId || item?._id,
-              title: item?.title,
-              price: item?.price,
-              quantity: quantities[item?._id] || 1,
-              img: item?.img,
-              brand: item?.brand,
-              supplierEmail: item?.supplierEmail || "",
-            })),
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/orders/checkout-session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          items: wishlist.map((item) => ({
+            productId: item?.productId || item?._id,
+            title: item?.title,
+            price: item?.price,
+            quantity: quantities[item?._id] || 1,
+            img: item?.img,
+            brand: item?.brand,
+            supplierEmail: item?.supplierEmail || "",
+          })),
+        }),
+      });
 
       const data = await response.json();
 

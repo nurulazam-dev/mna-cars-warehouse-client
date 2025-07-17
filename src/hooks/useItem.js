@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const useItem = (id) => {
   const [item, setItem] = useState(null);
@@ -8,7 +8,7 @@ export const useItem = (id) => {
   const fetchItem = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/items/${id}`, {
+      const res = await fetch(`${BASE_URL}/items/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();

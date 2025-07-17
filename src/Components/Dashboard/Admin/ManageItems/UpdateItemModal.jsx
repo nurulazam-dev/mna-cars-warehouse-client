@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 
 const UpdateItemModal = ({ show, onHide, item, refetch }) => {
   const { register, handleSubmit, reset } = useForm({
@@ -23,7 +23,7 @@ const UpdateItemModal = ({ show, onHide, item, refetch }) => {
         quantity: data.quantity ? Number(data.quantity) : 0,
         year: data.year ? Number(data.year) : undefined,
       };
-      const res = await fetch(`${LOCAL_BASE_URL}/items/${item._id}`, {
+      const res = await fetch(`${BASE_URL}/items/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

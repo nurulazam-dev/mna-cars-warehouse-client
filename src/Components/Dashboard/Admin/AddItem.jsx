@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../config";
+import { BASE_URL } from "../../../config";
 
 const AddItem = () => {
   const {
@@ -15,7 +15,7 @@ const AddItem = () => {
   const handleOnSubmit = async (data) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${LOCAL_BASE_URL}/items`, {
+      const res = await fetch(`${BASE_URL}/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

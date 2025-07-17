@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 
 const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
   const { register, handleSubmit, reset } = useForm({
@@ -17,7 +17,7 @@ const UpdateUserModal = ({ show, onHide, user, token, refetch }) => {
     const userId = user?._id || user?.id;
 
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/users/${userId}`, {
+      const res = await fetch(`${BASE_URL}/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

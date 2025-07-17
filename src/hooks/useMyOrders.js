@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const useMyOrders = () => {
   const [myOrders, setMyOrders] = useState([]);
@@ -15,7 +15,7 @@ export const useMyOrders = () => {
       if (!user?.email) {
         throw new Error("User email not found");
       }
-      const res = await fetch(`${LOCAL_BASE_URL}/orders/${user?.email}`, {
+      const res = await fetch(`${BASE_URL}/orders/${user?.email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

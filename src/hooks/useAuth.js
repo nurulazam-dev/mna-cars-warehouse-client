@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
@@ -20,7 +20,7 @@ export const useAuth = () => {
 
   const refetchUser = async () => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/me`, {
+      const res = await fetch(`${BASE_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +38,7 @@ export const useAuth = () => {
 
   const login = async (data) => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/auth/login`, {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -66,7 +66,7 @@ export const useAuth = () => {
 
   const register = async (data) => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/auth/register`, {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

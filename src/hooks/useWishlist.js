@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 export const useWishlist = (email, token) => {
   const [wishlist, setWishlist] = useState([]);
@@ -9,7 +9,7 @@ export const useWishlist = (email, token) => {
   const fetchWishlist = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${LOCAL_BASE_URL}/wishlist/${email}`, {
+      const res = await fetch(`${BASE_URL}/wishlist/${email}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -25,7 +25,7 @@ export const useWishlist = (email, token) => {
 
   const addToWishlistItem = async (wishlistItem, token) => {
     try {
-      const response = await fetch(`${LOCAL_BASE_URL}/wishlist`, {
+      const response = await fetch(`${BASE_URL}/wishlist`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const useWishlist = (email, token) => {
 
   const deleteWishlistItem = async (id) => {
     try {
-      const res = await fetch(`${LOCAL_BASE_URL}/wishlist/${id}`, {
+      const res = await fetch(`${BASE_URL}/wishlist/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -65,7 +65,7 @@ export const useWishlist = (email, token) => {
 
   const clearWishlist = async () => {
     try {
-      await fetch(`${LOCAL_BASE_URL}/wishlist/clear/${email}`, {
+      await fetch(`${BASE_URL}/wishlist/clear/${email}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

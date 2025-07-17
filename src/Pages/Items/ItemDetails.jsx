@@ -4,7 +4,7 @@ import Loader from "../../Components/Shared/Loader/Loader";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { LOCAL_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 
 const badgeColors = {
   "New Arrival": "primary",
@@ -25,29 +25,26 @@ const ItemDetails = () => {
     }
     setCheckoutLoading(true);
     try {
-      const response = await fetch(
-        `${LOCAL_BASE_URL}/orders/checkout-session`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            items: [
-              {
-                productId: item?.productId || item?._id,
-                title: item?.name,
-                price: item?.price,
-                quantity: 1,
-                img: item?.img,
-                brand: item?.brand,
-                supplierEmail: item?.supplierEmail || "",
-              },
-            ],
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/orders/checkout-session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          items: [
+            {
+              productId: item?.productId || item?._id,
+              title: item?.name,
+              price: item?.price,
+              quantity: 1,
+              img: item?.img,
+              brand: item?.brand,
+              supplierEmail: item?.supplierEmail || "",
+            },
+          ],
+        }),
+      });
 
       const data = await response.json();
       console.log(data);
