@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../config";
 
@@ -8,9 +8,8 @@ export const useAllOrders = () => {
 
   const token = localStorage.getItem("token");
 
-  const fetchOrders = useCallback(async () => {
+  const fetchOrders = async () => {
     try {
-      setLoading(true);
       const res = await fetch(`${BASE_URL}/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -24,11 +23,11 @@ export const useAllOrders = () => {
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  };
 
   useEffect(() => {
     fetchOrders();
-  }, [fetchOrders]);
+  }, []);
 
   return { orders, loading, refetch: fetchOrders };
 };

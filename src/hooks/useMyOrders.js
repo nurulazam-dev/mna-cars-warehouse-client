@@ -33,8 +33,10 @@ export const useMyOrders = () => {
   }, [user?.email, token]);
 
   useEffect(() => {
-    fetchMyOrders();
-  }, [fetchMyOrders]);
+    if (user?.email && token) {
+      fetchMyOrders();
+    }
+  }, [user?.email, token]);
 
   return { myOrders, loading, refetch: fetchMyOrders };
 };

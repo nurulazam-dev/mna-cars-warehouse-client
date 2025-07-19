@@ -1,37 +1,28 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { BASE_URL } from "../config";
 
 export const useItem = (id) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const token = localStorage.getItem("token");
-
-  const fetchItem = useCallback(async () => {
-    if (!id) return;
-
+  const fetchItem = async () => {
     try {
-      setLoading(true);
+      const token = localStorage.getItem("token");
       const res = await fetch(`${BASE_URL}/items/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      if (!res.ok) throw new Error("Failed to fetch item");
-
       const data = await res.json();
       setItem(data);
     } catch (err) {
-      console.error("Error fetching item:", err.message);
+      console.error("Error fetching item:", err);
     } finally {
       setLoading(false);
     }
-  }, [id, token]);
+  };
 
   useEffect(() => {
-    fetchItem();
-  }, [fetchItem]);
+    if (id) fetchItem();
+  }, [id]);
 
   return { item, loading, refetch: fetchItem };
 };

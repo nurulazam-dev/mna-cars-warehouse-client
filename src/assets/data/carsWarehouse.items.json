@@ -1,0 +1,486 @@
+[{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407cd"
+  },
+  "name": "2023 BMW X5 M50i",
+  "img": "https://www.motonews.pl/autoblog/photos/2018/10/BMW-X5-M-Performance_10.jpg",
+  "price": 89900,
+  "badge": "New Arrival",
+  "specs": [
+    "4.4L V8",
+    "523 HP",
+    "AWD",
+    "0-60mph 4.1s"
+  ],
+  "brand": "BMW",
+  "year": 2023,
+  "mileage": "5,000 km",
+  "color": "Black",
+  "location": "New York",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier1@warehouse.com",
+  "quantity": 13,
+  "sellerEmail": ""
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407ce"
+  },
+  "name": "2022 Mercedes-Benz GLE 350",
+  "img": "https://vehicle-direct.ca/wp-content/uploads/2023/08/6-4.jpg",
+  "price": 62500,
+  "badge": "Featured",
+  "specs": [
+    "2.0L Turbo",
+    "255 HP",
+    "AWD",
+    "Luxury Package"
+  ],
+  "brand": "Mercedes-Benz",
+  "year": 2022,
+  "mileage": "8,000 km",
+  "color": "White",
+  "location": "Los Angeles",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier2@warehouse.com",
+  "quantity": 47,
+  "sellerEmail": ""
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407cf"
+  },
+  "name": "2023 Toyota Camry XSE",
+  "img": "https://platform.cstatic-images.com/in/v2/stock_photos/a671310e-d95f-418e-929c-1e35cdaeb377/a29d7c09-f5e8-408d-b288-9f05b158d311.png",
+  "price": 34200,
+  "badge": "Hot Deal",
+  "specs": [
+    "2.5L I4",
+    "206 HP",
+    "FWD",
+    "Sport Trim"
+  ],
+  "brand": "Toyota",
+  "year": 2023,
+  "mileage": "2,500 km",
+  "color": "Red",
+  "location": "Chicago",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier3@warehouse.com",
+  "quantity": 10,
+  "sellerEmail": ""
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d0"
+  },
+  "name": "2022 Honda Accord Touring",
+  "img": "https://automobiles.honda.com/-/media/Honda-Automobiles/Vehicles/2022/Accord-Sedan/Global-MY22-Accord-Touring-Modern-Steel-Metallic-1400-1x.jpg",
+  "price": 31800,
+  "badge": "Special",
+  "specs": [
+    "1.5L Turbo",
+    "192 HP",
+    "FWD",
+    "Navigation"
+  ],
+  "brand": "Honda",
+  "year": 2022,
+  "mileage": "7,000 km",
+  "color": "Silver",
+  "location": "Houston",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier4@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d1"
+  },
+  "name": "2023 Audi Q7 Premium",
+  "img": "https://www.audi-mediacenter.com/en/audi-q7-36/fullscreen-image/2023-audi-q7-1.jpg",
+  "price": 68900,
+  "badge": "New Arrival",
+  "specs": [
+    "3.0L V6",
+    "335 HP",
+    "Quattro",
+    "7-Seater"
+  ],
+  "brand": "Audi",
+  "year": 2023,
+  "mileage": "3,000 km",
+  "color": "Blue",
+  "location": "Miami",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier5@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d2"
+  },
+  "name": "2022 Ford Mustang GT",
+  "img": "https://www.ford.com/is/image/content/dam/brand_ford/en_us/brand/cars/mustang/2022/collections/dm/22_FRD_MST_wdmp_200505_00136.tif?croppathe=1_3x2&wid=900",
+  "price": 45900,
+  "badge": "Hot Deal",
+  "specs": [
+    "5.0L V8",
+    "450 HP",
+    "RWD",
+    "Performance Pack"
+  ],
+  "brand": "Ford",
+  "year": 2022,
+  "mileage": "10,000 km",
+  "color": "Yellow",
+  "location": "Dallas",
+  "transmission": "Manual",
+  "supplierEmail": "supplier6@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d3"
+  },
+  "name": "2023 Kia Sportage SX",
+  "img": "https://www.kia.com/content/dam/kwcms/kr/en/images/vehicles/sportage/2023/gallery/2023-sportage-gallery-01.jpg",
+  "price": 29900,
+  "badge": "Featured",
+  "specs": [
+    "2.5L I4",
+    "187 HP",
+    "AWD",
+    "Panoramic Roof"
+  ],
+  "brand": "Kia",
+  "year": 2023,
+  "mileage": "1,200 km",
+  "color": "Green",
+  "location": "San Francisco",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier7@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d4"
+  },
+  "name": "2022 Hyundai Sonata Limited",
+  "img": "https://www.hyundaiusa.com/us/en/vehicles/sonata/2022/gallery/_jcr_content/root/responsivegrid/gallery/image.img.jpg/1643738720865.jpg",
+  "price": 27800,
+  "badge": "Special",
+  "specs": [
+    "1.6L Turbo",
+    "180 HP",
+    "FWD",
+    "Leather Seats"
+  ],
+  "brand": "Hyundai",
+  "year": 2022,
+  "mileage": "6,500 km",
+  "color": "White",
+  "location": "Seattle",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier8@warehouse.com",
+  "quantity": 4
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d5"
+  },
+  "name": "2023 Nissan Altima SR",
+  "img": "https://www.nissanusa.com/content/dam/Nissan/us/vehicles/altima/2023/overview/2023-nissan-altima-sr-sedan-orange-front-passenger-side-action.jpg",
+  "price": 26500,
+  "badge": "Hot Deal",
+  "specs": [
+    "2.5L I4",
+    "188 HP",
+    "AWD",
+    "Sport Package"
+  ],
+  "brand": "Nissan",
+  "year": 2023,
+  "mileage": "2,000 km",
+  "color": "Gray",
+  "location": "Boston",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier9@warehouse.com",
+  "quantity": 4
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d6"
+  },
+  "name": "2022 Mazda CX-5 Grand Touring",
+  "img": "https://www.mazdausa.com/siteassets/vehicles/2022/cx-5/gallery/2022-mazda-cx-5-gallery-1.jpg",
+  "price": 31500,
+  "badge": "Featured",
+  "specs": [
+    "2.5L I4",
+    "227 HP",
+    "AWD",
+    "Bose Audio"
+  ],
+  "brand": "Mazda",
+  "year": 2022,
+  "mileage": "5,500 km",
+  "color": "Red",
+  "location": "Denver",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier10@warehouse.com",
+  "quantity": 92
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d7"
+  },
+  "name": "2023 Volkswagen Tiguan SEL",
+  "img": "https://www.vw.com/content/dam/vwcom/2023/tiguan/gallery/2023-tiguan-gallery-1.jpg",
+  "price": 33900,
+  "badge": "New Arrival",
+  "specs": [
+    "2.0L Turbo",
+    "184 HP",
+    "AWD",
+    "3rd Row"
+  ],
+  "brand": "Volkswagen",
+  "year": 2023,
+  "mileage": "1,800 km",
+  "color": "Black",
+  "location": "Portland",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier11@warehouse.com",
+  "quantity": 4
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d8"
+  },
+  "name": "2022 Chevrolet Tahoe LT",
+  "img": "https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2022/suvs/tahoe/colorizer/01-images/2022-tahoe-1lz-gaz-colorizer.jpg?imwidth=960",
+  "price": 58900,
+  "badge": "Special",
+  "specs": [
+    "5.3L V8",
+    "355 HP",
+    "4WD",
+    "8-Seater"
+  ],
+  "brand": "Chevrolet",
+  "year": 2022,
+  "mileage": "9,000 km",
+  "color": "White",
+  "location": "Atlanta",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier12@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407d9"
+  },
+  "name": "2023 Lexus RX 350 F Sport",
+  "img": "https://www.lexus.com/cm-img/gallery/2023/rx/gallery-2023-lexus-rx-350-fsport-001.jpg",
+  "price": 51900,
+  "badge": "Featured",
+  "specs": [
+    "3.5L V6",
+    "295 HP",
+    "AWD",
+    "F Sport"
+  ],
+  "brand": "Lexus",
+  "year": 2023,
+  "mileage": "2,200 km",
+  "color": "Blue",
+  "location": "Orlando",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier13@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407da"
+  },
+  "name": "2022 Subaru Outback Touring",
+  "img": "https://www.subaru.com/content/dam/subaru/vehicles/2022/outback/gallery/2022-outback-gallery-1.jpg",
+  "price": 36900,
+  "badge": "Hot Deal",
+  "specs": [
+    "2.4L Turbo",
+    "260 HP",
+    "AWD",
+    "Eyesight"
+  ],
+  "brand": "Subaru",
+  "year": 2022,
+  "mileage": "7,800 km",
+  "color": "Green",
+  "location": "Salt Lake City",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier14@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407db"
+  },
+  "name": "2023 Jeep Grand Cherokee L",
+  "img": "https://www.jeep.com/content/dam/fca-brands/na/jeep/en_us/2023/grand-cherokee-l/gallery/exterior/2023-jeep-grand-cherokee-l-gallery-01.jpg",
+  "price": 48900,
+  "badge": "New Arrival",
+  "specs": [
+    "3.6L V6",
+    "293 HP",
+    "4WD",
+    "7-Seater"
+  ],
+  "brand": "Jeep",
+  "year": 2023,
+  "mileage": "3,500 km",
+  "color": "Gray",
+  "location": "Phoenix",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier15@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407dc"
+  },
+  "name": "2022 Tesla Model 3 Long Range",
+  "img": "https://tesla-cdn.thron.com/delivery/public/image/tesla/6e3e7b1d-2f7e-4c7e-8b6e-7e6b6b6b6b6b/bvlatuR/std/2880x1800/_25-Hero-D",
+  "price": 55900,
+  "badge": "Featured",
+  "specs": [
+    "Electric",
+    "AWD",
+    "353 mi Range",
+    "Autopilot"
+  ],
+  "brand": "Tesla",
+  "year": 2022,
+  "mileage": "12,000 km",
+  "color": "White",
+  "location": "San Diego",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier16@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407dd"
+  },
+  "name": "2023 Porsche Macan S",
+  "img": "https://files.porsche.com/filestore/image/multimedia/none/rd-2023-macan-s-gallery-01/normal/7e5e5e5e-7e5e-4e5e-8e5e-7e5e5e5e5e5e;sK/porsche-normal.jpg",
+  "price": 67900,
+  "badge": "Special",
+  "specs": [
+    "2.9L V6",
+    "375 HP",
+    "AWD",
+    "Sport Chrono"
+  ],
+  "brand": "Porsche",
+  "year": 2023,
+  "mileage": "1,000 km",
+  "color": "Black",
+  "location": "Las Vegas",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier17@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407de"
+  },
+  "name": "2022 GMC Sierra 1500 Denali",
+  "img": "https://www.gmc.com/content/dam/gmc/na/us/english/index/vehicles/2022/trucks/sierra-1500/colorizer/01-images/2022-sierra-1500-crew-cab-denali-gaz-colorizer.jpg?imwidth=960",
+  "price": 59900,
+  "badge": "Hot Deal",
+  "specs": [
+    "5.3L V8",
+    "355 HP",
+    "4WD",
+    "Crew Cab"
+  ],
+  "brand": "GMC",
+  "year": 2022,
+  "mileage": "8,500 km",
+  "color": "Silver",
+  "location": "Detroit",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier18@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407df"
+  },
+  "name": "2023 Acura MDX Advance",
+  "img": "https://www.acura.com/-/media/Acura-Platform/Vehicle-Pages/MDX/2023/Overview/2023-MDX-Advance-Package-Performance-Red-Pearl-1400-1x.jpg",
+  "price": 56900,
+  "badge": "New Arrival",
+  "specs": [
+    "3.5L V6",
+    "290 HP",
+    "SH-AWD",
+    "Advance Package"
+  ],
+  "brand": "Acura",
+  "year": 2023,
+  "mileage": "2,700 km",
+  "color": "Red",
+  "location": "Charlotte",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier19@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407e0"
+  },
+  "name": "2022 Volvo XC90 Inscription",
+  "img": "https://www.media.volvocars.com/images/2022/volvo-xc90/2022-volvo-xc90-gallery-01.jpg",
+  "price": 62900,
+  "badge": "Featured",
+  "specs": [
+    "2.0L Turbo",
+    "316 HP",
+    "AWD",
+    "Luxury"
+  ],
+  "brand": "Volvo",
+  "year": 2022,
+  "mileage": "6,200 km",
+  "color": "Blue",
+  "location": "Minneapolis",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier20@warehouse.com",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "685552ac4bf9a99752f407e1"
+  },
+  "name": "2023 Land Rover Defender 110",
+  "img": "https://www.landroverusa.com/Images/2023-DEFENDER-110-GALLERY-01_tcm281-1002316-desktop-1366x769.jpg",
+  "price": 84900,
+  "badge": "Special",
+  "specs": [
+    "3.0L I6",
+    "395 HP",
+    "4WD",
+    "Off-Road"
+  ],
+  "brand": "Land Rover",
+  "year": 2023,
+  "mileage": "1,500 km",
+  "color": "Green",
+  "location": "Houston",
+  "transmission": "Automatic",
+  "supplierEmail": "supplier21@warehouse.com",
+  "quantity": 5
+}]
