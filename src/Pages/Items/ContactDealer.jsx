@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { items } from "../../assets/data/itemsData";
+import { useItems } from "../../hooks/useItems";
 
 const ContactDealer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
   const itemId = params.get("itemId");
+  const { items } = useItems();
   const item = items.find((i) => i._id === itemId);
 
   const [submitted, setSubmitted] = useState(false);
